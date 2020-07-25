@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.smartflow</groupId>
+    <artifactId>SFMES_HT</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <properties>
+        <log4j.version>1.2.17</log4j.version>
+        <spring.version>4.3.7.RELEASE</spring.version>
+    </properties>
+
+    <dependencies>
+
+    </dependencies>
+
+    <build>
+        <finalName>SFMES_HT</finalName>
+        <plugins>
+            <!-- 编译的时候使用JDK7和UTF8编码 , -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArguments>
+                        <verbose />
+                        <extdirs>E:\IdeaProjects\CommonLib</extdirs>
+                        <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <url>http://192.168.1.211:8080/manager/text</url>
+                    <server>tomcat7</server>
+                    <username>admin</username>
+                    <password>123456</password>
+                    <update>true</update>
+                    <path>/webapp</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,155 @@
+package com.smartflow.util;
+
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class ProcessStepDataForPage {
+	private int Secquence;
+    private Integer ProcessId;
+    private int Id;
+    private String Description;
+    private int StationGroupId;
+    private String StationGroupName;
+//    private String IsMandatory;
+    private String IsNeedSetupCheck;
+//    private String IsBackflush;
+//    private int Side;
+//    private Integer MaximumTestCount;
+    private String Editor;
+    private Date EditDateTime;
+    private int Key;
+    @JsonProperty("Secquence")
+	public int getSecquence() {
+		return Secquence;
+	}
+	public ProcessStepDataForPage() {};
+//	public ProcessStepDataForPage(int secquence, Integer processId, int id, String description, int stationGroupId,
+//			String stationGroupName, String isMandatory, String isNeedSetupCheck, String isBackflush, int side,
+//			Integer maximumTestCount, String editor, Date editDateTime,int key) {
+//
+//		Secquence = secquence;
+//		ProcessId = processId;
+//		Id = id;
+//		Description = description;
+//		StationGroupId = stationGroupId;
+//		StationGroupName = stationGroupName;
+//		IsMandatory = isMandatory;
+//		IsNeedSetupCheck = isNeedSetupCheck;
+//		IsBackflush = isBackflush;
+//		Side = side;
+//		MaximumTestCount = maximumTestCount;
+//		Editor = editor;
+//		EditDateTime = editDateTime;
+//		Key=key;
+//	}
+
+
+	public ProcessStepDataForPage(int secquence, Integer processId, int id, String description, int stationGroupId, String stationGroupName, String isNeedSetupCheck, String editor, Date editDateTime, int key) {
+		Secquence = secquence;
+		ProcessId = processId;
+		Id = id;
+		Description = description;
+		StationGroupId = stationGroupId;
+		StationGroupName = stationGroupName;
+		IsNeedSetupCheck = isNeedSetupCheck;
+		Editor = editor;
+		EditDateTime = editDateTime;
+		Key = key;
+	}
+
+	public void setSecquence(int secquence) {
+		Secquence = secquence;
+	}
+	  @JsonProperty("ProcessId")
+	public Integer getProcessId() {
+		return ProcessId;
+	}
+	public void setProcessId(Integer processId) {
+		ProcessId = processId;
+	}
+	  @JsonProperty("Id")
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+	}
+	  @JsonProperty("Description")
+	public String getDescription() {
+		return Description;
+	}
+	public void setDescription(String description) {
+		Description = description;
+	}
+	  @JsonProperty("StationGroupId")
+	public int getStationGroupId() {
+		return StationGroupId;
+	}
+	public void setStationGroupId(int stationGroupId) {
+		StationGroupId = stationGroupId;
+	}
+	  @JsonProperty("StationGroupName")
+	public String getStationGroupName() {
+		return StationGroupName;
+	}
+	public void setStationGroupName(String stationGroupName) {
+		StationGroupName = stationGroupName;
+	}
+//	  @JsonProperty("IsMandatory")
+//	public String isIsMandatory() {
+//		return IsMandatory;
+//	}
+//	public void setIsMandatory(String isMandatory) {
+//		IsMandatory = isMandatory;
+//	}
+	  @JsonProperty("IsNeedSetupCheck")
+	public String isIsNeedSetupCheck() {
+		return IsNeedSetupCheck;
+	}
+	public void setIsNeedSetupCheck(String isNeedSetupCheck) {
+		IsNeedSetupCheck = isNeedSetupCheck;
+	}
+//	  @JsonProperty("IsBackflush")
+//	public String isIsBackflush() {
+//		return IsBackflush;
+//	}
+//	public void setIsBackflush(String isBackflush) {
+//		IsBackflush = isBackflush;
+//	}
+//	  @JsonProperty("Side")
+//	public int getSide() {
+//		return Side;
+//	}
+//	public void setSide(int side) {
+//		Side = side;
+//	}
+//	  @JsonProperty("MaximumTestCount")
+//	public Integer getMaximumTestCount() {
+//		return MaximumTestCount;
+//	}
+//	public void setMaximumTestCount(Integer maximumTestCount) {
+//		MaximumTestCount = maximumTestCount;
+//	}
+	  @JsonProperty("Editor")
+	public String getEditor() {
+		return Editor;
+	}
+	public void setEditor(String editor) {
+		Editor = editor;
+	}
+	  @JsonProperty("EditDateTime")
+	public Date getEditDateTime() {
+		return EditDateTime;
+	}
+	public void setEditDateTime(Date editDateTime) {
+		EditDateTime = editDateTime;
+	}
+	@JsonProperty("key")
+	public int getKey() {
+		return Key;
+	}
+	public void setKey(int key) {
+		this.Key = key;
+	}
+}
