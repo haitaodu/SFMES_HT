@@ -28,4 +28,12 @@
         <servlet-name>springDispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <context-param>
+
+        <param-name>spring.profiles.default</param-name>
+
+        <param-value>development</param-value>
+
+    </context-param>
 </web-app>

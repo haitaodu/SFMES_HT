@@ -16,11 +16,12 @@
         </property>
           <!--<property name="jdbcUrl" value="jdbc:sqlserver://smartflow.diskstation.me\SQL2017DEV:8021;databaseName=MESDB_SXHTDL">-->
           <!--</property>-->
-        <property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.252\SQL2017DEV:1433;database=MESDB_SXHTDL"></property>
-      <!--<property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.6:1433;databaseName=MESDB_SXHTDL"></property>-->
-            <property name="user" value="sa">
+        <!--<property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.252\SQL2017DEV:1433;database=MESDB_SXHTDL"></property>-->
+      <property name="jdbcUrl" value="${jdbc.jdbcUrl}">
+      </property>
+            <property name="user" value="${jdbc.user}">
             </property>
-            <property name="password" value="1qaz@wsx">
+            <property name="password" value="${jdbc.password}">
             </property>
             <property name="maxIdleTime" value="60">
             </property>
@@ -89,4 +90,13 @@
         <property name="maxPoolSize" value="10" />
         <property name="queueCapacity" value="25" />
     </bean>
+
+    <beans profile="development">
+        <context:property-placeholder location="classpath:app-development.properties"/>
+    </beans>
+
+    <beans profile="production">
+        <context:property-placeholder location="classpath:app-production.properties"/>
+
+    </beans>
 </beans>

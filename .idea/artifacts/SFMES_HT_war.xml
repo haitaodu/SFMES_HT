@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SFMES_HT:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>SFMES_HT</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="SFMES_HT.war">
+      <element id="artifact" artifact-name="SFMES_HT:war exploded" />
+    </root>
+  </artifact>
+</component>

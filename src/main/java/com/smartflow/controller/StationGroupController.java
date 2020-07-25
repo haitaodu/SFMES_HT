@@ -1,6 +1,10 @@
 package com.smartflow.controller;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +16,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -313,20 +316,12 @@ public class StationGroupController extends BaseController{
 				stationGroup.setSafetyStock(createStationGroupDTO.getSafetyStock());
 				stationGroupService.addStationGroup(stationGroup);
 				//JSONArray StationIdArray = JSONArray.parseArray(createStationGroupDTO.getStationIdArray());
-
-
 				Station_StationGroup station_StationGroup = new Station_StationGroup();
 				station_StationGroup.setStationGroupId(stationGroup.getId());
 				station_StationGroup.setEditDateTime(new Date());
 				station_StationGroup.setEditorId(createStationGroupDTO.getCreatorId());
 				if (createStationGroupDTO.getStationIdArray()!=null && !createStationGroupDTO.getStationIdArray().isEmpty()) {
 					for (Integer stationId : createStationGroupDTO.getStationIdArray()) {
-						List<Station_StationGroup> station_StationGroupList = stationService.getStation_StationGroupByStationId(stationId);
-						if(!CollectionUtils.isEmpty(station_StationGroupList)){
-							for (Station_StationGroup stationStationGroup : station_StationGroupList) {
-								stationService.deleteStation_StationGroup(stationStationGroup);
-							}
-						}
 						Station station = stationService.getStationById(stationId);
 						if (station!=null) {
 							station_StationGroup.setStationtId(stationId); 
@@ -396,19 +391,12 @@ public class StationGroupController extends BaseController{
 			for (Station_StationGroup station_StationGroup : station_StationGroupList) {
 				stationService.deleteStation_StationGroup(station_StationGroup);
 			}
-
 			Station_StationGroup station_StationGroup = new Station_StationGroup();
 			station_StationGroup.setStationGroupId(inputStationGroupViewModel.getId());
 			station_StationGroup.setEditorId(inputStationGroupViewModel.getEditorId());
 			station_StationGroup.setEditDateTime(new Date());
 			if (inputStationGroupViewModel.getStationIdArray()!=null && !inputStationGroupViewModel.getStationIdArray().isEmpty()) {
 				for (Integer stationId : inputStationGroupViewModel.getStationIdArray()) {
-					List<Station_StationGroup> stationStationGroupList = stationService.getStation_StationGroupByStationId(stationId);
-					if(!CollectionUtils.isEmpty(stationStationGroupList)){
-						for (Station_StationGroup stationStationGroup : stationStationGroupList) {
-							stationService.deleteStation_StationGroup(stationStationGroup);
-						}
-					}
 					station_StationGroup.setStationtId(stationId);
 					stationGroupService.addStation_StationGroup(station_StationGroup);
 				}
