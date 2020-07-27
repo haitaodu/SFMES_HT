@@ -1,8 +1,10 @@
 package com.smartflow.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.smartflow.dto.bom.BomItemForEdite;
 import com.smartflow.model.Material;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,6 +19,9 @@ import com.smartflow.model.BOMHeadModel;
 import com.smartflow.model.BOMItemModel;
 import com.smartflow.util.BOMDataForPage;
 import com.smartflow.util.BOMItemData;
+/**
+ * @author haita
+ */
 @Service
 public class BOMHeadServiceImpl implements BOMHeadService {
 private final
@@ -47,7 +52,7 @@ MaterialService materialService;
 		return bom.getDataInId(i);
 	}
 	@Override
-	public List<BOMItemData> getBOMItemGetById(int i) {
+	public List<BomItemForEdite> getBOMItemGetById(int i) {
 		return  bom.getDataByIdInItem(i);
 	}
 	@Override
@@ -115,7 +120,7 @@ MaterialService materialService;
 			Query query = session.createSQLQuery(sql);
 			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
 		}catch(Exception e){
-			return null;
+			return new ArrayList<>();
 		}finally{
 			session.close();
 		}
@@ -136,7 +141,7 @@ MaterialService materialService;
 			Query query = session.createSQLQuery(sql);
 			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
 		}catch(Exception e){
-			return null;
+			return new ArrayList<>();
 		}finally{
 			session.close();
 		}

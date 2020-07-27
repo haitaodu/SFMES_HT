@@ -9,14 +9,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.smartflow.exception.ErrorCodeEnum;
+import com.smartflow.exception.MyException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.alibaba.fastjson.JSONObject;
 import com.smartflow.model.AreaModel;
@@ -35,7 +33,7 @@ public class AreaController  extends BaseController{
 	private static Logger logger = Logger.getLogger(BOMController.class);
 
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@RequestMapping(value="/GetTByCondition",method=RequestMethod.POST)
+	@PostMapping(value="/GetTByCondition")
 	public @ResponseBody Object getPages(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
 		JSONObject jsonObject=ReadDataUtil.paramData(request);
@@ -50,15 +48,15 @@ public class AreaController  extends BaseController{
 		if (pageNumber==0) {
 			map.put("RowCount", 0);
 			map.put("Tdto", new ArrayList<>());
-			/*
-			map.put("PageSize", pageSize);
-			map.put("PageIndex", pageNumber);
-			 */
 			json= this.setJson(200, "无数据", map);
 			return(json);
 		}
 		List<AreaDataForPage> pagedata=areaService.getPageData(pageSize, pageNumber,areaNumber, areaName, factoryId);
 
+		if (pageNumber<1||pageSize<1)
+		{
+			throw new MyException(ErrorCodeEnum.PAGE_ERROR);
+		}
 		map.put("RowCount", areaService.count(areaNumber, areaName, factoryId));
 		map.put("Tdto", pagedata);
 
