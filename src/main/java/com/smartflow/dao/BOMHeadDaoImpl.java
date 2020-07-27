@@ -3,6 +3,7 @@ package com.smartflow.dao;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.smartflow.dto.bom.BomItemForEdite;
 import com.smartflow.model.BOMHeadModel;
 import com.smartflow.model.BOMItemModel;
 import com.smartflow.model.Material;
@@ -23,6 +24,9 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+/**
+ * @author haita
+ */
 @Repository
 public class BOMHeadDaoImpl implements BOMHeadDao {
 	List<BOMItemData> bomItemDatas=new ArrayList<>();
@@ -61,7 +65,8 @@ public class BOMHeadDaoImpl implements BOMHeadDao {
 		Session session=hibernate.getSessionFactory().openSession();
 		String hql="FROM BOMHeadModel  WHERE State!=-1 ";
 		if (materialNumberForSearch!=null) {
-			hql+="AND MaterialId IN(FROM Material WHERE MaterialNumber LIKE '%"+materialNumberForSearch+"%') ";
+			hql+="AND MaterialId IN(FROM Material WHERE MaterialNumber LIKE '%"
+					+materialNumberForSearch+"%') ";
 		}
 		logger.info(new Date()+"查询BOM列表进入BOM数据库");
 		Query query=session.createQuery(hql);
@@ -69,7 +74,6 @@ public class BOMHeadDaoImpl implements BOMHeadDao {
 		query.setMaxResults(pagesize);
 		@SuppressWarnings("unchecked")
 		List<BOMHeadModel> bomList=query.list();
-		//及时关闭session
 		List<BOMDataForPage> bomDataForPages=new ArrayList<>();
 		for (BOMHeadModel bomHeadModel : bomList) {
 			Material material=materialDao.getDataById(bomHeadModel.getMaterialId());
@@ -105,7 +109,7 @@ public class BOMHeadDaoImpl implements BOMHeadDao {
 	}
 	@Override
 	public int countData(String materialNumberForSearch) {
-		// TODO Auto-generated method stub
+	
 		SessionFactory sessionFactory=hibernate.getSessionFactory();
 		Session session=sessionFactory.openSession();
 		
@@ -150,14 +154,14 @@ public class BOMHeadDaoImpl implements BOMHeadDao {
 
 	}
 	@Override
-	public List<BOMItemData> getDataByIdInItem(int i) {
+	public List<BomItemForEdite> getDataByIdInItem(int i) {
 		Session session=hibernate.getSessionFactory().openSession();
 		String hql="FROM BOMItemModel WHERE BOMHeadId=:i";
 		Query query=session.createQuery(hql);
 		query.setParameter("i", i);
 		List<BOMItemModel> bomItemModels=query.list();
 		session.close();
-		List<BOMItemData> bomItemDatas=new ArrayList<>();
+		List<BomItemForEdite> bomItemDatas=new ArrayList<>();
 		int n=0;
 		for (BOMItemModel bomItemModel : bomItemModels) {
 			Material material=materialDao.getDataById(bomItemModel.getMaterialId());
@@ -165,13 +169,13 @@ public class BOMHeadDaoImpl implements BOMHeadDao {
 			String  materialName=material.getDescription();
 			int stationId=bomItemModel.getStationGroupId();
 			int unitId=bomItemModel.getUnit();
-			bomItemDatas.add(new BOMItemData(bomItemModel.getMaterialId(), materialName,
+			bomItemDatas.add(new BomItemForEdite(bomItemModel.getMaterialId(), materialName,
 					materialNumber, bomItemModel.getDesignator(), bomItemModel.getQuantity(),
 					stationId,
 					stationGroup.getStationGroupById(bomItemModel.getStationGroupId()).getDescription(),
-					AbstractBomUtil.parseBoolenToString(bomItemModel.isIsNeedSetupCheck()),
+					bomItemModel.isIsNeedSetupCheck(),
 					bomItemModel.getLayer(),
-					AbstractBomUtil.parseBoolenToString(bomItemModel.isIsAlternative()),
+					bomItemModel.isIsAlternative(),
 					unitDao.getUnitById(bomItemModel.getUnit()).getName(),
 					unitId,n));
 			n++;
@@ -275,14 +279,11 @@ public class BOMHeadDaoImpl implements BOMHeadDao {
 			m=m+"●";
 			getChildData(bomItemModel.getMaterialId());
 			m=m.substring(0, m.length()-1);
-			
 		}
 		return bomItemDatas;
 	}
 	@Override
 	public void getChildData(Integer  materialId) {
-
-
 		@SuppressWarnings("unchecked")
 		List<BOMHeadModel> bomHeadModels=(List<BOMHeadModel>) hibernate.findByNamedParam
 				("FROM BOMHeadModel WHERE MaterialId=:materialId", "materialId", materialId);
@@ -404,9 +405,12 @@ public class BOMHeadDaoImpl implements BOMHeadDao {
 	@Override
 	public BOMHeadModel getRegisterBom(String materialNumber) {
 		List<BOMHeadModel> bomHeadModels=(List<BOMHeadModel>)
-				hibernate.findByNamedParam(" From BOMHeadModel Where MaterialId  IN" +
+				hibernate.findByNamedParam
+						(" From BOMHeadModel " +
+										"Where state!=-1 and MaterialId  IN" +
 						"(Select id From Material WHERE  " +
-						"MaterialNumber=:materialNumber ) order by Version",
+						"MaterialNumber=:materialNumber )" +
+								" order by Version",
 						"materialNumber",materialNumber);
 		if (bomHeadModels.isEmpty())
 		{

@@ -3,6 +3,7 @@ package com.smartflow.service;
 import java.util.List;
 import java.util.Map;
 
+import com.smartflow.dto.bom.BomItemForEdite;
 import com.smartflow.model.BOMHeadModel;
 import com.smartflow.model.BOMItemModel;
 import com.smartflow.util.BOMDataForPage;
@@ -16,7 +17,7 @@ public interface BOMHeadService {
 	//根据Id号查找出BOMHead数据返回给前端
 	public  BOMDataForPage getBomDataById(int i);
 	//根据Id号查找BOMItem数据返回给前端
-	public List<BOMItemData> getBOMItemGetById(int i);
+	public List<BomItemForEdite> getBOMItemGetById(int i);
 	//删除相应的数据
 	public void delDataById (int i);
 	//根据Id号查找相应的BOMHead表中的信息

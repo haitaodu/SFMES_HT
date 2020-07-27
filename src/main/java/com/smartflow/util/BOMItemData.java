@@ -2,6 +2,9 @@ package com.smartflow.util;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author haita
+ */
 public class BOMItemData {
 	int MaterialId;
 	String MaterialName;

@@ -151,9 +151,11 @@ public class BOMController  extends BaseController {
 	{
 		init();
 		JSONObject jsonObject=ReadDataUtil.paramData(request);
-		String materialNumber = jsonObject.get("MaterialNumber") == null ? "" : String.valueOf(jsonObject.get("MaterialNumber"));
-		List<MaterialDataForSearch> materialDataForSearchs=materialService.getDataForSearch(materialNumber);
-
+		String materialNumber =
+				jsonObject.get("MaterialNumber") == null ? "" : String.valueOf(jsonObject.get("MaterialNumber"));
+		List<MaterialDataForSearch>
+				materialDataForSearchs
+				=materialService.getDataForSearch(materialNumber);
 		try {
 			json= this.setJson(200, "查询成功", materialDataForSearchs);
 		} catch (Exception e) {
@@ -232,7 +234,7 @@ public class BOMController  extends BaseController {
 
 	@CrossOrigin(origins = "*",maxAge = 3600)
 	@PostMapping(value="/Post")
-	public @ResponseBody Object addDataForBOMHead(HttpServletRequest request,HttpServletResponse response) throws Exception
+	public @ResponseBody Object addDataForBomHead(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
 		init();
 		JSONObject jsonObject = ReadDataUtil.paramData(request);

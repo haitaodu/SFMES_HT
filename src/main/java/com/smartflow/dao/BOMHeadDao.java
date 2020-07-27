@@ -2,6 +2,7 @@ package com.smartflow.dao;
 
 import java.util.List;
 
+import com.smartflow.dto.bom.BomItemForEdite;
 import com.smartflow.model.BOMHeadModel;
 import com.smartflow.model.BOMItemModel;
 import com.smartflow.util.BOMDataForPage;
@@ -42,8 +43,7 @@ public interface BOMHeadDao {
 	 * @param i bomhead id
 	 * @return 返回bomitem的列表信息
 	 */
-	 List<BOMItemData> getDataByIdInItem(int i);
-
+	 List<BomItemForEdite> getDataByIdInItem(int i);
 
 	/**
 	 *根据Id号删除相应的信息，仅仅是把该字段的State的值改为-1
