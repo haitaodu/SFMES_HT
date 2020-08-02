@@ -8,8 +8,6 @@ import java.util.Date;
  * @author ：tao
  * @date ：Created in 2020/6/12 10:13
  * @description：${description}
- * @modified By：
- * @version: version
  */
 
 public class IdModelUpdateView {
@@ -24,11 +22,17 @@ public class IdModelUpdateView {
     private Date vaildTo;
     private Integer editorId;
     private Integer state;
-    private Integer bomheadId;
+    private String bomhead;
     private Integer stationId;
     private boolean timeStamp;
     private Integer numberSufiix;
-
+    @JsonProperty("BOMHead")
+    public String getBomhead() {
+        return bomhead;
+    }
+    public void setBomhead(String bomhead) {
+        this.bomhead = bomhead;
+    }
     @JsonProperty("TimeStamp")
     public boolean isTimeStamp() {
         return timeStamp;
@@ -37,7 +41,7 @@ public class IdModelUpdateView {
     public void setTimeStamp(boolean timeStamp) {
         this.timeStamp = timeStamp;
     }
-    @JsonProperty("NumberSufiix")
+    @JsonProperty("NumberSuffix")
     public Integer getNumberSufiix() {
         return numberSufiix;
     }
@@ -46,14 +50,8 @@ public class IdModelUpdateView {
         this.numberSufiix = numberSufiix;
     }
 
-    @JsonProperty("BOMHeadId")
-    public Integer getBomheadId() {
-        return bomheadId;
-    }
 
-    public void setBomheadId(Integer bomheadId) {
-        this.bomheadId = bomheadId;
-    }
+
     @JsonProperty("StationId")
     public Integer getStationId() {
         return stationId;

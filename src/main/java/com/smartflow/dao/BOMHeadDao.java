@@ -160,5 +160,11 @@ public interface BOMHeadDao {
 	public BOMHeadModel getRegisterBom(String materialNumber);
 
 
+	/**
+	 *
+	 * @param materialNumber 根据物料号查找已注册的产品
+	 * @return 返回已注册的BOMHead列表
+	 */
+	public List<BOMHeadModel> getRegisterProduct(String materialNumber);
 
 }

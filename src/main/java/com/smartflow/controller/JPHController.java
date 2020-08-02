@@ -23,19 +23,25 @@ import java.util.Map;
 @RequestMapping("/api/JPH")
 public class JPHController extends BaseController {
     private static Logger logger = Logger.getLogger(JPHController.class);
-    @Autowired
+    final
     MaterialService materialService;
 
-    @Autowired
+    final
     JPHService jphService;
+
+    @Autowired
+    public JPHController(MaterialService materialService, JPHService jphService) {
+        this.materialService = materialService;
+        this.jphService = jphService;
+    }
 
     /**
      * 初始化列表查询条件
      * @return
      */
-    @RequestMapping(value = "/GetInitializeList",method = RequestMethod.GET)
+    @GetMapping (value = "/GetInitializeList")
     public Map<String,Object> getJPHListByConditionInit(){
-        Map<String,Object> json = new HashMap<>();
+        Map<String,Object> json ;
         Map<String,Object> map = new HashMap<>();
         try{
             List<Map<String,Object>> LocationList = materialService.getLocationNumberAndId();

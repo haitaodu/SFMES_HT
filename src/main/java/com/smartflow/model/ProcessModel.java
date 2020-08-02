@@ -42,10 +42,22 @@ public class ProcessModel {
 	public int getId() {
 		return Id;
 	}
+	private String ParentProcessNumber;
+	@Column(name="Version")
+	private int version;
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	public ProcessModel() {};
 	public ProcessModel(int id, String processNumber, int materialId, String description, Date editDateTime,
 			Integer editorId, int state, Date validBegin, Date validEnd, Integer factoryId, Integer creatorId,
-			Date creationDateTime) {
+			Date creationDateTime,String parentProcessNumber,int version) {
 		
 		Id = id;
 		ProcessNumber = processNumber;
@@ -59,6 +71,16 @@ public class ProcessModel {
 		FactoryId = factoryId;
 		CreatorId = creatorId;
 		CreationDateTime = creationDateTime;
+		ParentProcessNumber=parentProcessNumber;
+		this.version=version;
+	}
+	@JsonProperty("ParentProcessNumber")
+	public String getParentProcessNumber() {
+		return ParentProcessNumber;
+	}
+
+	public void setParentProcessNumber(String parentProcessNumber) {
+		ParentProcessNumber = parentProcessNumber;
 	}
 	public void setId(int id) {
 		Id = id;
