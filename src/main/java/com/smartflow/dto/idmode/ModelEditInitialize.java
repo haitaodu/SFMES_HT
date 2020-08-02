@@ -8,8 +8,6 @@ import java.util.Date;
  * @author ：tao
  * @date ：Created in 2020/7/6 14:36
  * @description：${description}
- * @modified By：
- * @version: version
  */
 
 public class ModelEditInitialize {
@@ -23,16 +21,37 @@ public class ModelEditInitialize {
     private Date vaildFrom;
     private Date vaildTo;
     private String state;
-    private String bomheadId;
+    private String bomhead;
     private String stationId;
-    @JsonProperty("BOMHeadId")
-    public String getBomheadId() {
-        return bomheadId;
+    private boolean timeStamp;
+    private Integer numberSufiix;
+
+    @JsonProperty("BOMHead")
+    public String getBomhead() {
+        return bomhead;
     }
 
-    public void setBomheadId(String bomheadId) {
-        this.bomheadId = bomheadId;
+    public void setBomhead(String bomhead) {
+        this.bomhead = bomhead;
     }
+    @JsonProperty("TimeStamp")
+    public boolean isTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(boolean timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+    @JsonProperty("NumberSuffix")
+    public Integer getNumberSufiix() {
+        return numberSufiix;
+    }
+
+    public void setNumberSufiix(Integer numberSufiix) {
+        this.numberSufiix = numberSufiix;
+    }
+
+
 
     public void setStationId(String stationId) {
         this.stationId = stationId;

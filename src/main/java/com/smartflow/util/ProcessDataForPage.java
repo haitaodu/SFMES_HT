@@ -4,6 +4,9 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author haita
+ */
 public class ProcessDataForPage {
 int	Id;
 String ProcessNumber;
@@ -15,9 +18,15 @@ Date ValidEnd;
 Date CreationDateTime;
 Date    EditDateTime;
 String    Editor;
-public ProcessDataForPage() {};
+	String parentProcessNumber;
+	int version;
+
+
+
+	public ProcessDataForPage() {};
 public ProcessDataForPage(int id, String processNumber, String materialNumber, String factory, String state,
-		Date validBegin, Date validEnd, Date creationDateTime, Date editDateTime, String editor) {
+		Date validBegin, Date validEnd, Date creationDateTime, Date editDateTime, String editor
+,String parentProcessNumber,int version) {
 	
 	Id = id;
 	ProcessNumber = processNumber;
@@ -29,8 +38,26 @@ public ProcessDataForPage(int id, String processNumber, String materialNumber, S
 	CreationDateTime = creationDateTime;
 	EditDateTime = editDateTime;
 	Editor = editor;
+	this.parentProcessNumber=parentProcessNumber;
+	this.version=version;
 }
-@JsonProperty("Id")
+
+	@JsonProperty("Version")
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+    @JsonProperty("ParentProcessNumber")
+	public String getParentProcessNumber() {
+		return parentProcessNumber;
+	}
+	public void setParentProcessNumber(String parentProcessNumber) {
+		this.parentProcessNumber = parentProcessNumber;
+	}
+	@JsonProperty("Id")
 public int getId() {
 	return Id;
 }

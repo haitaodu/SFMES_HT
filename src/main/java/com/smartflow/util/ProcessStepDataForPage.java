@@ -4,6 +4,9 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author haita
+ */
 public class ProcessStepDataForPage {
 	private int Secquence;
     private Integer ProcessId;
@@ -11,11 +14,8 @@ public class ProcessStepDataForPage {
     private String Description;
     private int StationGroupId;
     private String StationGroupName;
-//    private String IsMandatory;
     private String IsNeedSetupCheck;
-//    private String IsBackflush;
-//    private int Side;
-//    private Integer MaximumTestCount;
+
     private String Editor;
     private Date EditDateTime;
     private int Key;
@@ -24,25 +24,6 @@ public class ProcessStepDataForPage {
 		return Secquence;
 	}
 	public ProcessStepDataForPage() {};
-//	public ProcessStepDataForPage(int secquence, Integer processId, int id, String description, int stationGroupId,
-//			String stationGroupName, String isMandatory, String isNeedSetupCheck, String isBackflush, int side,
-//			Integer maximumTestCount, String editor, Date editDateTime,int key) {
-//
-//		Secquence = secquence;
-//		ProcessId = processId;
-//		Id = id;
-//		Description = description;
-//		StationGroupId = stationGroupId;
-//		StationGroupName = stationGroupName;
-//		IsMandatory = isMandatory;
-//		IsNeedSetupCheck = isNeedSetupCheck;
-//		IsBackflush = isBackflush;
-//		Side = side;
-//		MaximumTestCount = maximumTestCount;
-//		Editor = editor;
-//		EditDateTime = editDateTime;
-//		Key=key;
-//	}
 
 
 	public ProcessStepDataForPage(int secquence, Integer processId, int id, String description, int stationGroupId, String stationGroupName, String isNeedSetupCheck, String editor, Date editDateTime, int key) {
@@ -96,13 +77,7 @@ public class ProcessStepDataForPage {
 	public void setStationGroupName(String stationGroupName) {
 		StationGroupName = stationGroupName;
 	}
-//	  @JsonProperty("IsMandatory")
-//	public String isIsMandatory() {
-//		return IsMandatory;
-//	}
-//	public void setIsMandatory(String isMandatory) {
-//		IsMandatory = isMandatory;
-//	}
+
 	  @JsonProperty("IsNeedSetupCheck")
 	public String isIsNeedSetupCheck() {
 		return IsNeedSetupCheck;
@@ -110,27 +85,7 @@ public class ProcessStepDataForPage {
 	public void setIsNeedSetupCheck(String isNeedSetupCheck) {
 		IsNeedSetupCheck = isNeedSetupCheck;
 	}
-//	  @JsonProperty("IsBackflush")
-//	public String isIsBackflush() {
-//		return IsBackflush;
-//	}
-//	public void setIsBackflush(String isBackflush) {
-//		IsBackflush = isBackflush;
-//	}
-//	  @JsonProperty("Side")
-//	public int getSide() {
-//		return Side;
-//	}
-//	public void setSide(int side) {
-//		Side = side;
-//	}
-//	  @JsonProperty("MaximumTestCount")
-//	public Integer getMaximumTestCount() {
-//		return MaximumTestCount;
-//	}
-//	public void setMaximumTestCount(Integer maximumTestCount) {
-//		MaximumTestCount = maximumTestCount;
-//	}
+
 	  @JsonProperty("Editor")
 	public String getEditor() {
 		return Editor;

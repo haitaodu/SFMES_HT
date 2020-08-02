@@ -187,18 +187,15 @@ public class BOMController  extends BaseController {
 	@PostMapping(value="/GetMaterialByMaterialNumber")
 	public @ResponseBody Object getMaterialByMaterialNumber(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
-		init();
 		JSONObject jsonObject=ReadDataUtil.paramData(request);
 		String materialNumber = jsonObject.get("MaterialNumber") == null ? "" : String.valueOf(jsonObject.get("MaterialNumber"));
 		Map<String, Object> map=new  HashMap<>();
-		if (materialService.getMaterialByNumber(materialNumber)==null||materialService.getMaterialByNumber(materialNumber).getState()==-1) {
-			
-			
+		if (materialService.getMaterialByNumber(materialNumber)==null
+				||materialService.getMaterialByNumber(materialNumber).getState()==-1) {
 			map.put("ReturnCode", 0);
 			map.put("ReturnMessage", "你所请求的数据不存在");
 			json= this.setJson(200, "你所请求的数据不存在", map);
 			return json;
-			
 		}
 		if(!bomHeadService.isCanRegister(materialNumber))
 		{
@@ -209,8 +206,10 @@ public class BOMController  extends BaseController {
 		}
 		map.put("ReturnCode", 1);
 		map.put("ReturnMessage", "请求数据成功");
+
 		MaterialDataForSearch materialDataForSearch=new MaterialDataForSearch();
-		materialDataForSearch.setMaterialName(materialService.getMaterialByNumber(materialNumber).getDescription());
+		materialDataForSearch.setMaterialName(materialService.getMaterialByNumber
+				(materialNumber).getDescription());
 		materialDataForSearch.setMaterialNumber(materialNumber);
 		BOMHeadModel bomHeadModel=bomHeadService.getRegisterBom(materialNumber);
 		if (bomHeadModel!=null)
@@ -231,6 +230,7 @@ public class BOMController  extends BaseController {
 		return json;
 
 	}
+
 
 	@CrossOrigin(origins = "*",maxAge = 3600)
 	@PostMapping(value="/Post")
@@ -464,7 +464,7 @@ public class BOMController  extends BaseController {
 				Integer columnNumber=i+1;
 				String column=columnNumber.toString();
 				json= this.setJson(STATUS_ERROR, "你在BOM子表中第"+column+"行未选择是否是产出品", -1);
-			return bomItemModels;
+				return bomItemModels;
 			}
 			if(mapForBomItemModel.get("IsNeedSetupCheck")==null)
 			{

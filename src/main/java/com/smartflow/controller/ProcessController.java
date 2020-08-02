@@ -2,16 +2,16 @@ package com.smartflow.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.smartflow.model.BOMHeadModel;
 import com.smartflow.model.ProcessModel;
 import com.smartflow.model.ProcessStep;
 import com.smartflow.model.StationGroup;
-import com.smartflow.service.CellService;
-import com.smartflow.service.MaterialService;
-import com.smartflow.service.ProcessService;
-import com.smartflow.service.StationService;
+import com.smartflow.service.*;
+import com.smartflow.util.MaterialDataForSearch;
 import com.smartflow.util.ProcessDataForPage;
-import com.smartflow.util.ProcessStepDataForPage;
 import com.smartflow.util.ReadDataUtil;
+import com.smartflow.view.Process.ProcessItemDetailView;
+import com.smartflow.view.Process.ProcsessEditeView;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,24 +33,27 @@ public class ProcessController extends BaseController {
 	private final
 	MaterialService materialService;
 	private final
-	StationService stationService;
-	@Autowired
-	CellService cellService;
-
+    CellService cellService;
+	final
+	BOMHeadService bomHeadService;
 	private static Logger logger = Logger.getLogger(ProcessController.class);
     Map<String, Object> json = new HashMap<String, Object>(9);
     private static final  String STATUS_CODE="Status";
     private static final  int   STATUS_ERROR=101;
 	@Autowired
-	public ProcessController(MaterialService materialService, StationService stationService,ProcessService processService) {
+	public ProcessController(MaterialService materialService, StationService stationService, ProcessService processService, CellService cellService, BOMHeadService bomHeadService) {
 		this.materialService = materialService;
-		this.stationService = stationService;
+		StationService stationService1 = stationService;
 		this.processService = processService;
+        this.cellService = cellService;
+		this.bomHeadService = bomHeadService;
 	}
 
 	@PostMapping(value="/GetTByCondition")
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	public @ResponseBody Object getPageData(HttpServletRequest request,HttpServletResponse response) throws Exception
+	public @ResponseBody Object getPageData
+			(HttpServletRequest request,HttpServletResponse response)
+			throws Exception
 	{
 		JSONObject jsonObject=ReadDataUtil.paramData(request);
 		int pagesize=jsonObject.getIntValue("PageSize");
@@ -58,7 +61,7 @@ public class ProcessController extends BaseController {
 		String materialNumber=jsonObject.getString("MaterialNumber");
 		String factoryName=jsonObject.getString("FactoryName");
 		List<ProcessDataForPage> pages=processService.getPage(pagesize, pageindex,materialNumber,factoryName);
-		Map<String, Object> json=new HashMap<>();
+		Map<String, Object> json;
 		Map<String, Object> map=new HashMap<>();
 		if (pageindex==0) {
 			map.put("RowCount", 0);
@@ -101,7 +104,7 @@ public class ProcessController extends BaseController {
 	    @SuppressWarnings("unchecked")
 		List<Integer> list=(List<Integer>)  jsonObject.get("List");
 	   
-	    if (list.size()==0) {
+	    if (list.isEmpty()) {
 	    	json=this.setJson(204, "未选择删除数据", 1);
 			return(json);
 		}
@@ -144,7 +147,6 @@ public class ProcessController extends BaseController {
 	@PostMapping(value="/Post")
 	public @ResponseBody Object addDataForProcess(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
-
 		JSONObject jsonObject = ReadDataUtil.paramData(request);
 		ProcessModel processModel=parseToProcessHeadForAdd(jsonObject);
 		List<ProcessStep> processSteps=parseProcessStepForList(jsonObject);
@@ -152,9 +154,7 @@ public class ProcessController extends BaseController {
         {
             return json;
         }try {
-
 		processService.addData(processModel,processSteps);
-
 			json= this.setJson(200, "添加成功", 0);
 		} catch (Exception e) {
 			json = this.setJson(0, e.getMessage(),1);
@@ -170,13 +170,20 @@ public class ProcessController extends BaseController {
 		JSONObject jsonObject = ReadDataUtil.paramData(request);
 		String  ProcessNumber=jsonObject.getString("ProcessNumber");
 		Integer idInteger=jsonObject.getInteger("Id");
-        String materialNumber=jsonObject.getString("MaterialNumber");
+		Integer version=jsonObject.getInteger("Version");
+		String parentProcessNumber=(String) jsonObject.get("ParentProcessNumber");
+		String materialNumber=jsonObject.getString("MaterialNumber");
         String validEnd=jsonObject.get("ValidEnd")==null?"":String.valueOf(jsonObject.get("ValidEnd"));
         String validBegin=jsonObject.get("ValidBegin")==null?"":String.valueOf(jsonObject.get("ValidBegin"));
         Integer factoryId=jsonObject.getInteger("FactoryId");
         Integer state=jsonObject.getInteger("State");
         Integer editorId = jsonObject.getInteger("EditorId");
         String description=jsonObject.get("Description")==null?"":String.valueOf(jsonObject.get("Description"));
+		if (parentProcessNumber==null)
+		{
+			json= this.setJson(STATUS_ERROR, "总工艺号不允许为空", -1);
+			return json;
+		}
         if (idInteger==null) {
 			json= this.setJson(STATUS_ERROR, "工艺Id不允许为空", -1);
 			return json;
@@ -213,8 +220,9 @@ public class ProcessController extends BaseController {
 		processModel.setCreatorId(editorId);
 		processModel.setEditDateTime(nowTime);
 		processModel.setEditorId(editorId);
-		processModel.setCell(factoryId == null ? null : cellService.getCellById(factoryId));
+		processModel.setCell(cellService.getCellById(factoryId));
 		processModel.setState(state);
+		processModel.setVersion(version);
 		processModel.setProcessNumber(ProcessNumber);
 		processModel.setDescription(description);
 		if (materialService.getMaterialByNumber(materialNumber)==null) {
@@ -236,6 +244,7 @@ public class ProcessController extends BaseController {
 		}
 		processModel.setValidBegin(vBDate);
 		processModel.setValidEnd(vEDate);
+		processModel.setParentProcessNumber(parentProcessNumber);
 		/*
 		 *向BOMItem表中增加数据
 		 */
@@ -246,15 +255,7 @@ public class ProcessController extends BaseController {
         ProcessStep processStep=new ProcessStep();
         Map<String, Object> mapForProcessStepModel=maps.get(i);
        processStep.setDescription(mapForProcessStepModel.get("Description").toString());
-//       if(mapForProcessStepModel.get("IsBackflush")==null)
-//       {
-//    	   Integer columnNumber=i+1;
-//    	   String column=columnNumber.toString();
-//    	   json= this.setJson(102, "你在工艺步骤第"+column+"行未选择是否缓冲压", -1);
-//			return json;
-//       }
-//       processStep.setIsBackflush(Boolean.valueOf(mapForProcessStepModel.get("IsBackflush").toString()));
-       if(mapForProcessStepModel.get("IsNeedSetupCheck")==null)
+        if(mapForProcessStepModel.get("IsNeedSetupCheck")==null)
        {
     	   Integer columnNumber=i+1;
     	   String column=columnNumber.toString();
@@ -262,24 +263,6 @@ public class ProcessController extends BaseController {
 			return json;
        }   
        processStep.setIsNeedSetupCheck(Boolean.valueOf(mapForProcessStepModel.get("IsNeedSetupCheck").toString()));
-//       if(mapForProcessStepModel.get("Side")==null)
-//       {
-//    	   Integer columnNumber=i+1;
-//    	   String column=columnNumber.toString();
-//    	   json= this.setJson(102, "你在工艺步骤第"+column+"行的正反面的内容为空", -1);
-//			return json;
-//       }
-//       processStep.setLayer(Integer.valueOf(mapForProcessStepModel.get("Side").toString()));
-//       if(mapForProcessStepModel.get("MaximumTestCount")==null)
-//       {
-//    	   Integer columnNumber=i+1;
-//    	   String column=columnNumber.toString();
-//    	   json= this.setJson(102, "你在工艺步骤第"+column+"行的最大测试数量的内容为空", -1);
-//			return json;
-//       }
-//       processStep.setMaximumTestCount(Integer.valueOf(mapForProcessStepModel.get("MaximumTestCount").toString()));
-//       processStep.setIsMandatory(Boolean.valueOf(mapForProcessStepModel.get("IsMandatory").toString()));
-       System.out.println(mapForProcessStepModel.get("StationGroupId").toString());
        if(mapForProcessStepModel.get("StationGroupId").toString().equals("请选择"))
        {
     	   Integer columnNumber=i+1;
@@ -310,47 +293,49 @@ public class ProcessController extends BaseController {
 		} catch (Exception e) {
 			json = this.setJson(0, e.getMessage(),1);
 			logger.error(e);
-			e.printStackTrace();
 		}
 		return json;
 	}
+
+
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@RequestMapping(value="/GetEditInitialize/{Id}",method=RequestMethod.GET)
-	public @ResponseBody Object getEditInitializeById(@PathVariable Integer Id)
-	{
-		Map<String, Object> json=new HashMap<>();
+	@GetMapping (value="/GetEditInitialize/{Id}")
+		public @ResponseBody Object getEditInitializeById(@PathVariable Integer Id)
+		{
+		Map<String, Object> json;
 		Map<String, Object> map=new  HashMap<>();
 		map.put("StationGroup", processService.getStationGroup());
-		List<Map<String, Object>> sGList=new ArrayList<>();
+		List<Map<String, Object>> sGList =new ArrayList<>();
 		for (StationGroup  stationGroup : processService.getStationGroup()) {
 			Map<String, Object> sG=new HashMap<>();
 			sG.put("key", stationGroup.getId());
 			sG.put("label" ,stationGroup.getDescription());
-			sGList.add(sG);
+			sGList .add(sG);
 		}
-        map.put("StationGroup", sGList);
-        map.put("FactoryList", cellService.getCellListInit());//stationService.getFactory()
-		map.put("Process", processService.getDataInId(Id));
-		map.put("ProcessStepList",processService.getDataById(Id));
-		List<ProcessStepDataForPage> processDataForPages=processService.getDataById(Id);
+		ProcsessEditeView procsessEditeView=processService.getProcessEditeView(Id);
+        map.put("StationGroup", sGList );
+		map.put("VersionList",getVersionList(procsessEditeView.getMaterialNumber()));
+        map.put("FactoryList", cellService.getCellListInit());
+        map.put("Process", procsessEditeView);
+		List<ProcessItemDetailView> processDataForPages=processService.getDataById(Id);
 		map.put("ProcessStepList",processDataForPages);
-		if (processDataForPages.size()==0) {
+		if (processDataForPages.isEmpty()) {
 			map.put("ProcessStepListCount", 0);
 		}
 		else {
-			map.put("ProcessStepListCount", processDataForPages.get(processDataForPages.size()-1).getSecquence());
+			map.put("ProcessStepListCount",
+					processDataForPages.get(processDataForPages.size()-1).getSecquence());
 		}
 		try {
 			json= this.setJson(200, "查询成功", map);
 		} catch (Exception e) {
 			json = this.setJson(0, e.getMessage(),1);
 			logger.error(e);
-			e.printStackTrace();
 		}
 		return json;
 	}
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@RequestMapping(value="/GetAddInitialize",method=RequestMethod.GET)
+	@GetMapping(value="/GetAddInitialize")
 	public @ResponseBody Object getAddInitialize(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{		
 		Map<String, Object> json=new HashMap<String,Object>();
@@ -370,13 +355,12 @@ public class ProcessController extends BaseController {
 		} catch (Exception e) {
 			json = this.setJson(0, e.getMessage(),1);
 			logger.error(e);
-			e.printStackTrace();
 		}
 		return json;
 
 	}
 	@CrossOrigin(origins="*",maxAge=3600)
-	@RequestMapping(value="/GetInitializeList",method=RequestMethod.GET)
+	@GetMapping(value="/GetInitializeList")
 	public @ResponseBody Map<String, Object> getFactoryNameList(){
 		Map<String, Object> json = new HashMap<>();
 		try{
@@ -387,7 +371,6 @@ public class ProcessController extends BaseController {
 		}catch(Exception e){
 			json = this.setJson(0, "查询失败："+e.getMessage(), -1);
 			logger.error(e);
-			e.printStackTrace();
 		}
 		return json;
 	}
@@ -405,31 +388,35 @@ public class ProcessController extends BaseController {
             map.put("Description",jsonOne.get("Description"));
             map.put("StationGroupId",jsonOne.get("StationGroupId"));
             map.put("IsNeedSetupCheck",jsonOne.get("IsNeedSetupCheck"));
-//            map.put("IsMandatory",jsonOne.get("IsMandatory"));
-//            map.put("Side", jsonOne.get("Side"));
-//            map.put("IsBackflush", jsonOne.get("IsBackflush"));
-//            map.put("MaximumTestCount", jsonOne.get("MaximumTestCount"));
             maps.add(map);
         }
         return maps;
     }
 
+
     private ProcessModel parseToProcessHeadForAdd(JSONObject jsonObject) throws ParseException {
         Integer factoryId=jsonObject.getInteger("FactoryId");
         String processNumber =jsonObject.getString("ProcessNumber");
-        String  materialNumber=jsonObject.getString("MaterialNumber");
+        String  materialNumber=jsonObject.getString("MaterialSplits");
         String validBegin=jsonObject.get("ValidBegin")==null?"":String.valueOf(jsonObject.get("ValidBegin"));
         String description=jsonObject.get("Description")==null?"":
                 String.valueOf(jsonObject.get("Description"));
+        String parentProcessNumber=(String) jsonObject.get("ParentProcessNumber");
         Integer creatorId = jsonObject.getInteger("CreatorId");
         String validEnd=jsonObject.get("ValidEnd")==null?"":String.valueOf(jsonObject.get("ValidEnd"));
         validBegin = validBegin.replace("Z", " UTC");
+        Integer version=jsonObject.getIntValue("Version");
         SimpleDateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z");
         Date  vBDate= utcFormat.parse(validBegin);
         validEnd= validEnd.replace("Z", " UTC");
         Date  vEDate= utcFormat.parse(validEnd);
         Date nowTime=new Date();
         ProcessModel processModel=new ProcessModel();
+        if (parentProcessNumber==null)
+		{
+			json= this.setJson(STATUS_ERROR, "总工艺号不允许为空", -1);
+			return processModel;
+		}
         if (processNumber==null) {
             json= this.setJson(STATUS_ERROR, "工艺号不允许为空", -1);
             return processModel;
@@ -456,7 +443,8 @@ public class ProcessController extends BaseController {
             json= this.setJson(STATUS_ERROR, "此工艺号已被注册", -1);
             return processModel;
         }
-        if (materialService.getMaterialByNumber(materialNumber)==null) {
+		Map<String,Object> map=getVersionMaterialNumber(materialNumber);
+        if (materialService.getMaterialByNumber((String) map.get("materialNumber"))==null) {
             json= this.setJson(STATUS_ERROR, "你输入的物料号有错", -1);
             return processModel;
         }
@@ -468,15 +456,21 @@ public class ProcessController extends BaseController {
         processModel.setProcessNumber(processNumber);
         processModel.setState(1);
         processModel.setDescription(description);
-        processModel.setMaterialId(materialService.getMaterialByNumber(materialNumber).getId());
+        map=getVersionMaterialNumber(materialNumber);
+        processModel.setMaterialId(materialService.getMaterialByNumber((String) map.get("materialNumber")).getId());
         processModel.setState(1);
         processModel.setValidBegin(vBDate);
         processModel.setValidEnd(vEDate);
+        processModel.setVersion((int)map.get("version"));
+        processModel.setParentProcessNumber(parentProcessNumber);
         return processModel;
     }
+
+
     private List<ProcessStep> parseProcessStepForList(JSONObject jsonObject)
     {
-        String processStepList = jsonObject.get("ProcessStepList") == null ? null : jsonObject.get("ProcessStepList").toString();
+        String processStepList = jsonObject.get("ProcessStepList")
+				== null ? null : jsonObject.get("ProcessStepList").toString();
         Integer creatorId = jsonObject.getInteger("CreatorId");
         List<Map<String,Object>> maps=getMaps(processStepList);
         List<ProcessStep> processSteps=new ArrayList<>();
@@ -514,4 +508,97 @@ public class ProcessController extends BaseController {
         }
         return processSteps;
     }
+
+
+	@CrossOrigin(origins = "*",maxAge = 3600)
+	@PostMapping(value="/GetMaterialListByMaterialNumber")
+	public @ResponseBody Object getMaterialListByMaterialNumber
+			(HttpServletRequest request,
+			 HttpServletResponse response) throws Exception {
+		JSONObject jsonObject = ReadDataUtil.paramData(request);
+		String materialNumber = jsonObject.get("MaterialNumber") == null ? "" : String.valueOf(jsonObject.get("MaterialNumber"));
+		Map<String, Object> map = new HashMap<>();
+		List<BOMHeadModel> bomHeadModels = bomHeadService.getRegisterProduct(materialNumber);
+		if (bomHeadModels.isEmpty()) {
+			map.put("ReturnCode", 0);
+			map.put("ReturnMessage", "此物料号没有注册");
+			json = this.setJson(200, "此物料号没有注册", map);
+			return json;
+		}
+		map.put("ReturnCode", 1);
+		map.put("ReturnMessage", "请求数据成功");
+		List<MaterialDataForSearch> materialDataForSearches = new ArrayList<>();
+		List<Map<String, Object>> list=new ArrayList<>();
+		int i=0;
+		for (BOMHeadModel bomHeadModel : bomHeadModels) {
+
+			Map<String, Object> materialData=new HashMap<>();
+		    materialData.put("key",i);
+		    materialData.put("label",materialNumber+"|"+bomHeadModel.getVersion()+"|"+materialService.
+					getMaterialByNumber(materialNumber).getDescription());
+		    list.add(materialData);
+		    i++;
+		}
+		map.put("Tdto", list);
+		try {
+			json = this.setJson(200, "查询成功", map);
+		} catch (Exception e) {
+			json = this.setJson(0, e.getMessage(), 1);
+			logger.error(e);
+		}
+		return json;
+	}
+
+
+	@CrossOrigin(origins = "*",maxAge = 3600)
+	@GetMapping (value="/GetStationGroupList/{Id}")
+	public @ResponseBody Object getStationGroupList(@PathVariable Integer Id) {
+		Map<String, Object> json=new HashMap<>();
+		Map<String, Object> map=new  HashMap<>();
+		List<StationGroup> stationGroups=processService.getStationGroupByCellId(Id);
+		map.put("StationGroup", stationGroups);
+		List<Map<String, Object>> sGList=new ArrayList<>();
+		for (StationGroup  stationGroup : stationGroups) {
+			Map<String, Object> sG=new HashMap<>();
+			sG.put("key", stationGroup.getId());
+			sG.put("label" ,stationGroup.getDescription());
+			sGList.add(sG);
+		}
+		map.put("StationGroup", sGList);
+		json= this.setJson(200, "查询成功", map);
+		return json;
+	}
+
+
+	/**
+	 * 将前端的字符串分割成version,materialNumber;
+	 * @param arg 混合字符串
+	 * @return 返回分割好的字符串
+	 */
+	private Map<String,Object> getVersionMaterialNumber(String arg)
+	{
+      String[] args=arg.split("\\|");
+      String materialNumber=args[0];
+      int version=Integer.parseInt(args[1]);
+      Map<String,Object> map=new HashMap<>();
+      map.put("materialNumber",materialNumber);
+      map.put("version",version);
+      return map;
+	}
+
+    private  List<Map<String,Integer>> getVersionList(String materialNumber)
+	{
+		List<Map<String,Integer>> integerList=new ArrayList<>();
+		List<BOMHeadModel> bomHeadModels=bomHeadService.getRegisterProduct(materialNumber);
+		int key=0;
+		for (BOMHeadModel bomHeadModel : bomHeadModels)
+		{
+			Map<String,Integer> map=new HashMap<>();
+			map.put("key",key);
+			map.put("label",bomHeadModel.getVersion());
+			integerList.add(map);
+			key++;
+		}
+		return integerList;
+	}
 }

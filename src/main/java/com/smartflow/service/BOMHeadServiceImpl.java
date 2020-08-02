@@ -105,12 +105,17 @@ MaterialService materialService;
 		Material material=
 				materialService.getMaterialByNumber(materialNumber);
 
-		if (material.getMaterialGroupType()==null) {
+		if (material.getMaterialGroupType()==null)
+		{
+			return false;
+		}
+		if (material.getMaterialGroupType()==2||material.getMaterialGroupType()==3) {
 			return true;
 		}
-		return material.getMaterialGroupType() != 1;
+		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Map<String, Object>> getBOMHeadList() {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
@@ -131,6 +136,8 @@ MaterialService materialService;
 		return bom.getRegisterBom(materialNumber);
 	}
 
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Map<String, Object>> getProdcutNameList() {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
@@ -145,6 +152,11 @@ MaterialService materialService;
 		}finally{
 			session.close();
 		}
+	}
+
+	@Override
+	public List<BOMHeadModel> getRegisterProduct(String materialNumber) {
+		return  bom.getRegisterProduct(materialNumber);
 	}
 
 }

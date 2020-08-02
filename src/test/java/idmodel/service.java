@@ -50,7 +50,7 @@ public class service {
         idModelSaveView.setNumberSufiix(3);
         idModelSaveView.setTimeStamp(true);
         idModelSaveView.setState(1);
-        idModelSaveView.setBomheadId(1203);
+        idModelSaveView.setBomhead("1203");
         idModelSaveView.setStationId(17);
         idModelSaveView.setTimeStamp(true);
         idModelUpdateView.setEditorId(10);

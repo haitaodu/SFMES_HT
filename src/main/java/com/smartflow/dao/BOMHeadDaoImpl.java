@@ -396,7 +396,8 @@ public class BOMHeadDaoImpl implements BOMHeadDao {
 				hibernate.findByNamedParam
 						("From BOMHeadModel Where MaterialId  IN" +
 								"(Select id From Material WHERE  " +
-								"MaterialNumber=:materialNumber ) and Version=:version",
+								"MaterialNumber=:materialNumber ) and Version=:version" +
+										" and state!=-1",
 								new String[]{"materialNumber","version"},new Object[]{materialNumber,version});
 		return !bomHeadModels.isEmpty();
 	}
@@ -404,18 +405,27 @@ public class BOMHeadDaoImpl implements BOMHeadDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public BOMHeadModel getRegisterBom(String materialNumber) {
-		List<BOMHeadModel> bomHeadModels=(List<BOMHeadModel>)
-				hibernate.findByNamedParam
-						(" From BOMHeadModel " +
-										"Where state!=-1 and MaterialId  IN" +
-						"(Select id From Material WHERE  " +
-						"MaterialNumber=:materialNumber )" +
-								" order by Version",
-						"materialNumber",materialNumber);
+		List<BOMHeadModel> bomHeadModels=getRegisterProduct(materialNumber);
 		if (bomHeadModels.isEmpty())
 		{
 			return null;
 		}
 		return bomHeadModels.get(bomHeadModels.size()-1);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BOMHeadModel> getRegisterProduct(String materialNumber) {
+		return (List<BOMHeadModel>)
+				hibernate.findByNamedParam
+						(" From BOMHeadModel " +
+										"Where state!=-1 and MaterialId  IN" +
+										"(Select id From Material WHERE  " +
+										"MaterialNumber=:materialNumber )" +
+										" order by Version",
+								"materialNumber",materialNumber);
+
+	}
+
+
 }

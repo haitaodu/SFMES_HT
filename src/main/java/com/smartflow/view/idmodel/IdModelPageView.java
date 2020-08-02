@@ -25,7 +25,27 @@ public class IdModelPageView {
     private String state;
     private String materialNumber;
     private String stationNumber;
-    @JsonProperty("MaterialNumber")
+    private String IsTimeStamp;
+    private int NumberSuffix;
+
+    @JsonProperty("IsTimeStamp")
+    public String getIsTimeStamp() {
+        return IsTimeStamp;
+    }
+
+    public void setIsTimeStamp(String isTimeStamp) {
+        IsTimeStamp = isTimeStamp;
+    }
+    @JsonProperty("NumberSuffix")
+    public int getNumberSuffix() {
+        return NumberSuffix;
+    }
+
+    public void setNumberSuffix(int numberSuffix) {
+        NumberSuffix = numberSuffix;
+    }
+
+    @JsonProperty("BOMHead")
     public String getMaterialNumber() {
         return materialNumber;
     }

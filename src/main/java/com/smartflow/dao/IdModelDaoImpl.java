@@ -85,11 +85,13 @@ public class IdModelDaoImpl implements  IdModelDao{
     }
     @Override
     public void save(IdModelEntity idModelEntity) {
+        idModelEntity.setBomheadId(1203);
         hibernateTemplate.save(idModelEntity);
     }
 
     @Override
     public void update(IdModelEntity idModelEntity) {
+        idModelEntity.setBomheadId(1203);
         hibernateTemplate.update(idModelEntity);
     }
 

@@ -8,8 +8,6 @@ import java.util.Objects;
  * @author ：tao
  * @date ：Created in 2020/6/11 10:46
  * @description：${description}
- * @modified By：
- * @version: version
  */
 
 @Entity
@@ -37,15 +35,23 @@ public class IdModelEntity {
     private boolean isStationRelated;
     private int stationId;
     private int bomheadId;
+    private  boolean isTimeStamp;
+    private  int  numberSuffix;
+    private String productName;
+
+
+
+
+
     @Basic
-    @Column(name = "StationId")
-    public int getStationId() {
-        return stationId;
+    @Column(name = "ProductName")
+    public String getProductName() {
+        return productName;
+    }
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public void setStationId(int stationId) {
-        this.stationId = stationId;
-    }
     @Basic
     @Column(name = "BOMHeadId")
     public int getBomheadId() {
@@ -55,6 +61,36 @@ public class IdModelEntity {
     public void setBomheadId(int bomheadId) {
         this.bomheadId = bomheadId;
     }
+
+    @Basic
+    @Column(name = "IsTimeStamp")
+    public boolean isTimeStamp() {
+        return isTimeStamp;
+    }
+
+    public void setTimeStamp(boolean timeStamp) {
+        isTimeStamp = timeStamp;
+    }
+    @Basic
+    @Column(name = "NumberSuffix")
+    public int getNumberSuffix() {
+        return numberSuffix;
+    }
+
+    public void setNumberSuffix(int numberSuffix) {
+        this.numberSuffix = numberSuffix;
+    }
+
+    @Basic
+    @Column(name = "StationId")
+    public int getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(int stationId) {
+        this.stationId = stationId;
+    }
+
 
     public int getId() {
         return id;

@@ -36,9 +36,4 @@
         <param-value>development</param-value>
 
     </context-param>
-
-
-    <listener>
-        <listener-class>se.jiderhamn.classloader.leak.prevention.ClassLoaderLeakPreventorListener</listener-class>
-    </listener>
 </web-app>

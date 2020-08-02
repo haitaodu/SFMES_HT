@@ -2,13 +2,16 @@ package com.smartflow.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author haita
+ */
 public class EditInitializationStationDTO {
 	private Integer Id;	
 	private String StationNumber;	
 	private String Name;
 	private Integer StationType;	
-	private String State;	
-	private String FactoryId;
+	private int State;
+	private int FactoryId;
 	private String StationIP;
 	@JsonProperty("Id")
 	public Integer getId() {
@@ -39,17 +42,17 @@ public class EditInitializationStationDTO {
 		StationType = stationType;
 	}
 	@JsonProperty("State")
-	public String getState() {
+	public int getState() {
 		return State;
 	}
-	public void setState(String state) {
+	public void setState(int state) {
 		State = state;
 	}
 	@JsonProperty("FactoryId")
-	public String getFactoryId() {
+	public int getFactoryId() {
 		return FactoryId;
 	}
-	public void setFactoryId(String factoryId) {
+	public void setFactoryId(int factoryId) {
 		FactoryId = factoryId;
 	}
 	@JsonProperty("StationIP")
