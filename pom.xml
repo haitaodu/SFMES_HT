@@ -8,10 +8,14 @@
     <properties>
         <log4j.version>1.2.17</log4j.version>
         <spring.version>4.3.7.RELEASE</spring.version>
+        <project.build.sourceEncoding>
+            UTF-8
+        </project.build.sourceEncoding>
     </properties>
     <dependencies>
 
     </dependencies>
+
 
     <build>
         <finalName>SFMES_HT</finalName>
@@ -40,7 +44,7 @@
                 <configuration>
                     <path>/</path>
                     <uriEncoding>UTF-8</uriEncoding>
-                    <url>http://192.168.1.211:8080/manager/text</url>
+                    <url>http://192.168.1.6:8080/manager/text</url>
                     <server>tomcat7</server>
                     <username>admin</username>
                     <password>123456</password>
