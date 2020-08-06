@@ -407,9 +407,9 @@ public class BOMController  extends BaseController {
 		
 		Date nowTime=new Date();
 		bomHeadModel.setCreationDateTime(nowTime);
-		bomHeadModel.setCreatorId(creatorId);
+		bomHeadModel.setCreatorId(2);
 		bomHeadModel.setEditDateTime(nowTime);
-		bomHeadModel.setEditorId(creatorId);
+		bomHeadModel.setEditorId(2);
 		bomHeadModel.setVersion(version);
 		bomHeadModel.setFactoryId(factoryId);
 		bomHeadModel.setERPBOMVersion(eRPBOMVersion);

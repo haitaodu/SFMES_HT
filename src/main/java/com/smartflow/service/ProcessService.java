@@ -6,6 +6,7 @@ import com.smartflow.model.StationGroup;
 import com.smartflow.util.ProcessDataForPage;
 import com.smartflow.view.Process.ProcessDetailView;
 import com.smartflow.view.Process.ProcessItemDetailView;
+import com.smartflow.view.Process.ProcessItemEditeView;
 import com.smartflow.view.Process.ProcsessEditeView;
 
 import java.util.List;
@@ -42,6 +43,13 @@ public interface ProcessService {
 	 * @return 返回工艺步骤列表
 	 */
 	public  List<ProcessItemDetailView> getDataById(int id);
+
+	/**
+	 * 根据工艺id找出工艺步骤编辑
+	 * @param id 工艺Id
+	 * @return 工艺步骤编辑dto
+	 */
+    public List<ProcessItemEditeView> getProcessStepEditeById(int id);
 
 	/**
 	 * 根据前端的id做假删除处理

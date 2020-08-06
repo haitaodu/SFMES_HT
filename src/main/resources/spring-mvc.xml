@@ -10,8 +10,6 @@
     <context:component-scan base-package="com.smartflow.controller">
     </context:component-scan>
 
-    <!--	<context:annotation-config/> 激活Bean中定义的注解 -->
-
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/view/">
@@ -46,30 +44,6 @@
     <!-- 配置国际化（根据中文和英文网页显示不同的错误提示信息） ，验证两个国际化文件：errors_zh_CN.properties和errors_en_US.properties-->
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="classpath:ValidationMessages.properties"></property>
-        <!-- <property name="defaultEncoding" value="utf-8"></property>
-       <property name="cacheSeconds" value="120"></property> -->
     </bean>
 
-    <!-- 定义验证相关的配置，注意：需要在mvc命名空间的annotation-driver标签中定义验证程序
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-         <property name="validationMessageSource" ref="messageSource"></property>
-    </bean>-->
-
-    <!-- 以下validator ConversionService在使用mvc:annotation-driven 会自动注册
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>-->
-    <!-- 如果不加默认到   使用classpath下的ValidationMessages.properties
-    validationMessageSource属性：指定国际化错误消息从哪里取，此处使用之前定义的messageSource来获取国际化消息;
-    如果此处不指定该属性，则默认到classpath下的ValidationMessages.properties取国际化错误消息
-    <property name="validationMessageSource" ref="messageSource"></property>
-</bean>-->
-
-
-    <!-- 通过ConfigurationWebBindingInitializer注册validator
-    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean"></bean>
-    <bean id="webBindingInitializer" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
-        <property name="conversionService" ref="conversionService"></property>
-        <property name="validator" ref="validator"></property>
-    </bean>
-    -->
 </beans>

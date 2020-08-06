@@ -6,8 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author ：tao
  * @date ：Created in 2020/7/27 14:10
  * @description：${description}
- * @modified By：
- * @version: version
  */
 
 public class BomItemForEdite {

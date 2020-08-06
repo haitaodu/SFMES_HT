@@ -7,6 +7,7 @@ import com.smartflow.model.StationGroup;
 import com.smartflow.util.ProcessDataForPage;
 import com.smartflow.view.Process.ProcessDetailView;
 import com.smartflow.view.Process.ProcessItemDetailView;
+import com.smartflow.view.Process.ProcessItemEditeView;
 import com.smartflow.view.Process.ProcsessEditeView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,11 @@ ProcessDao process;
 	}
 
 	@Override
+	public List<ProcessItemEditeView> getProcessStepEditeById(int id) {
+		return process.getProcessStepEditeById(id);
+	}
+
+	@Override
 	public void delData(int i) {
 		
 		process.delData(i);
@@ -65,13 +71,15 @@ ProcessDao process;
 
 	@Override
 	@Transactional
-	public void addData(ProcessModel Process, List<ProcessStep> ProcessSteps) {
+	public void addData(ProcessModel Process,
+						List<ProcessStep> ProcessSteps) {
 		process.addData(Process, ProcessSteps);
 	}
 
 	@Override
 	@Transactional
-	public void updateData(ProcessModel Process, List<ProcessStep> ProcessSteps) {
+	public void updateData(ProcessModel Process,
+						   List<ProcessStep> ProcessSteps) {
 		process.updateData(Process, ProcessSteps);
 	}
 
@@ -107,12 +115,14 @@ ProcessDao process;
 
 	@Override
 	public List<StationGroup> getStationGroupByCellId(int id)
+
 	{
 		return process.getStationGroupByCellId(id);
 	}
 
 	@Override
-	public ProcsessEditeView getProcessEditeView(int id) {
+	public ProcsessEditeView getProcessEditeView(int id)
+	{
 		return process.getProcessEditeView(id);
 	}
 

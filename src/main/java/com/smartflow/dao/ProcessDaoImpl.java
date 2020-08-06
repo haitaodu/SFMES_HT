@@ -9,6 +9,7 @@ import com.smartflow.util.ProcessStepDataForPage;
 import com.smartflow.util.global.PageUtil;
 import com.smartflow.view.Process.ProcessDetailView;
 import com.smartflow.view.Process.ProcessItemDetailView;
+import com.smartflow.view.Process.ProcessItemEditeView;
 import com.smartflow.view.Process.ProcsessEditeView;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -148,37 +149,16 @@ public class ProcessDaoImpl implements ProcessDao {
 	@Override
 	public List<ProcessItemDetailView> getDataById(int id) {
 		
-		Session session=hibernate.getSessionFactory().openSession();
-		String hql="FROM ProcessStep WHERE ProcessId=:i";
-		Query query=session.createQuery(hql);
-		query.setParameter("i", id);
-		List<ProcessStep> processSteps=query.list();
-		session.close();
-		List<ProcessItemDetailView> processStepDataForPages=new ArrayList<>();
-		int n=0;
-		for (ProcessStep processStep : processSteps) {
-			String editorName=null;
-			if (processStep.getEditorId()!=null) {
-				UserModel u = user.getDataById(processStep.getEditorId());
-				if(u != null){
-					editorName = u.getName();
-				}
-			}
-			processStepDataForPages.add(new ProcessItemDetailView
-					(processStep.getSecquence(),
-							processStep.getProcessId(),
-							processStep.getId(),
-							processStep.getDescription(),
-							processStep.getStationGroupId(),
-							stationGroup.getStationGroupById(
-									processStep.getStationGroupId()).getDescription(),
-							PageUtil.parseToTrueFalse(processStep.isIsNeedSetupCheck()),
-                            editorName, processStep.getEditDateTime(), n));
 
-           n++;
-		}
-		return processStepDataForPages;
+		return parseProcessStepListToDetailList(getProcessStepById(id));
 	}
+
+	@Override
+	public List<ProcessItemEditeView> getProcessStepEditeById(int id) {
+
+		return parseProcessStepListToEditeList(getProcessStepById(id));
+	}
+
 	@Override
 	@Transactional
 	public void delData(int i) {
@@ -250,15 +230,9 @@ public class ProcessDaoImpl implements ProcessDao {
 	}
 	@Override
 	public int getCountProcessStepByProcessId(int id) {
-		Session session=hibernate.getSessionFactory().openSession();
-		String hql="FROM ProcessStep WHERE ProcessId=:i";
-		Query query=session.createQuery(hql);
-		query.setParameter("i", id);
-		List<ProcessStep> processSteps=query.list();
-		session.close();
-		List<ProcessStepDataForPage> processStepDataForPages=new ArrayList<>();
+
 		int n=0;
-		for (ProcessStep processStep : processSteps) {
+		for (ProcessStep processStep : getProcessStepById(id)) {
 			n++;
 		}
 		return n;
@@ -318,7 +292,89 @@ public class ProcessDaoImpl implements ProcessDao {
     }
 
 
+	/**
+	 * 根据工艺id查找出工艺步骤列表
+	 * @param id 工艺id
+	 * @return 返回工艺步骤列表
+	 */
+	@SuppressWarnings("unchecked")
+	private List<ProcessStep> getProcessStepById(int id)
+	{
+		Session session=hibernate.getSessionFactory().openSession();
+		String hql="FROM ProcessStep WHERE ProcessId=:i";
+		Query query=session.createQuery(hql);
+		query.setParameter("i", id);
+		List<ProcessStep> processSteps=query.list();
+		session.close();
+		return processSteps;
+	}
 
+	/**
+	 * 将工艺步骤列表修饰成工艺修改列表
+	 * @param processSteps 工艺列表
+	 * @return 工艺修改列表
+	 */
+	private List<ProcessItemEditeView> parseProcessStepListToEditeList(List<ProcessStep> processSteps)
+	{
+		List<ProcessItemEditeView> processItemEditeViews=new ArrayList<>();
+		int n=0;
+		for (ProcessStep processStep : processSteps) {
+			String editorName=null;
+			if (processStep.getEditorId()!=null) {
+				UserModel u = user.getDataById(processStep.getEditorId());
+				if(u != null){
+					editorName = u.getName();
+				}
+			}
+			processItemEditeViews.add(new ProcessItemEditeView
+					(processStep.getSecquence(),
+							processStep.getProcessId(),
+							processStep.getId(),
+							processStep.getDescription(),
+							processStep.getStationGroupId(),
+							stationGroup.getStationGroupById(
+									processStep.getStationGroupId()).getDescription(),
+							processStep.isIsNeedSetupCheck(),
+							editorName, processStep.getEditDateTime(), n));
+
+			n++;
+		}
+		return processItemEditeViews;
+	}
+
+
+	/**
+	 * 将工艺步骤列表修改为工艺详情列表
+	 * @param processSteps 工艺步骤列表
+	 * @return 工艺详情列表
+	 */
+	private List<ProcessItemDetailView> parseProcessStepListToDetailList(List<ProcessStep> processSteps)
+	{
+		List<ProcessItemDetailView> processItemDetailViews=new ArrayList<>();
+		int n=0;
+		for (ProcessStep processStep : processSteps) {
+			String editorName=null;
+			if (processStep.getEditorId()!=null) {
+				UserModel u = user.getDataById(processStep.getEditorId());
+				if(u != null){
+					editorName = u.getName();
+				}
+			}
+			processItemDetailViews.add(new ProcessItemDetailView
+					(processStep.getSecquence(),
+							processStep.getProcessId(),
+							processStep.getId(),
+							processStep.getDescription(),
+							processStep.getStationGroupId(),
+							stationGroup.getStationGroupById(
+									processStep.getStationGroupId()).getDescription(),
+							PageUtil.parseToTrueFalse(processStep.isIsNeedSetupCheck()),
+							editorName, processStep.getEditDateTime(), n));
+
+			n++;
+		}
+		return processItemDetailViews;
+	}
 }
 
 

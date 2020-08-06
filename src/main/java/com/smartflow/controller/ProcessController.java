@@ -11,6 +11,7 @@ import com.smartflow.util.MaterialDataForSearch;
 import com.smartflow.util.ProcessDataForPage;
 import com.smartflow.util.ReadDataUtil;
 import com.smartflow.view.Process.ProcessItemDetailView;
+import com.smartflow.view.Process.ProcessItemEditeView;
 import com.smartflow.view.Process.ProcsessEditeView;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -304,20 +305,12 @@ public class ProcessController extends BaseController {
 		{
 		Map<String, Object> json;
 		Map<String, Object> map=new  HashMap<>();
-		map.put("StationGroup", processService.getStationGroup());
-		List<Map<String, Object>> sGList =new ArrayList<>();
-		for (StationGroup  stationGroup : processService.getStationGroup()) {
-			Map<String, Object> sG=new HashMap<>();
-			sG.put("key", stationGroup.getId());
-			sG.put("label" ,stationGroup.getDescription());
-			sGList .add(sG);
-		}
 		ProcsessEditeView procsessEditeView=processService.getProcessEditeView(Id);
-        map.put("StationGroup", sGList );
+        map.put("StationGroup", getStationGroupListByCellId(procsessEditeView.getFactoryId()));
 		map.put("VersionList",getVersionList(procsessEditeView.getMaterialNumber()));
         map.put("FactoryList", cellService.getCellListInit());
         map.put("Process", procsessEditeView);
-		List<ProcessItemDetailView> processDataForPages=processService.getDataById(Id);
+		List<ProcessItemEditeView> processDataForPages=processService.getProcessStepEditeById(Id);
 		map.put("ProcessStepList",processDataForPages);
 		if (processDataForPages.isEmpty()) {
 			map.put("ProcessStepListCount", 0);
@@ -553,18 +546,9 @@ public class ProcessController extends BaseController {
 	@CrossOrigin(origins = "*",maxAge = 3600)
 	@GetMapping (value="/GetStationGroupList/{Id}")
 	public @ResponseBody Object getStationGroupList(@PathVariable Integer Id) {
-		Map<String, Object> json=new HashMap<>();
+		Map<String, Object> json;
 		Map<String, Object> map=new  HashMap<>();
-		List<StationGroup> stationGroups=processService.getStationGroupByCellId(Id);
-		map.put("StationGroup", stationGroups);
-		List<Map<String, Object>> sGList=new ArrayList<>();
-		for (StationGroup  stationGroup : stationGroups) {
-			Map<String, Object> sG=new HashMap<>();
-			sG.put("key", stationGroup.getId());
-			sG.put("label" ,stationGroup.getDescription());
-			sGList.add(sG);
-		}
-		map.put("StationGroup", sGList);
+		map.put("StationGroup", getStationGroupListByCellId(Id));
 		json= this.setJson(200, "查询成功", map);
 		return json;
 	}
@@ -600,5 +584,19 @@ public class ProcessController extends BaseController {
 			key++;
 		}
 		return integerList;
+	}
+
+
+	private List<Map<String, Object>> getStationGroupListByCellId(int id)
+	{
+		List<StationGroup> stationGroups=processService.getStationGroupByCellId(id);
+		List<Map<String, Object>> sGList=new ArrayList<>();
+		for (StationGroup  stationGroup : stationGroups) {
+			Map<String, Object> sG=new HashMap<>();
+			sG.put("key", stationGroup.getId());
+			sG.put("label" ,stationGroup.getDescription());
+			sGList.add(sG);
+		}
+		return sGList;
 	}
 }
