@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+    <context:component-scan base-package="com.smartflow.dao,com.smartflow.service">
+    </context:component-scan>
+
+<!-- 配置数据源 服务器2017DEV数据库MESDB-->
+    <bean id="dataSource"
+          class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+        </property>
+          <!--<property name="jdbcUrl" value="jdbc:sqlserver://smartflow.diskstation.me\SQL2017DEV:8021;databaseName=MESDB_SXHTDL">-->
+          <!--</property>-->
+        <property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.252\SQL2017DEV:1433;database=MESDB_SXHTDL"></property>
+      <!--<property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.6:1433;databaseName=MESDB_SXHTDL"></property>-->
+            <property name="user" value="sa">
+            </property>
+            <property name="password" value="1qaz@wsx">
+            </property>
+            <property name="maxIdleTime" value="60">
+            </property>
+            <property name="minPoolSize" value="10">
+            </property>
+            <property name="idleConnectionTestPeriod" value="100">
+            </property>
+            <property name="acquireIncrement" value="10">
+            </property>
+            <property name="acquireRetryAttempts" value="30">
+            </property>
+            <property name="acquireRetryDelay" value="100">
+            </property>
+            <property name="autoCommitOnClose" value="true">
+            </property>
+            <property name="breakAfterAcquireFailure" value="false">
+            </property>
+    </bean>
+
+
+
+<!-- 配置sessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource">
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>-->
+                <prop key="hibernate.dialect">com.smartflow.util.MySQLServerDialect</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <!--<prop key="hibernate.c3p0.max_size">200</prop>-->
+                <!--<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>-->
+                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                <prop key="hibernate.cache.configurationResourceName">ehcache.xml</prop>
+                <!--<prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.252\SQL2017DEV:1433;database=MESDB_SXHTDL</prop>-->
+                <!--<prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>-->
+            </props>
+        </property>
+        <property name="packagesToScan" value="com.smartflow.model">
+        </property>
+    </bean>
+
+    <!-- 配置hibernateTemplate -->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory">
+        </property>
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory">
+        </property>
+    </bean>
+
+    <!-- 通过注解的方式操作事务 -->
+    <tx:annotation-driven proxy-target-class="true"/>
+
+    <!-- 线程池 -->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5" />
+        <property name="maxPoolSize" value="10" />
+        <property name="queueCapacity" value="25" />
+    </bean>
+</beans>
