@@ -70,8 +70,6 @@ public class StationGroupDaoImpl implements StationGroupDao {
 	public String getFactoryNameById(Integer factoryId) {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
-//		String sql = "select Name from core.Factory where Id = "+factoryId;
-//		Query query = session.createSQLQuery(sql);
 		String hql = "select concat(f.factoryCode,'('+f.name+')') from Factory f where f.id = "+factoryId;
 		try{
 			Query query = session.createQuery(hql);

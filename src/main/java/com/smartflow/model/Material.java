@@ -44,8 +44,13 @@ public class Material {
 	private String ProjectName;
 	private String OriginalNumber;
 	private String CADDrawingPartNumber;
-	private Boolean RequireFIFO;//是否需要先进先出
-	private Boolean RequireCheckCustomerLabel;//是否需要扫描客户标签
+	private Boolean RequireFIFO;
+	private Boolean RequireCheckCustomerLabel;
+	private int WashQuantity;
+	private int MaxWashQuantity;
+	private int StationId;
+
+
 	@Id
 	@GeneratedValue
 	public Integer getId() {
@@ -271,5 +276,28 @@ public class Material {
 		RequireCheckCustomerLabel = requireCheckCustomerLabel;
 	}
 
+	public int getWashQuantity() {
+		return WashQuantity;
+	}
+
+	public void setWashQuantity(int washQuantity) {
+		WashQuantity = washQuantity;
+	}
+
+	public int getMaxWashQuantity() {
+		return MaxWashQuantity;
+	}
+
+	public void setMaxWashQuantity(int maxWashQuantity) {
+		MaxWashQuantity = maxWashQuantity;
+	}
+
+	public int getStationId() {
+		return StationId;
+	}
+
+	public void setStationId(int stationId) {
+		StationId = stationId;
+	}
 	
 }

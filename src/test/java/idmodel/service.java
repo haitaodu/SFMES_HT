@@ -1,33 +1,38 @@
 package idmodel;
 
 import com.smartflow.dto.idmode.ModelIdConditionInputDTO;
-import com.smartflow.service.IdModelServiceImpl;
-import static org.junit.Assert.*;
-
+import com.smartflow.service.IdModelService;
+import com.smartflow.view.idmodel.IdModelPageView;
 import com.smartflow.view.idmodel.IdModelSaveView;
 import com.smartflow.view.idmodel.IdModelUpdateView;
+import org.easymock.EasyMock;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
+
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author ：tao
  * @date ：Created in 2020/6/11 15:29
  * @description：${description}
- * @modified By：
- * @version: version
  */
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("/spring-config.xml")
+@ActiveProfiles("development")
 public class service {
-    private ClassPathXmlApplicationContext applicationContext =
-            new ClassPathXmlApplicationContext
-                    ("spring-config.xml");
+
+    @Autowired
+    IdModelService idModelService;
     private Logger logger= LoggerFactory.getLogger(this.getClass());
-    private IdModelServiceImpl idModelService= (IdModelServiceImpl)applicationContext.getBean
-            ("idModelServiceImpl");
     private ModelIdConditionInputDTO modelIdConditionInputDTO=new ModelIdConditionInputDTO();
     private IdModelSaveView idModelSaveView=new IdModelSaveView();
     private IdModelUpdateView idModelUpdateView=new IdModelUpdateView();
@@ -68,8 +73,11 @@ public class service {
     @Test
     public void getPageView()
     {
-        assertNotNull(idModelService.getPage(modelIdConditionInputDTO));
-        logger.info(idModelService.getPage(modelIdConditionInputDTO).toString());
+        IdModelPageView idModelPageView= EasyMock.createMock(IdModelPageView.class);
+        //IdModelPageView idModelPageView=new IdModelPageView();
+        System.out.println(idModelPageView.getModelCode());
+        //assertNotNull(idModelService.getPage(modelIdConditionInputDTO));
+        //logger.info(idModelService.getPage(modelIdConditionInputDTO).toString());
     }
 
     @Test

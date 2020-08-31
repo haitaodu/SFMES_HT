@@ -16,7 +16,7 @@
         </property>
           <!--<property name="jdbcUrl" value="jdbc:sqlserver://smartflow.diskstation.me\SQL2017DEV:8021;databaseName=MESDB_SXHTDL">-->
           <!--</property>-->
-        <!--<property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.252\SQL2017DEV:1433;database=MESDB_SXHTDL"></property>-->
+        <!--<property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.252\SQL2017DEV:1433;database=MESDB_SXHTDL3"></property>-->
       <property name="jdbcUrl" value="${jdbc.jdbcUrl}">
       </property>
             <property name="user" value="${jdbc.user}">

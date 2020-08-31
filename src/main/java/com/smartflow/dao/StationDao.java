@@ -6,6 +6,9 @@ import java.util.Map;
 import com.smartflow.model.Station;
 import com.smartflow.model.Station_StationGroup;
 
+/**
+ * @author haita
+ */
 public interface StationDao {
 
 	/**
@@ -86,11 +89,7 @@ public interface StationDao {
 	 */
 	public void updateStation_StationGroup(Station_StationGroup station_StationGroup);
 	
-	/**
-	 * 删除工站
-	 * @param stationId
-	 */
-//	public void deleteStation(Station station);
+
 	
 	/**
 	 * 根据stationId删除Station_StationGroup
@@ -98,28 +97,7 @@ public interface StationDao {
 	 */
 	public void deleteStation_StationGroup(Station_StationGroup station_StationGroup);
 	
-	/**
-	 * 根据stationId删除Recipe
-	 * @param stationId
-	 */
-//	public void deleteRecipeByStationId(Integer stationId);
-	/**
-	 * 根据stationId删除AttributeDataRecord
-	 * @param stationId
-	 */
-//	public void deleteAttributeDataRecordByAssignedStationNumberId(Integer stationId);
-	
-	/**
-	 * 根据stationId删除PartFailureDataRecord
-	 * @param stationId
-	 */
-//	public void deletePartFailureDataRecordByStationId(Integer stationId);
-	
-	/**
-	 * 根据stationId删除Cell_Station
-	 * @param stationId
-	 */
-//	public void deleteCell_StationByStationId(Integer stationId);
+
 	
 	/**
 	 * 根据stationId查询StationGroupName
@@ -127,4 +105,7 @@ public interface StationDao {
 	 * @return
 	 */
 	public List<String> getStationGroupNameByStationId(Integer stationId);
+
+
+	public List<Map<String,Object>> getWashList();
 } 

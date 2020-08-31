@@ -148,6 +148,7 @@ public class ProcessController extends BaseController {
 	@PostMapping(value="/Post")
 	public @ResponseBody Object addDataForProcess(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
+		init();
 		JSONObject jsonObject = ReadDataUtil.paramData(request);
 		ProcessModel processModel=parseToProcessHeadForAdd(jsonObject);
 		List<ProcessStep> processSteps=parseProcessStepForList(jsonObject);
@@ -598,5 +599,10 @@ public class ProcessController extends BaseController {
 			sGList.add(sG);
 		}
 		return sGList;
+	}
+
+	private void init()
+	{
+		this.json=new HashMap<>();
 	}
 }

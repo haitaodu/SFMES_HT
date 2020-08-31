@@ -204,6 +204,7 @@ public class StationController extends BaseController{
 				station.setStationType(creationStationDTO.getStationType());
 				station.setState(creationStationDTO.getState());
 				station.setIpAddress(creationStationDTO.getStationIP());
+				station.setFactoryId(1);
 				stationService.addStation(station);
 				qualificationService.addQualificationAndStationAccessControl(station);
 				json = this.setJson(200, "添加成功",0);    
@@ -246,6 +247,7 @@ public class StationController extends BaseController{
 				station.setStationType(editStationDTO.getStationType());
 				station.setState(editStationDTO.getState());
 				station.setIpAddress(editStationDTO.getStationIP());
+				station.setFactoryId(1);
 				stationService.updateStation(station);
 				json = this.setJson(200, "修改成功",0);    
 			}else{

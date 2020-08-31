@@ -46,6 +46,35 @@ public class MaterialListDTO {
 	private Date EditDateTime;
 	private String RequireFIFO;//是否需要先进先出
 	private String RequireCheckCustomerLabel;//是否需要扫描客户标签
+	private int WashQuantity;
+	private int MaxWashQuantity;
+	private String StationName;
+
+	@JsonProperty("WashQuantity")
+	public int getWashQuantity() {
+		return WashQuantity;
+	}
+
+	public void setWashQuantity(int washQuantity) {
+		WashQuantity = washQuantity;
+	}
+	@JsonProperty("MaxWashQuantity")
+	public int getMaxWashQuantity() {
+		return MaxWashQuantity;
+	}
+
+	public void setMaxWashQuantity(int maxWashQuantity) {
+		MaxWashQuantity = maxWashQuantity;
+	}
+	@JsonProperty("StationName")
+	public String getStationName() {
+		return StationName;
+	}
+
+	public void setStationName(String stationName) {
+		StationName = stationName;
+	}
+
 	@JsonProperty("Id")
 	public Integer getId() {
 		return Id;
@@ -64,14 +93,6 @@ public class MaterialListDTO {
 		MaterialNumber = materialNumber;
 	}
 
-//    @JsonProperty("Version")
-//    public Integer getVersion() {
-//        return Version;
-//    }
-//
-//    public void setVersion(Integer version) {
-//        Version = version;
-//    }
 
 	@JsonProperty("Description")
 	public String getDescription() {
@@ -82,14 +103,6 @@ public class MaterialListDTO {
 		Description = description;
 	}
 
-//    @JsonProperty("Specification")
-//    public String getSpecification() {
-//        return Specification;
-//    }
-//
-//    public void setSpecification(String specification) {
-//        Specification = specification;
-//    }
 
 	@JsonProperty("CustomerMaterialNumber")
 	public String getCustomerMaterialNumber() {
@@ -118,41 +131,6 @@ public class MaterialListDTO {
 		MaterialGroupType = materialGroupType;
 	}
 
-//	@JsonProperty("IsProduct")
-//	public String getIsProduct() {
-//		return IsProduct;
-//	}
-//
-//	public void setIsProduct(String isProduct) {
-//		IsProduct = isProduct;
-//	}
-
-//    @JsonProperty("IsMultiPanel")
-//    public String getIsMultiPanel() {
-//        return IsMultiPanel;
-//    }
-//
-//    public void setIsMultiPanel(String isMultiPanel) {
-//        IsMultiPanel = isMultiPanel;
-//    }
-
-//	@JsonProperty("RequireBackflush")
-//	public String getRequireBackflush() {
-//		return RequireBackflush;
-//	}
-//
-//	public void setRequireBackflush(String requireBackflush) {
-//		RequireBackflush = requireBackflush;
-//	}
-
-//    @JsonProperty("NumberOfPanels")
-//    public Integer getNumberOfPanels() {
-//        return NumberOfPanels;
-//    }
-//
-//    public void setNumberOfPanels(Integer numberOfPanels) {
-//        NumberOfPanels = numberOfPanels;
-//    }
 
 	@JsonProperty("Unit")
 	public String getUnit() {
@@ -172,14 +150,6 @@ public class MaterialListDTO {
 		SetupFlag = setupFlag;
 	}
 
-//    @JsonProperty("ProcurementType")
-//    public String getProcurementType() {
-//        return ProcurementType;
-//    }
-//
-//    public void setProcurementType(String procurementType) {
-//        ProcurementType = procurementType;
-//    }
 
 	@JsonProperty("MinimumPackageQuantity")
 	public BigDecimal getMinimumPackageQuantity() {
@@ -208,41 +178,6 @@ public class MaterialListDTO {
 		SafetyStock = safetyStock;
 	}
 
-//	@JsonProperty("DefaultStorageLocation")
-//	public String getDefaultStorageLocation() {
-//		return DefaultStorageLocation;
-//	}
-//
-//	public void setDefaultStorageLocation(String defaultStorageLocation) {
-//		DefaultStorageLocation = defaultStorageLocation;
-//	}
-//
-//	@JsonProperty("DefaultTargetFeedingLocation")
-//	public String getDefaultTargetFeedingLocation() {
-//		return DefaultTargetFeedingLocation;
-//	}
-//
-//	public void setDefaultTargetFeedingLocation(String defaultTargetFeedingLocation) {
-//		DefaultTargetFeedingLocation = defaultTargetFeedingLocation;
-//	}
-
-//	@JsonProperty("ContainerSize")
-//	public Integer getContainerSize() {
-//		return ContainerSize;
-//	}
-//
-//	public void setContainerSize(Integer containerSize) {
-//		ContainerSize = containerSize;
-//	}
-
-//    @JsonProperty("MSL")
-//    public String getMSL() {
-//        return MSL;
-//    }
-//
-//    public void setMSL(String mSL) {
-//        MSL = mSL;
-//    }
 
 	@JsonProperty("StateValue")
 	public String getStateValue() {
@@ -253,23 +188,6 @@ public class MaterialListDTO {
 		StateValue = stateValue;
 	}
 
-//    @JsonProperty("DefaultStationGroup")
-//    public String getDefaultStationGroup() {
-//        return DefaultStationGroup;
-//    }
-//
-//    public void setDefaultStationGroup(String defaultStationGroup) {
-//        DefaultStationGroup = defaultStationGroup;
-//    }
-
-//    @JsonProperty("CompanyNumber")
-//    public String getCompanyNumber() {
-//        return CompanyNumber;
-//    }
-//
-//    public void setCompanyNumber(String companyNumber) {
-//        CompanyNumber = companyNumber;
-//    }
 
 	@JsonProperty("FactoryNumber")
 	public String getFactoryNumber() {

@@ -97,32 +97,14 @@ public interface StationService {
 	 */
 	public void deleteStation_StationGroup(Station_StationGroup station_StationGroup);
 	
-	/**
-	 * 根据stationId删除Recipe
-	 * @param stationId
-	 */
-//	public void deleteRecipeByStationId(Integer stationId);
-	
-	/**
-	 * 根据stationId删除AttributeDataRecord
-	 * @param stationId
-	 */
-//	public void deleteAttributeDataRecordByAssignedStationNumberId(Integer stationId);
-	
-	/**
-	 * 根据stationId删除PartFailureDataRecord
-	 * @param stationId
-	 */
-//	public void deletePartFailureDataRecordByStationId(Integer stationId);
-	/**
-	 * 根据stationId删除Cell_Station
-	 * @param stationId
-	 */
-//	public void deleteCell_StationByStationId(Integer stationId);
+
 	/**
 	 * 根据stationId查询StationGroupName
 	 * @param stationId
 	 * @return
 	 */
 	public List<String> getStationGroupNameByStationId(Integer stationId);
+
+
+	public List<Map<String,Object>> getWashList();
 }
