@@ -57,6 +57,8 @@
                 <prop key="hibernate.cache.use_second_level_cache">true</prop>
                 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
                 <prop key="hibernate.cache.configurationResourceName">ehcache.xml</prop>
+                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.6:1433</prop>
+                <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
         </property>
         <property name="packagesToScan" value="com.smartflow.model">

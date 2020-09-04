@@ -2,10 +2,8 @@ package com.smartflow.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
 @Table(name="core.Material")
 public class Material {
@@ -48,7 +46,11 @@ public class Material {
 	private Boolean RequireCheckCustomerLabel;
 	private int WashQuantity;
 	private int MaxWashQuantity;
-	private int StationId;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ContainerTypeId")
+    private ContainerType ContainerType;
+
+
 
 
 	@Id
@@ -59,6 +61,15 @@ public class Material {
 	public void setId(Integer id) {
 		Id = id;
 	}
+
+	public com.smartflow.model.ContainerType getContainerType() {
+		return ContainerType;
+	}
+
+	public void setContainerType(com.smartflow.model.ContainerType containerType) {
+		ContainerType = containerType;
+	}
+
 	public String getMaterialNumber() {
 		return MaterialNumber;
 	}
@@ -260,13 +271,16 @@ public class Material {
 	public String getCADDrawingPartNumber() {
 		return CADDrawingPartNumber;
 	}
-	public void setCADDrawingPartNumber(String cADDrawingPartNumber) {
+	public void setCADDrawingPartNumber
+			(String cADDrawingPartNumber) {
 		CADDrawingPartNumber = cADDrawingPartNumber;
 	}
-	public Boolean getRequireFIFO() {
+	public Boolean getRequireFIFO()
+	{
 		return RequireFIFO;
 	}
-	public void setRequireFIFO(Boolean requireFIFO) {
+	public void setRequireFIFO
+			(Boolean requireFIFO) {
 		RequireFIFO = requireFIFO;
 	}
 	public Boolean getRequireCheckCustomerLabel() {
@@ -292,12 +306,6 @@ public class Material {
 		MaxWashQuantity = maxWashQuantity;
 	}
 
-	public int getStationId() {
-		return StationId;
-	}
 
-	public void setStationId(int stationId) {
-		StationId = stationId;
-	}
 	
 }

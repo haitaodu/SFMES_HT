@@ -116,7 +116,8 @@ public class MaterialController extends BaseController{
 				materialListDTO.setEditDateTime(material.getEditDateTime());
 				if (material.getEditorId()!=null) {
 					materialListDTO.setEditor(stationService.getUserNameById(material.getEditorId()));
-				}				
+				}
+                materialListDTO.setContainerName(material.getContainerType().getName());
 				materialListDTO.setExpirationTime(material.getExpirationTime());
 				materialListDTO.setFactoryNumber(stationGroupService.getFactoryNameById(material.getFactoryId()));
 				materialListDTO.setId(material.getId());
@@ -222,6 +223,7 @@ public class MaterialController extends BaseController{
 				}else if(material.getState()==0){
 					state = "未激活";
 				}
+				materialListDTO.setContainerName(material.getContainerType().getName());
 				materialListDTO.setStateValue(state);
 				materialListDTO.setSupplierMaterialNumber(material.getSupplierMaterialNumber());
 				materialListDTO.setUnit(materialService.getUnitNameByUnitId(material.getUnit()));

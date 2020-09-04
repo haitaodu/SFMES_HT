@@ -14,8 +14,14 @@ import java.util.List;
 
 @Repository
 public class JPHDaoImpl implements JPHDao {
-    @Autowired
+    final
     HibernateTemplate hibernateTemplate;
+
+    @Autowired
+    public JPHDaoImpl(HibernateTemplate hibernateTemplate) {
+        this.hibernateTemplate = hibernateTemplate;
+    }
+
     @Override
     public Integer getTotalCountJPHListByCondition(GetJPHListConditionInputDTO getJPHListConditionInputDTO) {
         String hql = "select count(*) from JPH where State != -1 ";

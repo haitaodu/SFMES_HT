@@ -1,42 +1,26 @@
 package com.smartflow.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.persistence.Id;
-
+/**
+ * @author haita
+ */
 public class MaterialListDTO {
 	private Integer Id;
 	private String MaterialNumber;
-//	private Integer Version;
 	private String Description;
-//	private String Specification;
 	private String CustomerMaterialNumber;
 	private String SupplierMaterialNumber;
 	private String MaterialGroupType;
-//	private String IsProduct;
-//	private String IsMultiPanel;
-//	private String RequireBackflush;
-//	private Integer NumberOfPanels;
 	private String Unit;
 	private String SetupFlag;
-//	private String ProcurementType;
 	private BigDecimal MinimumPackageQuantity;
 	private BigDecimal ExpirationTime;
 	private BigDecimal SafetyStock;
-//	private String DefaultStorageLocation;
-//	private String DefaultTargetFeedingLocation;//新增一列 默认回冲库位
-//	private Integer ContainerSize;
-//	private String MSL;
 	private String StateValue;
-//	private String DefaultStationGroup;
-//	private String CompanyNumber;
 	private String FactoryNumber;
 	private Date ValidBegin;
 	private Date ValidEnd;
@@ -49,7 +33,15 @@ public class MaterialListDTO {
 	private int WashQuantity;
 	private int MaxWashQuantity;
 	private String StationName;
+    private String ContainerName;
 
+	@JsonProperty("ContainerName")
+	public String getContainerName() {
+		return ContainerName;
+	}
+	public void setContainerName(String containerName) {
+		ContainerName = containerName;
+	}
 	@JsonProperty("WashQuantity")
 	public int getWashQuantity() {
 		return WashQuantity;
