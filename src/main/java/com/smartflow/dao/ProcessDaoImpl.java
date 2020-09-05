@@ -6,6 +6,11 @@ import com.smartflow.model.StationGroup;
 import com.smartflow.model.UserModel;
 import com.smartflow.util.ProcessDataForPage;
 import com.smartflow.util.ProcessStepDataForPage;
+import com.smartflow.util.global.PageUtil;
+import com.smartflow.view.Process.ProcessDetailView;
+import com.smartflow.view.Process.ProcessItemDetailView;
+import com.smartflow.view.Process.ProcessItemEditeView;
+import com.smartflow.view.Process.ProcsessEditeView;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,27 +21,38 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author haita
+ */
 @Repository
 public class ProcessDaoImpl implements ProcessDao {
-	@Autowired
+	final
 	HibernateTemplate hibernate;
-	@Autowired
+	private final
 	MaterialDao material;
-	@Autowired 
+	final
 	FactoryDao factory;
-	@Autowired
-	CellDao cellDao;
-	@Autowired
+	final
 	UserDao user;
-	@Autowired
+	private final
 	StationGroupDao stationGroup;
+
+	@Autowired
+	public ProcessDaoImpl(HibernateTemplate hibernate, MaterialDao material, FactoryDao factory, CellDao cellDao, UserDao user, StationGroupDao stationGroup) {
+		this.hibernate = hibernate;
+		this.material = material;
+		this.factory = factory;
+		CellDao cellDao1 = cellDao;
+		this.user = user;
+		this.stationGroup = stationGroup;
+	}
+
 	@Override
 	public int getCount(String materialNumber,String factoryName) {
-		// TODO Auto-generated method stub
+		
 		Session session=hibernate.getSessionFactory().openSession();
 		String hql="SELECT COUNT (*) FROM ProcessModel WHERE State !=- 1 ";
 		if (materialNumber!=null) {
@@ -52,7 +68,7 @@ public class ProcessDaoImpl implements ProcessDao {
 	}
 	@Override
 	public List<ProcessDataForPage> getPageData(int pageindex, int pagesize,String materialNumber,String factoryName) {
-		// TODO Auto-generated method stub
+		
 		Session session=hibernate.getSessionFactory().openSession();
 		try {
 			String hql = "FROM ProcessModel WHERE State !=- 1 ";
@@ -64,14 +80,11 @@ public class ProcessDaoImpl implements ProcessDao {
                 hql+="AND Cell.id = "+factoryId ;
 			}
 			Query query = session.createQuery(hql);
-
-
 			query.setFirstResult((pageindex - 1) * pagesize);
 			query.setMaxResults(pagesize);
 			List<ProcessDataForPage> processDataForPages = new ArrayList<>();
 			@SuppressWarnings("unchecked")
 			List<ProcessModel> processModels = query.list();
-
 			for (ProcessModel processModel : processModels) {
 				String state = null;
 				if (processModel.getState() == 1) {
@@ -91,13 +104,15 @@ public class ProcessDaoImpl implements ProcessDao {
 				String materialnumber = null;
 				String factoryname = null;
 
-				ProcessDataForPage processDataForPage = new ProcessDataForPage(processModel.getId(),
+				ProcessDataForPage processDataForPage =
+						new ProcessDataForPage(processModel.getId(),
 						processModel.getProcessNumber(),
 						material.getDataById(processModel.getMaterialId()).getMaterialNumber(),
 						processModel.getCell() == null ? null : processModel.getCell().getDescription(),//factory.getDataById(processModel.getFactoryId()).getName(),
 						state, processModel.getValidBegin(), processModel.getValidEnd(),
 						processModel.getCreationDateTime(),
-						processModel.getEditDateTime(), EditorName);
+						processModel.getEditDateTime(),
+								EditorName,processModel.getParentProcessNumber(),processModel.getVersion());
 				processDataForPages.add(processDataForPage);
 			}
 
@@ -107,83 +122,46 @@ public class ProcessDaoImpl implements ProcessDao {
 			session.close();
 		}
 	}
+	@SuppressWarnings("unchecked")
 	@Override
-	public ProcessDataForPage getDataInId(int id) {
-		// TODO Auto-generated method stub
+	public ProcessDetailView getDataInId(int id) {
 		ProcessModel processModel=hibernate.get(ProcessModel.class, id);
-
-		Integer state=null;
-		if (processModel.getState()==1) {
-			state=1;
-		}
-		else if (processModel.getState()==0) {
-			state=0;
-		}
-		else {
-			state=null;
-		}
-		//这里因为数据库取到的EditorId可能为Null,导致无法找到EditorName,会来个判空操作，CreatorId同样如此
 		String EditorName=null;
 		if (processModel.getEditorId()!=null) {
 			UserModel u = user.getDataById(processModel.getEditorId());
 			if(u != null){
 				EditorName = u.getName();
 			}
-		}	
-		ProcessDataForPage processDataForPage=new ProcessDataForPage(processModel.getId(), processModel.getProcessNumber(), material.getDataById(processModel.getMaterialId()).getMaterialNumber(), processModel.getCell() == null ? null : processModel.getCell().getId().toString(), state.toString(), processModel.getValidBegin(), processModel.getValidEnd(), processModel.getCreationDateTime(), processModel.getEditDateTime(),EditorName);//processModel.getFactoryId().toString()
-		return processDataForPage;
+		}
+		return new ProcessDetailView(
+				processModel.getId(),
+				processModel.getProcessNumber(),
+				material.getDataById(processModel.getMaterialId()).getMaterialNumber(),
+				processModel.getCell().getDescription(),
+                PageUtil.paseState(processModel.getState()),
+                processModel.getValidBegin(),
+				processModel.getValidEnd(),
+				processModel.getCreationDateTime(),
+				processModel.getEditDateTime(),
+				EditorName,processModel.getParentProcessNumber(),processModel.getVersion());
+
 	}
 	@Override
-	public List<ProcessStepDataForPage> getDataById(int id) {
-		// TODO Auto-generated method stub
-		Session session=hibernate.getSessionFactory().openSession();
-		String hql="FROM ProcessStep WHERE ProcessId=:i";
-		Query query=session.createQuery(hql);
-		query.setParameter("i", id);
-		List<ProcessStep> processSteps=query.list();
-		session.close();
-		List<ProcessStepDataForPage> processStepDataForPages=new ArrayList<>();
-		int n=0;
-		for (ProcessStep processStep : processSteps) {
+	public List<ProcessItemDetailView> getDataById(int id) {
+		
 
-			String editorName=null;
-			if (processStep.getEditorId()!=null) {
-				UserModel u = user.getDataById(processStep.getEditorId());
-				if(u != null){
-					editorName = u.getName();
-				}
-			}
-//			String isMandatory=null;
-//			if (processStep.isIsMandatory()==true) {
-//				isMandatory="True";
-//			}
-//			else if (processStep.isIsMandatory()==false) {
-//				isMandatory="False";
-//			}
-			String isNeedSetupCheck=null;
-			if (processStep.isIsNeedSetupCheck()==true) {
-				isNeedSetupCheck="True";
-			}
-			else if (processStep.isIsNeedSetupCheck()==false) {
-				isNeedSetupCheck="False";
-			}
-//			String IsBackflush=null;
-//			if (processStep.isIsBackflush()==true) {
-//				IsBackflush="True";
-//			}
-//			else if (processStep.isIsBackflush()==false) {
-//				IsBackflush="False";
-//			}
-			processStepDataForPages.add(new ProcessStepDataForPage(processStep.getSecquence(),  processStep.getProcessId(), processStep.getId(), processStep.getDescription(), processStep.getStationGroupId(), stationGroup.getStationGroupById(processStep.getStationGroupId()).getDescription(), isNeedSetupCheck, editorName, processStep.getEditDateTime(), n));
-//			processStepDataForPages.add(new ProcessStepDataForPage(processStep.getSecquence(), processStep.getProcessId(), processStep.getId(),processStep.getDescription(), processStep.getStationGroupId(), stationGroup.getStationGroupById(processStep.getStationGroupId()).getDescription(), isMandatory,isNeedSetupCheck, IsBackflush, processStep.getLayer(), processStep.getMaximumTestCount(), editorName, processStep.getEditDateTime(),n));
-           n++;
-		}
-		return processStepDataForPages;
+		return parseProcessStepListToDetailList(getProcessStepById(id));
 	}
+
+	@Override
+	public List<ProcessItemEditeView> getProcessStepEditeById(int id) {
+
+		return parseProcessStepListToEditeList(getProcessStepById(id));
+	}
+
 	@Override
 	@Transactional
 	public void delData(int i) {
-		// TODO Auto-generated method stub
 		ProcessModel processModel=hibernate.get(ProcessModel.class, i);
 		processModel.setState(-1);
 		processModel.setProcessNumber("Del@"+processModel.getProcessNumber());
@@ -191,13 +169,13 @@ public class ProcessDaoImpl implements ProcessDao {
 	}
 	@Override
 	public ProcessModel getProcessDataById(int i) {
-		// TODO Auto-generated method stub
+		
 		return hibernate.get(ProcessModel.class, i);
 	}
 	@Override
 	@Transactional
 	public void addData(ProcessModel process, List<ProcessStep> processSteps) {
-		// TODO Auto-generated method stub
+		
 
 		hibernate.save(process);
 		int processId=process.getId();
@@ -210,7 +188,7 @@ public class ProcessDaoImpl implements ProcessDao {
 	@Override
 	@Transactional
 	public void updateData(ProcessModel process, List<ProcessStep> processSteps) {
-		// TODO Auto-generated method stub
+		
 		Session session=hibernate.getSessionFactory().openSession();
 		String hql="DELETE  FROM 	ProcessStep  processStep  WHERE ProcessId=:ProcessId";
 		Query query=session.createQuery(hql);
@@ -229,7 +207,7 @@ public class ProcessDaoImpl implements ProcessDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Map<String, Object>> getProcessList() {
-		// TODO Auto-generated method stub
+		
 		SessionFactory sessionFactory = hibernate.getSessionFactory();
 		Session session = sessionFactory.openSession();  
 		String sql = "select Id [key],ProcessNumber label from core.Process";
@@ -239,7 +217,7 @@ public class ProcessDaoImpl implements ProcessDao {
 	}
 	@Override
 	public List<StationGroup> getStationGroup() {
-		// TODO Auto-generated method stub
+		
 		Session session=hibernate.getSessionFactory().openSession();
 		String sql="FROM StationGroup WHERE State=1";
 		Query query=session.createQuery(sql);
@@ -252,15 +230,9 @@ public class ProcessDaoImpl implements ProcessDao {
 	}
 	@Override
 	public int getCountProcessStepByProcessId(int id) {
-		Session session=hibernate.getSessionFactory().openSession();
-		String hql="FROM ProcessStep WHERE ProcessId=:i";
-		Query query=session.createQuery(hql);
-		query.setParameter("i", id);
-		List<ProcessStep> processSteps=query.list();
-		session.close();
-		List<ProcessStepDataForPage> processStepDataForPages=new ArrayList<>();
+
 		int n=0;
-		for (ProcessStep processStep : processSteps) {
+		for (ProcessStep processStep : getProcessStepById(id)) {
 			n++;
 		}
 		return n;
@@ -278,20 +250,130 @@ public class ProcessDaoImpl implements ProcessDao {
 
 		int n2=Integer.valueOf(query2.uniqueResult().toString());
 		session.close();
-		if (n>0&&n2>0) {
-			return true;
-		}
-		return false;
+		return n > 0 && n2 > 0;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isRegister(String processNumber) {
-	List<ProcessModel>  processModels=(List<ProcessModel>) hibernate.findByNamedParam("From ProcessModel Where ProcessNumber=:processNumber","processNumber",processNumber);
-		if (processModels.size()>=1)
-		{
-			return  true;
+	List<ProcessModel>  processModels=(List<ProcessModel>)
+            hibernate.findByNamedParam
+                    ("From ProcessModel Where ProcessNumber=:processNumber",
+                            "processNumber",processNumber);
+        return !processModels.isEmpty();
+    }
+
+	@Override
+	public List<StationGroup> getStationGroupByCellId(int id) {
+		Session session=hibernate.getSessionFactory().openSession();
+		String sql="FROM StationGroup WHERE State=1 and CellId=:id";
+		Query query=session.createQuery(sql);
+		query.setParameter("id",id);
+		@SuppressWarnings("unchecked")
+		List<StationGroup> stationGroups=query.list();
+		session.close();
+		return stationGroups;
+	}
+
+    @Override
+    public ProcsessEditeView getProcessEditeView(int id) {
+        ProcessModel processModel=hibernate.get(ProcessModel.class, id);
+        return new ProcsessEditeView(
+                processModel.getId(),
+                processModel.getProcessNumber(),
+                material.getDataById(processModel.getMaterialId()).getMaterialNumber(),
+                processModel.getCell().getId(),
+                processModel.getState(),
+                processModel.getValidBegin(),
+                processModel.getValidEnd(),
+                processModel.getCreationDateTime(),
+                processModel.getEditDateTime(),
+                processModel.getEditorId(),processModel.getParentProcessNumber(),processModel.getVersion());
+    }
+
+
+	/**
+	 * 根据工艺id查找出工艺步骤列表
+	 * @param id 工艺id
+	 * @return 返回工艺步骤列表
+	 */
+	@SuppressWarnings("unchecked")
+	private List<ProcessStep> getProcessStepById(int id)
+	{
+		Session session=hibernate.getSessionFactory().openSession();
+		String hql="FROM ProcessStep WHERE ProcessId=:i";
+		Query query=session.createQuery(hql);
+		query.setParameter("i", id);
+		List<ProcessStep> processSteps=query.list();
+		session.close();
+		return processSteps;
+	}
+
+	/**
+	 * 将工艺步骤列表修饰成工艺修改列表
+	 * @param processSteps 工艺列表
+	 * @return 工艺修改列表
+	 */
+	private List<ProcessItemEditeView> parseProcessStepListToEditeList(List<ProcessStep> processSteps)
+	{
+		List<ProcessItemEditeView> processItemEditeViews=new ArrayList<>();
+		int n=0;
+		for (ProcessStep processStep : processSteps) {
+			String editorName=null;
+			if (processStep.getEditorId()!=null) {
+				UserModel u = user.getDataById(processStep.getEditorId());
+				if(u != null){
+					editorName = u.getName();
+				}
+			}
+			processItemEditeViews.add(new ProcessItemEditeView
+					(processStep.getSecquence(),
+							processStep.getProcessId(),
+							processStep.getId(),
+							processStep.getDescription(),
+							processStep.getStationGroupId(),
+							stationGroup.getStationGroupById(
+									processStep.getStationGroupId()).getDescription(),
+							processStep.isIsNeedSetupCheck(),
+							editorName, processStep.getEditDateTime(), n));
+
+			n++;
 		}
-		return  false;
+		return processItemEditeViews;
+	}
+
+
+	/**
+	 * 将工艺步骤列表修改为工艺详情列表
+	 * @param processSteps 工艺步骤列表
+	 * @return 工艺详情列表
+	 */
+	private List<ProcessItemDetailView> parseProcessStepListToDetailList(List<ProcessStep> processSteps)
+	{
+		List<ProcessItemDetailView> processItemDetailViews=new ArrayList<>();
+		int n=0;
+		for (ProcessStep processStep : processSteps) {
+			String editorName=null;
+			if (processStep.getEditorId()!=null) {
+				UserModel u = user.getDataById(processStep.getEditorId());
+				if(u != null){
+					editorName = u.getName();
+				}
+			}
+			processItemDetailViews.add(new ProcessItemDetailView
+					(processStep.getSecquence(),
+							processStep.getProcessId(),
+							processStep.getId(),
+							processStep.getDescription(),
+							processStep.getStationGroupId(),
+							stationGroup.getStationGroupById(
+									processStep.getStationGroupId()).getDescription(),
+							PageUtil.parseToTrueFalse(processStep.isIsNeedSetupCheck()),
+							editorName, processStep.getEditDateTime(), n));
+
+			n++;
+		}
+		return processItemDetailViews;
 	}
 }
 

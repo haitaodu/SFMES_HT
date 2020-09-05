@@ -72,4 +72,15 @@
         <property name="validator" ref="validator"></property>
     </bean>
     -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"></property>
+        <property name="maxUploadSize">
+            <value>32505856</value><!-- 上传文件大小限制为31M，31*1024*1024 -->
+        </property>
+        <property name="maxInMemorySize">
+            <value>4096</value>
+        </property>
+    </bean>
+
 </beans>

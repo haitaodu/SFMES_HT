@@ -27,7 +27,27 @@ public class IdModelDetailView {
     private Date validTo;
     private String materialNumber;
     private String stationNumber;
-    @JsonProperty("MaterialNumber")
+    private String IsTimeStamp;
+    private int NumberSuffix;
+
+    @JsonProperty("IsTimeStamp")
+    public String getTimeStamp() {
+        return IsTimeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        IsTimeStamp = timeStamp;
+    }
+    @JsonProperty("NumberSuffix")
+    public int getNumberSuffix() {
+        return NumberSuffix;
+    }
+
+    public void setNumberSuffix(int numberSuffix) {
+        NumberSuffix = numberSuffix;
+    }
+
+    @JsonProperty("BOMHead")
     public String getMaterialNumber() {
         return materialNumber;
     }

@@ -13,11 +13,11 @@ public class ProcessModel {
 	@Id
 	@GeneratedValue
 	@Column(name="Id")
-    private int Id;
+    private Integer Id;
 	@Column(name="ProcessNumber")
 	private String ProcessNumber;
 	@Column(name="MaterialId")
-	private  int MaterialId;
+	private  Integer MaterialId;
 	@Column(name="Description")
 	private  String Description;
 	@Column(name="EditDateTime")
@@ -25,7 +25,7 @@ public class ProcessModel {
 	@Column(name="EditorId")
 	private Integer EditorId;
 	@Column(name="State")
-	private int state;
+	private Integer state;
 	@Column(name="ValidBegin")
 	private Date ValidBegin;
 	@Column(name="ValidEnd")
@@ -36,16 +36,29 @@ public class ProcessModel {
 	private Integer CreatorId;
 	@Column(name="CreationDateTime")
 	private Date CreationDateTime;
+
 	@ManyToOne
 	@JoinColumn(name = "CellId")
 	private Cell Cell;
-	public int getId() {
+	public Integer getId() {
 		return Id;
 	}
+	private String ParentProcessNumber;
+	@Column(name="Version")
+	private Integer version;
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 	public ProcessModel() {};
-	public ProcessModel(int id, String processNumber, int materialId, String description, Date editDateTime,
-			Integer editorId, int state, Date validBegin, Date validEnd, Integer factoryId, Integer creatorId,
-			Date creationDateTime) {
+	public ProcessModel(Integer id, String processNumber, Integer materialId, String description, Date editDateTime,
+			Integer editorId, Integer state, Date validBegin, Date validEnd, Integer factoryId, Integer creatorId,
+			Date creationDateTime,String parentProcessNumber,Integer version) {
 		
 		Id = id;
 		ProcessNumber = processNumber;
@@ -59,8 +72,18 @@ public class ProcessModel {
 		FactoryId = factoryId;
 		CreatorId = creatorId;
 		CreationDateTime = creationDateTime;
+		ParentProcessNumber=parentProcessNumber;
+		this.version=version;
 	}
-	public void setId(int id) {
+	@JsonProperty("ParentProcessNumber")
+	public String getParentProcessNumber() {
+		return ParentProcessNumber;
+	}
+
+	public void setParentProcessNumber(String parentProcessNumber) {
+		ParentProcessNumber = parentProcessNumber;
+	}
+	public void setId(Integer id) {
 		Id = id;
 	}
 	public String getProcessNumber() {
@@ -69,10 +92,10 @@ public class ProcessModel {
 	public void setProcessNumber(String processNumber) {
 		ProcessNumber = processNumber;
 	}
-	public int getMaterialId() {
+	public Integer getMaterialId() {
 		return MaterialId;
 	}
-	public void setMaterialId(int materialId) {
+	public void setMaterialId(Integer materialId) {
 		MaterialId = materialId;
 	}
 	public String getDescription() {
@@ -96,7 +119,7 @@ public class ProcessModel {
 	public int getState() {
 		return state;
 	}
-	public void setState(int state) {
+	public void setState(Integer state) {
 		this.state = state;
 	}
 	public Date getValidBegin() {

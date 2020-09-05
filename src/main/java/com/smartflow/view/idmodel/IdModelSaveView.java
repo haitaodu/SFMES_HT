@@ -23,11 +23,18 @@ public class IdModelSaveView {
     private Date vaildTo;
     private Integer creatorId;
     private Integer state;
-    private Integer bomheadId;
+    private String bomhead;
     private Integer stationId;
     private boolean timeStamp;
     private Integer numberSufiix;
+    @JsonProperty("BOMHead")
+    public String getBomhead() {
+        return bomhead;
+    }
 
+    public void setBomhead(String bomhead) {
+        this.bomhead = bomhead;
+    }
     @JsonProperty("TimeStamp")
     public boolean isTimeStamp() {
         return timeStamp;
@@ -45,14 +52,6 @@ public class IdModelSaveView {
         this.numberSufiix = numberSufiix;
     }
 
-    @JsonProperty("BOMHeadId")
-    public Integer getBomheadId() {
-        return bomheadId;
-    }
-
-    public void setBomheadId(Integer bomheadId) {
-        this.bomheadId = bomheadId;
-    }
     @JsonProperty("StationId")
     public Integer getStationId() {
         return stationId;

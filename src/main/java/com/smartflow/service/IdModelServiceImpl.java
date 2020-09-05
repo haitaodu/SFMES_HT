@@ -24,17 +24,11 @@ import java.util.List;
  * @author ：tao
  * @date ：Created in 2020/6/11 14:07
  * @description：${description}
- * @modified By：
- * @version: version
  */
 @Service
 public class IdModelServiceImpl implements  IdModelService{
     private final
-    BOMHeadDao bomHeadDao;
-    private final
     StationDao stationDao;
-    private final
-    MaterialDao materialDao;
     private final
     IdModelDao idModelDao;
     private final
@@ -59,8 +53,6 @@ public class IdModelServiceImpl implements  IdModelService{
         this.idModelDao = idModelDao;
         this.idLayOutDao=idLayOutDao;
         this.stationDao=stationDao;
-        this.bomHeadDao=bomHeadDao;
-        this.materialDao=materialDao;
     }
 
 
@@ -75,9 +67,7 @@ public class IdModelServiceImpl implements  IdModelService{
         List<IdModelEntity> idModelEntities=idModelDao.getIdModelPageSearch(modelIdConditionInputDTO);
         for (IdModelEntity idModelEntity:idModelEntities)
         {
-            if (isOutTime(idModelEntity)) {
                idModelPageViews.add(parseToPageView(idModelEntity));
-           }
         }
         return idModelPageViews;
     }
@@ -172,7 +162,9 @@ public class IdModelServiceImpl implements  IdModelService{
         modelEditInitialize.setVaildFrom(idModelEntity.getValidFrom());
         modelEditInitialize.setVaildTo(idModelEntity.getValidTo());
         modelEditInitialize.setState(Integer.toString(idModelEntity.getState()));
-        modelEditInitialize.setBomheadId(Integer.toString(idModelEntity.getBomheadId()));
+        modelEditInitialize.setNumberSufiix(idModelEntity.getNumberSuffix());
+        modelEditInitialize.setTimeStamp(idModelEntity.isTimeStamp());
+        modelEditInitialize.setBomhead(idModelEntity.getProductName());
         modelEditInitialize.setStationId(Integer.toString(idModelEntity.getStationId()));
         return modelEditInitialize;
     }
@@ -216,10 +208,11 @@ public class IdModelServiceImpl implements  IdModelService{
             idModelDetailView.setValue(getValue(idLayoutEntities));
             idModelDetailView.setModelCode(idModelEntity.getModelCode());
             idModelDetailView.setModelName(idModelEntity.getModelName());
-            String materialNumber=materialDao.getDataById(bomHeadDao.get_BOMHead_Data_ById(idModelEntity.getBomheadId()).getMaterialId()).getMaterialNumber();
             String stationNumber=stationDao.getStationById(idModelEntity.getStationId()).getStationNumber();
-            idModelDetailView.setMaterialNumber(materialNumber);
+            idModelDetailView.setMaterialNumber(idModelEntity.getProductName());
             idModelDetailView.setStationNumber(stationNumber);
+            idModelDetailView.setTimeStamp(parseToTrueFalse(idModelEntity.isTimeStamp()));
+            idModelDetailView.setNumberSuffix(idModelEntity.getNumberSuffix());
             return idModelDetailView;
         }
     return null;
@@ -254,8 +247,10 @@ public class IdModelServiceImpl implements  IdModelService{
      idModelEntity.setModelCode(idModelSaveView.getModelCode());
      idModelEntity.setModelName(idModelSaveView.getModelName());
      idModelEntity.setState(idModelSaveView.getState());
-     idModelEntity.setBomheadId(idModelSaveView.getBomheadId());
+     idModelEntity.setProductName(idModelSaveView.getBomhead());
      idModelEntity.setStationId(idModelSaveView.getStationId());
+     idModelEntity.setTimeStamp(idModelSaveView.isTimeStamp());
+     idModelEntity.setNumberSuffix(idModelSaveView.getNumberSufiix());
      return idModelEntity;
     }
 
@@ -266,16 +261,20 @@ public class IdModelServiceImpl implements  IdModelService{
      */
     private IdModelEntity parsUpdateViewToEntity(IdModelUpdateView idModelUpdateView)
     {
-        IdModelEntity idModelEntity=idModelDao.getEntityById(idModelUpdateView.getId());
-        parseDateToTimestamp(idModelEntity, idModelUpdateView.getVaildFrom(),
+        IdModelEntity idModelEntity=idModelDao.getEntityById
+                (idModelUpdateView.getId());
+        parseDateToTimestamp(idModelEntity,
+                idModelUpdateView.getVaildFrom(),
                 idModelUpdateView.getVaildTo());
         idModelEntity.setEditorId(idModelUpdateView.getEditorId());
         idModelEntity.setModelCode(idModelUpdateView.getModelCode());
         idModelEntity.setModelName(idModelUpdateView.getModelName());
         idModelEntity.setId(idModelUpdateView.getId());
         idModelEntity.setState(idModelUpdateView.getState());
-        idModelEntity.setBomheadId(idModelUpdateView.getBomheadId());
+        idModelEntity.setProductName(idModelUpdateView.getBomhead());
         idModelEntity.setStationId(idModelUpdateView.getStationId());
+        idModelEntity.setTimeStamp(idModelUpdateView.isTimeStamp());
+        idModelEntity.setNumberSuffix(idModelUpdateView.getNumberSufiix());
         return idModelEntity;
     }
 
@@ -400,10 +399,11 @@ public class IdModelServiceImpl implements  IdModelService{
         idModelPageView.setVaildFrom(idModelEntity.getValidFrom());
         idModelPageView.setVaildTo(idModelEntity.getValidTo());
         idModelPageView.setState(PageUtil.paseState(idModelEntity.getState()));
-        String materialNumber=bomHeadDao.get_BOMHead_Data_ById(idModelEntity.getBomheadId()).getProductName();
-        idModelPageView.setMaterialNumber(materialNumber);
+        idModelPageView.setMaterialNumber(idModelEntity.getProductName());
         String stationNumber=stationDao.getStationById(idModelEntity.getStationId()).getStationNumber();
         idModelPageView.setStationNumber(stationNumber);
+        idModelPageView.setIsTimeStamp(parseToTrueFalse(idModelEntity.isTimeStamp()));
+        idModelPageView.setNumberSuffix(idModelEntity.getNumberSuffix());
         return  idModelPageView;
     }
 
@@ -435,5 +435,22 @@ public class IdModelServiceImpl implements  IdModelService{
         String numberString=String.valueOf(number);
         int prefixNumber=numberSize-numberString.length();
         return prefixChar(numberString,prefixNumber);
+    }
+
+
+    /**
+     * 将boolean类型的转化为“是”或者“否”
+     * @param arg boolen参数
+     * @return 返回是或者否
+     */
+    private String  parseToTrueFalse(Boolean arg)
+    {
+        if (Boolean.TRUE.equals(arg))
+        {
+            return "是";
+        }
+        else {
+            return "否";
+        }
     }
 }

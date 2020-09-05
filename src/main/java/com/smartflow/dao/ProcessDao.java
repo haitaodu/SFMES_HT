@@ -3,37 +3,131 @@ package com.smartflow.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.smartflow.dto.process.ProcessStepDataEdite;
 import com.smartflow.model.ProcessModel;
 import com.smartflow.model.ProcessStep;
 import com.smartflow.model.StationGroup;
 import com.smartflow.util.ProcessDataForPage;
 import com.smartflow.util.ProcessStepDataForPage;
+import com.smartflow.view.Process.ProcessDetailView;
+import com.smartflow.view.Process.ProcessItemDetailView;
+import com.smartflow.view.Process.ProcessItemEditeView;
+import com.smartflow.view.Process.ProcsessEditeView;
 
+/**
+ * @author haita
+ */
 public interface ProcessDao {
-	//查找所有的数据行数
-	public int getCount(String materialNumber,String factoryName);
-	//分页请求把分页数据传给前端
-	public List<ProcessDataForPage> getPageData(int pageindex,int pagesize,String materialNumber,String factoryName);
-	//根据前台传来的参数Id查找数据并返回给前台
-	public ProcessDataForPage getDataInId(int id);
-	//根据前台传来的Id查找ProcessStep表单的数组
-	public  List<ProcessStepDataForPage> getDataById(int id);
-	//根据前端传来的Id号作假删除处理
+	/**
+	 * 根据物料号，工厂名查找总的条目数
+	 * @param materialNumber 物料号
+	 * @param factoryName 工厂名
+	 * @return 返回总的条目数
+	 */
+	public int getCount(String materialNumber, String factoryName);
+
+	/**
+	 * 返回分页数据
+	 * @param pageindex 分页页码
+	 * @param pagesize 分页大小
+	 * @param materialNumber 物料号
+	 * @param factoryName 工厂名
+	 * @return 返回分页列表
+	 */
+	public List<ProcessDataForPage> getPageData(int pageindex,
+                                                int pagesize,
+                                                String materialNumber, String factoryName);
+
+	/**
+	 * 根据id查找工艺的详情数据
+	 * @param id 工艺id
+	 * @return  返回工艺详情
+	 */
+	public ProcessDetailView getDataInId(int id);
+
+	/**
+	 * 根据id查找工艺步骤详情
+	 * @param id 工艺id
+	 * @return 返回工艺步骤列表
+	 */
+	public  List<ProcessItemDetailView> getDataById(int id);
+
+	/**
+	 * 根据工艺id找出工艺步骤编辑
+	 * @param id 工艺Id
+	 * @return 工艺步骤编辑dto
+	 */
+	public List<ProcessItemEditeView> getProcessStepEditeById(int id);
+
+	/**
+	 * 根据前端的id作假删除处理
+	 * @param i 工艺的id
+	 */
 	public void delData(int i);
-	//根据前端传来的Id号查找表Process的全部数据
+
+	/**
+	 * 根据id查找工艺实体
+	 * @param i id
+	 * @return 返回工艺实体
+	 */
 	public ProcessModel getProcessDataById(int i);
-	//根据前端传来得参数添加工艺表的数据
-	public void addData(ProcessModel process,List<ProcessStep> processSteps);
-	//根据前端传来的数据更改数据库的数据
-	public void updateData(ProcessModel process,List<ProcessStep> processSteps);
-	//get到表的process的编号以及Id封装成数组
+
+	/**
+	 * 根据工艺以及工艺步骤添加数据
+	 * @param process 工艺
+	 * @param processSteps 工艺步骤
+	 */
+	public void addData(ProcessModel process, List<ProcessStep> processSteps);
+
+	/**
+	 * 工艺实体
+	 * @param process 工艺实体
+	 * @param processSteps 工艺步骤
+	 */
+	public void updateData(ProcessModel process, List<ProcessStep> processSteps);
+
+	/**
+	 * 工艺列表
+	 * @return 返回工艺列表
+	 */
 	public List<Map<String, Object>> getProcessList();
-	//get到表StationGroup表的数据
+
+	/**
+	 * 返回工站组列表
+	 * @return 工站组
+	 */
 	public List<StationGroup> getStationGroup();
-	//根据ProcessId，查找对应的ProcessStep总的条数
+
+	/**
+	 * 根据工艺Id查找总的工艺步骤条目
+	 * @param id 工艺id
+	 * @return 饭hi工艺总的条目数
+	 */
 	public int getCountProcessStepByProcessId(int id);
-	//根据ProcessId查找相应的ProcessStep是否在生产中
+
+	/**
+	 * 根据ProcessId查找相应的ProcessStep是否在生产中
+	 * @param processId 工艺id
+	 * @return 返回是否是在使用中
+	 */
 	public boolean isUsingInProduct(int processId);
-	//根据ProcessNumber查找相应的Process是否是已经注册过的
+
+	/**
+	 * 根据ProcessNumber查找相应的Process是否是已经注册过的
+	 * @param processNumber 工艺编号
+	 * @return 返回该工艺编号是否被注册过
+	 */
 	public boolean isRegister(String processNumber);
+
+	/**
+	 * 根据岛区查找工站组列表
+	 * @return 攻占组列表
+	 */
+	 public List<StationGroup> getStationGroupByCellId(int id);
+	/**
+	 *
+	 * @param id 根据id返回
+	 * @return 返回工艺编辑
+	 */
+	public ProcsessEditeView getProcessEditeView(int id);
 }
