@@ -6,13 +6,16 @@ import java.util.Map;
 import com.smartflow.model.Station;
 import com.smartflow.model.Station_StationGroup;
 
+/**
+ * @author haita
+ */
 public interface StationDao {
 
 	/**
 	 * 查询工站总条数
 	 * @return
 	 */
-	public Integer getTotalCount(String stationNumber,String stationName);
+	public Integer getTotalCount(String stationNumber, String stationName);
 	
 	/**
 	 * 获取工站列表(分页查询)
@@ -20,7 +23,7 @@ public interface StationDao {
 	 * @param pageSize
 	 * @return
 	 */
-	public List<Station> getStationList(Integer pageIndex,Integer pageSize,String stationNumber,String stationName);
+	public List<Station> getStationList(Integer pageIndex, Integer pageSize, String stationNumber, String stationName);
 	
 	/**
 	 * ͨ通过用户id查询用户名
@@ -86,11 +89,7 @@ public interface StationDao {
 	 */
 	public void updateStation_StationGroup(Station_StationGroup station_StationGroup);
 	
-	/**
-	 * 删除工站
-	 * @param stationId
-	 */
-//	public void deleteStation(Station station);
+
 	
 	/**
 	 * 根据stationId删除Station_StationGroup
@@ -98,28 +97,7 @@ public interface StationDao {
 	 */
 	public void deleteStation_StationGroup(Station_StationGroup station_StationGroup);
 	
-	/**
-	 * 根据stationId删除Recipe
-	 * @param stationId
-	 */
-//	public void deleteRecipeByStationId(Integer stationId);
-	/**
-	 * 根据stationId删除AttributeDataRecord
-	 * @param stationId
-	 */
-//	public void deleteAttributeDataRecordByAssignedStationNumberId(Integer stationId);
-	
-	/**
-	 * 根据stationId删除PartFailureDataRecord
-	 * @param stationId
-	 */
-//	public void deletePartFailureDataRecordByStationId(Integer stationId);
-	
-	/**
-	 * 根据stationId删除Cell_Station
-	 * @param stationId
-	 */
-//	public void deleteCell_StationByStationId(Integer stationId);
+
 	
 	/**
 	 * 根据stationId查询StationGroupName
@@ -127,4 +105,7 @@ public interface StationDao {
 	 * @return
 	 */
 	public List<String> getStationGroupNameByStationId(Integer stationId);
+
+
+	public List<Map<String,Object>> getWashList();
 } 

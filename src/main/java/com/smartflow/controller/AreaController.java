@@ -1,59 +1,53 @@
 package com.smartflow.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.alibaba.fastjson.JSONObject;
 import com.smartflow.model.AreaModel;
 import com.smartflow.service.AreaService;
-import com.smartflow.service.LocationService;
 import com.smartflow.service.StationService;
 import com.smartflow.util.AreaDataForPage;
 import com.smartflow.util.ReadDataUtil;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
+/**
+ * @author haita
+ */
 @Controller
 @RequestMapping("/api/Area")
 public class AreaController  extends BaseController{
-	@Autowired
+	final
 	AreaService areaService;
-	@Autowired
+	final
 	StationService stationService;
-	private static Logger logger = Logger.getLogger(BOMController.class);
+	private static Logger logger = Logger.getLogger(AreaController.class);
+
+	@Autowired
+	public AreaController(AreaService areaService, StationService stationService) {
+		this.areaService = areaService;
+		this.stationService = stationService;
+	}
 
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@RequestMapping(value="/GetTByCondition",method=RequestMethod.POST)
+	@PostMapping(value="/GetTByCondition")
 	public @ResponseBody Object getPages(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
 		JSONObject jsonObject=ReadDataUtil.paramData(request);
-		Map<String, Object> map=new HashMap<String,Object>();
+		Map<String, Object> map=new HashMap<>();
 
 		int pageSize=jsonObject.getIntValue("PageSize");
 		int pageNumber=jsonObject.getIntValue("PageIndex");
-		String areaNumber = jsonObject.getString("AreaNumber")==null?null:jsonObject.getString("AreaNumber");
-		String areaName = jsonObject.getString("AreaName")==null?null:jsonObject.getString("AreaName");
-		Integer factoryId = jsonObject.getInteger("FactoryId")==null?null:jsonObject.getInteger("FactoryId");
-		Map<String, Object> json=new HashMap<String,Object>();
+		String areaNumber = jsonObject.getString("AreaNumber");
+		String areaName = jsonObject.getString("AreaName");
+		Integer factoryId = jsonObject.getInteger("FactoryId");
+		Map<String, Object> json;
 		if (pageNumber==0) {
 			map.put("RowCount", 0);
 			map.put("Tdto", new ArrayList<>());
-			/*
-			map.put("PageSize", pageSize);
-			map.put("PageIndex", pageNumber);
-			 */
 			json= this.setJson(200, "无数据", map);
 			return(json);
 		}
@@ -67,7 +61,7 @@ public class AreaController  extends BaseController{
 		} catch (Exception e) {
 			json = this.setJson(0, e.getMessage(),1);
 			logger.error(e);
-			e.printStackTrace();
+
 		}
 		return json;
 
@@ -122,7 +116,7 @@ public class AreaController  extends BaseController{
 	}
 
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@RequestMapping(value="/Delete",method=RequestMethod.POST)
+	@PostMapping(value="/Delete")
 	public @ResponseBody Object delDataById(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
 		Map<String, Object> json=new HashMap<>();
@@ -151,7 +145,6 @@ public class AreaController  extends BaseController{
 		} catch (Exception e) {
 			json = this.setJson(0, e.getMessage(),1);
 			logger.error(e);
-			e.printStackTrace();
 		}
 		return json;
 
@@ -246,8 +239,6 @@ public class AreaController  extends BaseController{
 		String  factoryId = jsonObject.get("FactoryId") == null ? "" : String.valueOf(jsonObject.get("FactoryId"));
 		String state = jsonObject.get("State") == null ? "" : String.valueOf(jsonObject.get("State"));
 		Integer creatorId = jsonObject.getInteger("CreatorId");
-		//创建者是根据前天返回的登录账户的相关信息得来的，这个用户信息登录暂未开发
-		//String creator = jsonObject.get("Creator") == null ? "" : String.valueOf(jsonObject.get("Creator"));
 		Integer areaType=jsonObject.getInteger("AreaType");
 		AreaModel areaModel=new AreaModel();
 		areaModel.setAreaNumber(areaNumber);
@@ -260,18 +251,6 @@ public class AreaController  extends BaseController{
 		areaModel.setCreatorId(creatorId);
 		areaModel.setEditDateTime(new Date());
 		areaModel.setEditorId(creatorId);
-		/*
-		int State=1;
-		if (state=="激活") {
-			State=1;
-		}
-		else if (state=="未激活") {
-			State=0;
-		}
-		else {
-			State=-1;
-		}
-		 */
 		areaModel.setState(Integer.valueOf(state));
 		//需要写表的重复操作
 		if (areaNumber.length()>=40)
@@ -298,7 +277,6 @@ public class AreaController  extends BaseController{
 		} catch (Exception e) {
 			json = this.setJson(0, e.getMessage(),1);
 			logger.error(e);
-			e.printStackTrace();
 		}
 		return json;
 	}

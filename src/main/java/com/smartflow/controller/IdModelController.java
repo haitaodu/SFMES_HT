@@ -1,9 +1,11 @@
 package com.smartflow.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.smartflow.dto.idmode.ModelIdConditionInputDTO;
 import com.smartflow.service.BOMHeadService;
 import com.smartflow.service.IdModelService;
 import com.smartflow.service.StationGroupService;
+import com.smartflow.util.ReadDataUtil;
 import com.smartflow.view.idmodel.IdModelSaveView;
 import com.smartflow.view.idmodel.IdModelUpdateView;
 import org.slf4j.Logger;
@@ -12,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
@@ -20,8 +24,6 @@ import java.util.concurrent.CountDownLatch;
  * @author ：tao
  * @date ：Created in 2020/6/15 13:48
  * @description：${description}
- * @modified By：
- * @version: version
  */
 
 @RestController
@@ -125,13 +127,26 @@ public class IdModelController extends BaseController {
     }
 
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @DeleteMapping(value = "/Del/{id}")
-    public Map<String, Object> del(@PathVariable Integer id) {
+    @PostMapping (value = "/Delete")
+    @SuppressWarnings("unchecked")
+    public @ResponseBody Map<String, Object> del(HttpServletRequest request) {
         try {
-            idModelService.del(id);
+            JSONObject jsonObject = ReadDataUtil.paramData(request);
+            List<Integer> list=(List<Integer>)  jsonObject.get("List");
+            if (list.isEmpty())
+            {
+                json = this.setJson(200, "没选择删除数据!", 0);
+                 return json;
+            }
+            for (int id:list
+                 ) {
+                idModelService.del(id);
+
+            }
+
             json = this.setJson(200, "删除成功!", 0);
 
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             json = this.setJson(0, "删除失败", null);
         }

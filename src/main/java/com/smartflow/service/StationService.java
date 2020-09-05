@@ -13,13 +13,13 @@ public interface StationService {
 	 * 查询工站总条数
 	 * @return
 	 */
-	public Integer getTotalCount(String stationNumber,String stationName);
+	public Integer getTotalCount(String stationNumber, String stationName);
 	
 	/**
 	 * 查看工站组
 	 * @return
 	 */
-	public List<Station> getStationList(Integer pageIndex,Integer pageSize,String stationNumber,String stationName);
+	public List<Station> getStationList(Integer pageIndex, Integer pageSize, String stationNumber, String stationName);
 	
 	/**
 	 * 通过用户id查询用户名
@@ -97,32 +97,14 @@ public interface StationService {
 	 */
 	public void deleteStation_StationGroup(Station_StationGroup station_StationGroup);
 	
-	/**
-	 * 根据stationId删除Recipe
-	 * @param stationId
-	 */
-//	public void deleteRecipeByStationId(Integer stationId);
-	
-	/**
-	 * 根据stationId删除AttributeDataRecord
-	 * @param stationId
-	 */
-//	public void deleteAttributeDataRecordByAssignedStationNumberId(Integer stationId);
-	
-	/**
-	 * 根据stationId删除PartFailureDataRecord
-	 * @param stationId
-	 */
-//	public void deletePartFailureDataRecordByStationId(Integer stationId);
-	/**
-	 * 根据stationId删除Cell_Station
-	 * @param stationId
-	 */
-//	public void deleteCell_StationByStationId(Integer stationId);
+
 	/**
 	 * 根据stationId查询StationGroupName
 	 * @param stationId
 	 * @return
 	 */
 	public List<String> getStationGroupNameByStationId(Integer stationId);
+
+
+	public List<Map<String,Object>> getWashList();
 }

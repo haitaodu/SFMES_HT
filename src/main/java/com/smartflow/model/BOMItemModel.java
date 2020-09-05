@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author haita
+ */
 @Entity
 @Table(name="core.BOMItem")
 public class BOMItemModel {

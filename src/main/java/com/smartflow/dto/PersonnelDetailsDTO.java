@@ -4,6 +4,9 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author haita
+ */
 public class PersonnelDetailsDTO {
 	private Integer Id;
 	private String Account;

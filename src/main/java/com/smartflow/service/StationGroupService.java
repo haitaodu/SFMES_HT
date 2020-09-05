@@ -18,7 +18,7 @@ public interface StationGroupService {
 	 * 获取工站组列表
 	 * @return
 	 */
-	public List<StationGroup> getStationGroupList(Integer pageIndex,Integer pageSize,String groupNumber,String description);
+	public List<StationGroup> getStationGroupList(Integer pageIndex, Integer pageSize, String groupNumber, String description);
 	
 	/**
 	 * 根据工厂id查询工厂名称

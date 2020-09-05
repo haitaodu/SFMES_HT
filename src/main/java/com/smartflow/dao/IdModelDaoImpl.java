@@ -24,7 +24,7 @@ import java.util.List;
 public class IdModelDaoImpl implements  IdModelDao{
     final
     HibernateTemplate hibernateTemplate;
-    private  org.apache.log4j.Logger logger = Logger.getLogger(this.getClass());
+    private  Logger logger = Logger.getLogger(this.getClass());
     @Autowired
     public IdModelDaoImpl(HibernateTemplate hibernateTemplate) {
         this.hibernateTemplate = hibernateTemplate;
@@ -85,11 +85,13 @@ public class IdModelDaoImpl implements  IdModelDao{
     }
     @Override
     public void save(IdModelEntity idModelEntity) {
+        idModelEntity.setBomheadId(1203);
         hibernateTemplate.save(idModelEntity);
     }
 
     @Override
     public void update(IdModelEntity idModelEntity) {
+        idModelEntity.setBomheadId(1203);
         hibernateTemplate.update(idModelEntity);
     }
 

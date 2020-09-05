@@ -151,9 +151,11 @@ public class BOMController  extends BaseController {
 	{
 		init();
 		JSONObject jsonObject=ReadDataUtil.paramData(request);
-		String materialNumber = jsonObject.get("MaterialNumber") == null ? "" : String.valueOf(jsonObject.get("MaterialNumber"));
-		List<MaterialDataForSearch> materialDataForSearchs=materialService.getDataForSearch(materialNumber);
-
+		String materialNumber =
+				jsonObject.get("MaterialNumber") == null ? "" : String.valueOf(jsonObject.get("MaterialNumber"));
+		List<MaterialDataForSearch>
+				materialDataForSearchs
+				=materialService.getDataForSearch(materialNumber);
 		try {
 			json= this.setJson(200, "查询成功", materialDataForSearchs);
 		} catch (Exception e) {
@@ -185,18 +187,15 @@ public class BOMController  extends BaseController {
 	@PostMapping(value="/GetMaterialByMaterialNumber")
 	public @ResponseBody Object getMaterialByMaterialNumber(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
-		init();
 		JSONObject jsonObject=ReadDataUtil.paramData(request);
 		String materialNumber = jsonObject.get("MaterialNumber") == null ? "" : String.valueOf(jsonObject.get("MaterialNumber"));
 		Map<String, Object> map=new  HashMap<>();
-		if (materialService.getMaterialByNumber(materialNumber)==null||materialService.getMaterialByNumber(materialNumber).getState()==-1) {
-			
-			
+		if (materialService.getMaterialByNumber(materialNumber)==null
+				||materialService.getMaterialByNumber(materialNumber).getState()==-1) {
 			map.put("ReturnCode", 0);
 			map.put("ReturnMessage", "你所请求的数据不存在");
 			json= this.setJson(200, "你所请求的数据不存在", map);
 			return json;
-			
 		}
 		if(!bomHeadService.isCanRegister(materialNumber))
 		{
@@ -207,8 +206,10 @@ public class BOMController  extends BaseController {
 		}
 		map.put("ReturnCode", 1);
 		map.put("ReturnMessage", "请求数据成功");
+
 		MaterialDataForSearch materialDataForSearch=new MaterialDataForSearch();
-		materialDataForSearch.setMaterialName(materialService.getMaterialByNumber(materialNumber).getDescription());
+		materialDataForSearch.setMaterialName(materialService.getMaterialByNumber
+				(materialNumber).getDescription());
 		materialDataForSearch.setMaterialNumber(materialNumber);
 		BOMHeadModel bomHeadModel=bomHeadService.getRegisterBom(materialNumber);
 		if (bomHeadModel!=null)
@@ -230,9 +231,10 @@ public class BOMController  extends BaseController {
 
 	}
 
+
 	@CrossOrigin(origins = "*",maxAge = 3600)
 	@PostMapping(value="/Post")
-	public @ResponseBody Object addDataForBOMHead(HttpServletRequest request,HttpServletResponse response) throws Exception
+	public @ResponseBody Object addDataForBomHead(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
 		init();
 		JSONObject jsonObject = ReadDataUtil.paramData(request);
@@ -405,9 +407,9 @@ public class BOMController  extends BaseController {
 		
 		Date nowTime=new Date();
 		bomHeadModel.setCreationDateTime(nowTime);
-		bomHeadModel.setCreatorId(creatorId);
+		bomHeadModel.setCreatorId(2);
 		bomHeadModel.setEditDateTime(nowTime);
-		bomHeadModel.setEditorId(creatorId);
+		bomHeadModel.setEditorId(2);
 		bomHeadModel.setVersion(version);
 		bomHeadModel.setFactoryId(factoryId);
 		bomHeadModel.setERPBOMVersion(eRPBOMVersion);
@@ -462,7 +464,7 @@ public class BOMController  extends BaseController {
 				Integer columnNumber=i+1;
 				String column=columnNumber.toString();
 				json= this.setJson(STATUS_ERROR, "你在BOM子表中第"+column+"行未选择是否是产出品", -1);
-			return bomItemModels;
+				return bomItemModels;
 			}
 			if(mapForBomItemModel.get("IsNeedSetupCheck")==null)
 			{

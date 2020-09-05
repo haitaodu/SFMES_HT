@@ -33,6 +33,9 @@ public class EditMaterialForEditRetrunInitialization {
 //	private String DefaultStationGroupId;//改为String类型
 //	private String CompanyId;//改为String类型
 	private String FactoryId;
+	private int WashQuantity;
+	private int MaxWashQuantity;
+	private int StationId;
 	private Date ValidBegin;
 	private Date ValidEnd;
 	private boolean RequireFIFO;//是否需要先进先出
@@ -93,34 +96,33 @@ public class EditMaterialForEditRetrunInitialization {
 	public void setMaterialGroupTypeId(String materialGroupTypeId) {
 		MaterialGroupTypeId = materialGroupTypeId;
 	}
-//	@JsonProperty("IsProduct")
-//	public boolean getIsProduct() {
-//		return IsProduct;
-//	}
-//	public void setIsProduct(boolean isProduct) {
-//		IsProduct = isProduct;
-//	}
-//	@JsonProperty("IsMultiPanel")
-//	public boolean getIsMultiPanel() {
-//		return IsMultiPanel;
-//	}
-//	public void setIsMultiPanel(boolean isMultiPanel) {
-//		IsMultiPanel = isMultiPanel;
-//	}
-//	@JsonProperty("RequireBackflush")
-//	public boolean getRequireBackflush() {
-//		return RequireBackflush;
-//	}
-//	public void setRequireBackflush(boolean requireBackflush) {
-//		RequireBackflush = requireBackflush;
-//	}
-//	@JsonProperty("NumberOfPanels")
-//	public Integer getNumberOfPanels() {
-//		return NumberOfPanels;
-//	}
-//	public void setNumberOfPanels(Integer numberOfPanels) {
-//		NumberOfPanels = numberOfPanels;
-//	}
+
+	@JsonProperty("WashQuantity")
+	public int getWashQuantity() {
+		return WashQuantity;
+	}
+
+	public void setWashQuantity(int washQuantity) {
+		WashQuantity = washQuantity;
+	}
+
+	@JsonProperty("MaxWashQuantity")
+	public int getMaxWashQuantity() {
+		return MaxWashQuantity;
+	}
+
+	public void setMaxWashQuantity(int maxWashQuantity) {
+		MaxWashQuantity = maxWashQuantity;
+	}
+	@JsonProperty("StationId")
+	public int getStationId() {
+		return StationId;
+	}
+
+	public void setStationId(int stationId) {
+		StationId = stationId;
+	}
+
 	@JsonProperty("UnitId")
 	public Integer getUnitId() {
 		return UnitId;

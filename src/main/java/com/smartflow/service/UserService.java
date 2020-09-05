@@ -160,7 +160,7 @@ public interface UserService {
 	 * @param password
 	 * @param userId
 	 */
-	public void updatePassword(String password,Integer userId);
+	public void updatePassword(String password, Integer userId);
 	
 	/**
 	 * 添加登录记录

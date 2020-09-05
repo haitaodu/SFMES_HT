@@ -220,7 +220,6 @@ public class StationDaoImpl implements StationDao{
 	public List<String> getStationGroupNameByStationId(Integer stationId) {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
-//		String hql = "select concat(GroupNumber,' '+Description) from core.StationGroup where Id in (select StationGroupId from core.Station_StationGroup where StationtId = :StationId)";
 		String hql = "select concat(GroupNumber,'('+Description+')') from StationGroup where state = 1 and id in (select stationGroupId from Station_StationGroup where stationtId = :StationId)";
 		try{
 			Query query = session.createQuery(hql);
@@ -234,64 +233,21 @@ public class StationDaoImpl implements StationDao{
 		}
 	}
 
-//	@Transactional
-//	@Override
-//	public void deleteRecipeByStationId(Integer stationId) {
-//		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
-//		Session session = sessionFactory.getCurrentSession();
-//		Query query = session.createQuery("from Recipe where StationId = ?");
-//		query.setParameter(0, stationId);
-//		List<Recipe> recipeList = query.list();
-//		for (Recipe recipe : recipeList) {
-//			query = session.createQuery("from RecipeItem where RecipeId = ?");
-//			query.setParameter(0, recipe.getId());
-//			List<RecipeItem> recipeItemList = query.list();
-//			for (RecipeItem recipeItem : recipeItemList) {
-//				hibernateTemplate.delete(recipeItem);
-//			}			
-//			hibernateTemplate.delete(recipe);
-//		}	
-//	}
-
-//	@Transactional
-//	@Override
-//	public void deleteAttributeDataRecordByAssignedStationNumberId(Integer stationId) {
-//		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
-//		Session session = sessionFactory.getCurrentSession();
-//		Query query = session.createQuery("from AttributeDataRecord where AssignedStationNumberId = ?");
-//		query.setParameter(0, stationId);
-//		List<AttributeDataRecord> attributeDataRecordList = query.list();
-//		for (AttributeDataRecord attributeDataRecord : attributeDataRecordList) {
-//			hibernateTemplate.delete(attributeDataRecord);
-//		}
-//	}
-
-//	@Transactional
-//	@Override
-//	public void deletePartFailureDataRecordByStationId(Integer stationId) {
-//		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
-//		Session session = sessionFactory.getCurrentSession();
-//		Query query = session.createQuery("from PartFailureDataRecord where StationId = ?");
-//		query.setParameter(0, stationId);
-//		List<PartFailureDataRecord> partFailureDataRecordList = query.list();
-//		for (PartFailureDataRecord partFailureDataRecord : partFailureDataRecordList) {
-//			hibernateTemplate.delete(partFailureDataRecord);
-//		}
-//	}
-
-//	@Transactional
-//	@Override
-//	public void deleteCell_StationByStationId(Integer stationId) {
-//		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
-//		Session session = sessionFactory.getCurrentSession();
-//		Query query = session.createQuery("from Cell_Station where StationId = ?");
-//		query.setParameter(0, stationId);
-//		List<Cell_Station> cell_StationList = query.list();
-//		for (Cell_Station cell_Station : cell_StationList) {
-//			hibernateTemplate.delete(cell_Station);
-//		}
-//	}
-
+	@Override
+	public List<Map<String, Object>> getWashList() {
+		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		String sql = "select Id [key],CONCAT(StationNumber,'('+Name+')') label from core.Station where State = 1 and StationType=7 or StationType=8";
+		try{
+			Query query = session.createSQLQuery(sql);
+			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			session.close();
+		}
+	}
 
 
 }

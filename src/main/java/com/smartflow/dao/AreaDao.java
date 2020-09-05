@@ -19,7 +19,7 @@ public interface AreaDao {
      * @param factoryId factoryId factoryId
      * @return 返回分页数组
      */
-	 List<AreaDataForPage> readPageData(int pagesize,int pageindex,String areaNumber,String areaName,Integer factoryId);
+	 List<AreaDataForPage> readPageData(int pagesize, int pageindex, String areaNumber, String areaName, Integer factoryId);
 
 
     /**
@@ -29,7 +29,7 @@ public interface AreaDao {
      * @param factoryId factoryId
      * @return 总的条目数
      */
-    int countData(String areaNumber,String areaName,Integer factoryId);
+    int countData(String areaNumber, String areaName, Integer factoryId);
 
 
     /**
@@ -83,7 +83,7 @@ public interface AreaDao {
      * @param Descriprion description
      * @return 返回成功或失败
      */
-     int getDataForCheckUnique(String AreaNumber,String Descriprion);
+     int getDataForCheckUnique(String AreaNumber, String Descriprion);
     
     /**
      * 查询区域id和区域名称

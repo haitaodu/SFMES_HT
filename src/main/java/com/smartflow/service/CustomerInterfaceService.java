@@ -59,7 +59,7 @@ public interface CustomerInterfaceService {
 	 * @param customerName
 	 * @return
 	 */
-	    public List<CustomerListDto> getPageData(Integer pageNumber,Integer pageSize,String customerCode,String customerName);
+	    public List<CustomerListDto> getPageData(Integer pageNumber, Integer pageSize, String customerCode, String customerName);
 
 	/**
 	 *
@@ -67,7 +67,7 @@ public interface CustomerInterfaceService {
 	 * @param customerName
 	 * @return
 	 */
-	public Integer getRowCount(String customerCode,String customerName);
+	public Integer getRowCount(String customerCode, String customerName);
 
 	/**
 	 *
@@ -75,7 +75,7 @@ public interface CustomerInterfaceService {
 	 * @param customerName
 	 * @return
 	 */
-	    public int getDataForCheckUnique(String customerCode,String customerName);
+	    public int getDataForCheckUnique(String customerCode, String customerName);
 
 	/**
 	 *
