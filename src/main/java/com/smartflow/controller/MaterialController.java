@@ -12,9 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import com.smartflow.model.ContainerType;
+import com.smartflow.service.ContainerTypeService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,12 +56,18 @@ public class MaterialController extends BaseController{
 	final
     StationGroupService stationGroupService;
 
+	final
+	ContainerTypeService containerTypeService;
+
+	@Autowired
+	HibernateTemplate hibernateTemplate;
     @Autowired
-    public MaterialController(MaterialService materialService, StationService stationService, StationGroupService stationGroupService) {
+    public MaterialController(MaterialService materialService, StationService stationService, StationGroupService stationGroupService, ContainerTypeService containerTypeService) {
         this.materialService = materialService;
         this.stationService = stationService;
         this.stationGroupService = stationGroupService;
-    }
+		this.containerTypeService = containerTypeService;
+	}
 
     /**
 	 * 分页查询初始化物料类型、工厂下拉框
@@ -74,6 +83,7 @@ public class MaterialController extends BaseController{
 			List<Map<String, Object>> Factory = stationService.getFactory();
 			map.put("MaterialGroupType", MaterialGroupType);
 			map.put("Factory", Factory);
+			map.put("Container",containerTypeService.getContainerType());
 			json = this.setJson(200, "初始化成功", map);
 		}catch(Exception e){
 			json = this.setJson(0, "初始化数据失败:"+e.getMessage(), -1);
@@ -281,6 +291,7 @@ public class MaterialController extends BaseController{
 			map.put("Factory", Factory);
 			map.put("TDto", TDto);
 			map.put("Station",stationService.getWashList());
+			map.put("Container",containerTypeService.getContainerType());
 			json = this.setJson(200, "查询成功！", map);
 		}catch(Exception e){
 			json = this.setJson(0, "查询失败："+e.getMessage(), -1);
@@ -325,7 +336,7 @@ public class MaterialController extends BaseController{
 				TDto.setValidEnd(material.getValidEnd());
 				TDto.setMaxWashQuantity(material.getMaxWashQuantity());
 				TDto.setWashQuantity(material.getWashQuantity());
-
+                TDto.setContainerTypeId(material.getContainerType().getId());
 				if (material.getRequireFIFO()!=null) {
 					TDto.setRequireFIFO(material.getRequireFIFO());
 				}
@@ -340,6 +351,7 @@ public class MaterialController extends BaseController{
 			map.put("Location", Location);
 			map.put("Factory", Factory);
 			map.put("TDto", TDto);
+			map.put("Container",containerTypeService.getContainerType());
 			map.put("Station",stationService.getWashList());
 			json = this.setJson(200, "查询成功！", map);
 		}catch(Exception e){
@@ -395,12 +407,14 @@ public class MaterialController extends BaseController{
 						material.setIsProduct(false);
 						material.setIsMultiPanel(false);
 						material.setNumberOfPanels(0);
+						material.setContainerType(hibernateTemplate.get(ContainerType.class,creationMaterialDTO.getContainerTypeId()));
 					if (creationMaterialDTO.getUnit()!=null) {
 						material.setUnit(creationMaterialDTO.getUnit());
 					}					
 					if(!"".equals(creationMaterialDTO.getSetupFlag())){
 						material.setSetupFlag(creationMaterialDTO.getSetupFlag());
 					}
+
 					material.setMinimumPackageQuantity(creationMaterialDTO.getMinimumPackageQuantity());
 					material.setExpirationTime(creationMaterialDTO.getExpirationTime());
 					material.setSafetyStock(creationMaterialDTO.getSafetyStock());
@@ -411,6 +425,7 @@ public class MaterialController extends BaseController{
 					if (creationMaterialDTO.getFactoryId()!=null) {
 						material.setFactoryId(creationMaterialDTO.getFactoryId()==null?null:Integer.parseInt(creationMaterialDTO.getFactoryId()));
 					}
+
 					material.setWashQuantity(creationMaterialDTO.getWashQuantity());
 					material.setMaxWashQuantity(creationMaterialDTO.getMaxWashQuantity());
 					material.setCreationDateTime(new Date());
@@ -485,7 +500,9 @@ public class MaterialController extends BaseController{
 					if (editMaterialDTO.getUnit()!=null) {
 						material.setUnit(editMaterialDTO.getUnit());
 					}
-						material.setSetupFlag(editMaterialDTO.getSetupFlag());
+					material.setContainerType(hibernateTemplate.get(ContainerType.class,editMaterialDTO.getContainerTypeId()));
+
+					material.setSetupFlag(editMaterialDTO.getSetupFlag());
 						material.setProcurementType(editMaterialDTO.getProcurementType());
 						material.setMinimumPackageQuantity(editMaterialDTO.getMinimumPackageQuantity());
 						material.setExpirationTime(editMaterialDTO.getExpirationTime());

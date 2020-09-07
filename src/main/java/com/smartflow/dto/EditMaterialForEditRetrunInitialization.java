@@ -39,6 +39,17 @@ public class EditMaterialForEditRetrunInitialization {
 	private Date ValidEnd;
 	private boolean RequireFIFO;//是否需要先进先出
 	private boolean RequireCheckCustomerLabel;//是否需要扫描客户标签
+	private int ContainerTypeId;
+
+	@JsonProperty("ContainerTypeId")
+	public int getContainerTypeId() {
+		return ContainerTypeId;
+	}
+
+	public void setContainerTypeId(int containerTypeId) {
+		ContainerTypeId = containerTypeId;
+	}
+
 	@JsonProperty("Id")
 	public Integer getId() {
 		return Id;

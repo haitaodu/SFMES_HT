@@ -34,7 +34,16 @@ public class CreationMaterialDTO {
 	private boolean RequireCheckCustomerLabel;//是否需要扫描客户标签
 	private int WashQuantity;
 	private int MaxWashQuantity;
-	private int StationId;
+	private int ContainerTypeId;
+
+	@JsonProperty("ContainerTypeId")
+	public int getContainerTypeId() {
+		return ContainerTypeId;
+	}
+
+	public void setContainerTypeId(int containerTypeId) {
+		ContainerTypeId = containerTypeId;
+	}
 
 	@JsonProperty("WashQuantity")
 	public int getWashQuantity() {
@@ -52,14 +61,7 @@ public class CreationMaterialDTO {
 	public void setMaxWashQuantity(int maxWashQuantity) {
 		MaxWashQuantity = maxWashQuantity;
 	}
-	@JsonProperty("StationId")
-	public int getStationId() {
-		return StationId;
-	}
 
-	public void setStationId(int stationId) {
-		StationId = stationId;
-	}
 
 	@JsonProperty("Id")
 	public Integer getId() {
