@@ -1,9 +1,6 @@
 package com.smartflow.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -13,6 +10,7 @@ import java.util.Objects;
  */
 
 @Entity
+@Table(name = "core.ContainerType")
 public class ContainerType {
     private int id;
     private String typeCode;
