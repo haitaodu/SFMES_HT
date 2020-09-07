@@ -32,7 +32,7 @@ public class MaterialListDTO {
 	private String RequireCheckCustomerLabel;//是否需要扫描客户标签
 	private int WashQuantity;
 	private int MaxWashQuantity;
-	private String StationName;
+//	private String StationName;
     private String ContainerName;
 
 	@JsonProperty("ContainerName")
@@ -58,14 +58,14 @@ public class MaterialListDTO {
 	public void setMaxWashQuantity(int maxWashQuantity) {
 		MaxWashQuantity = maxWashQuantity;
 	}
-	@JsonProperty("StationName")
-	public String getStationName() {
-		return StationName;
-	}
-
-	public void setStationName(String stationName) {
-		StationName = stationName;
-	}
+//	@JsonProperty("StationName")
+//	public String getStationName() {
+//		return StationName;
+//	}
+//
+//	public void setStationName(String stationName) {
+//		StationName = stationName;
+//	}
 
 	@JsonProperty("Id")
 	public Integer getId() {
