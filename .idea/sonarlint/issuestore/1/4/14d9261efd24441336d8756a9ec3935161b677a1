@@ -1,0 +1,19 @@
+
+f
+java:S3973^"IUse indentation to denote the code conditionally executed by this "else".(ÔÍØ8…¼.
+h
+java:S1192Ã"JDefine a constant instead of duplicating this literal "ProcessId" 3 times.(ãîˆ”8…¼.
+m	java:S117a"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±ò°8…¼.
+n	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±ò°8…¼.
+W
+java:S2130ö"9Use "Integer.parseInt" for this string-to-int conversion.(åÌ•¹8…¼.
+\
+java:S2130û"9Use "Integer.parseInt" for this string-to-int conversion.(¬ÈÈ¤ûÿÿÿÿ8…¼.
+O
+java:S14810"-Remove this unused "cellDao1" local variable.(æõò­úÿÿÿÿ8…¼.
+U
+java:S1481h"3Remove this unused "materialnumber" local variable.(Ú»êßøÿÿÿÿ8…¼.
+M
+java:S1481i"0Remove this unused "factoryname" local variable.(ñ”‹Ì8…¼.
+S
+java:S1481ë"0Remove this unused "processStep" local variable.(ú÷ı™úÿÿÿÿ8…¼.

@@ -1,0 +1,8 @@
+
+f	java:S116"NRename this field "JPH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á…„²úÿÿÿÿ
+e	java:S116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(þÕï“ùÿÿÿÿ
+h	java:S116"URename this field "LoactionId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾è»Ð
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œë½í
+h	java:S116"PRename this field "State" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡ý­âýÿÿÿÿ
+q	java:S116"YRename this field "MaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÂÔ„øÿÿÿÿ
+j	java:S116"WRename this field "LocationList" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë¹¡Ù

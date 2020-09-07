@@ -1,0 +1,36 @@
+
+T	java:S125"<This block of commented-out lines of code should be removed.(ó÷”Ãûÿÿÿÿ
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰Ë•ûÿÿÿÿ
+?
+java:S1168"+Return an empty collection instead of null.(¥¹ï
+?
+java:S1168"+Return an empty collection instead of null.(¥¹ï
+?
+java:S1168"+Return an empty collection instead of null.(¥¹ï
+`
+java:S1192"GDefine a constant instead of duplicating this literal "CellId" 3 times.(öÃû úÿÿÿÿ
+N	java:S125"<This block of commented-out lines of code should be removed.(Ù—²A
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û××í
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØüÔ
+?
+java:S1168"+Return an empty collection instead of null.(¥¹ï
+O	java:S125"<This block of commented-out lines of code should be removed.(Éôè—
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1168"+Return an empty collection instead of null.(¥¹ï
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+O	java:S125"<This block of commented-out lines of code should be removed.(…‹èù
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ

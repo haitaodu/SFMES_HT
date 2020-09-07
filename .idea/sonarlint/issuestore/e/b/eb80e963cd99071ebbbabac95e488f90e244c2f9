@@ -1,0 +1,12 @@
+
+p	java:S116"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¼Â­ùÿÿÿÿ
+n	java:S116"TRename this field "CreatorId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñšİÃùÿÿÿÿ
+n	java:S116"TRename this field "FactoryId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”áõüÿÿÿÿ
+b	java:S116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×­ÒÒ
+q	java:S116"WRename this field "EditDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›óà½şÿÿÿÿ
+k	java:S116"VRename this field "SafetyStock" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü»çµ
+n	java:S116"YRename this field "CreateDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×¬¼æ
+j	java:S116"PRename this field "State" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ïš“›ùÿÿÿÿ
+p	java:S116"VRename this field "GroupNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æù¯Úøÿÿÿÿ
+c	java:S116"ORename this field "Cell" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÄèy
+h	java:S116"SRename this field "EditorId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î×çˆ

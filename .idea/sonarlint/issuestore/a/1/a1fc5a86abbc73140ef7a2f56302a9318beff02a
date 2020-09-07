@@ -1,0 +1,12 @@
+
+q	java:S116"WRename this field "EditDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›óà½şÿÿÿÿ
+i	java:S116"ORename this field "Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É¬­Áøÿÿÿÿ
+j	java:S116"PRename this field "State" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ïš“›ùÿÿÿÿ
+j	java:S116"VRename this field "StationType" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô¥º&
+i	java:S116"TRename this field "IpAddress" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰‚Â¢
+h	java:S116"SRename this field "EditorId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î×çˆ
+n	java:S116"TRename this field "CreatorId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñšİÃùÿÿÿÿ
+n	java:S116"TRename this field "FactoryId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”áõüÿÿÿÿ
+b	java:S116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×­ÒÒ
+p	java:S116"[Rename this field "CreationDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùÓğø
+m	java:S116"XRename this field "StationNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—Åêğ

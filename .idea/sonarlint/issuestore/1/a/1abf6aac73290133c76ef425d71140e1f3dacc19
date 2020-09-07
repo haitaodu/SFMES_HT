@@ -1,0 +1,34 @@
+
+~	java:S116)"dRename this field "RequireCheckCustomerLabel" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Åªìøÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ï¨¦õ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ˆ¥ä¯
+{	java:S116"aRename this field "MinimumPackageQuantity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‹÷Åşÿÿÿÿ
+p	java:S116"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¼Â­ùÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ÕÉü
+Q	java:S1259"<This block of commented-out lines of code should be removed.(Áøæ
+i	java:S116#"TRename this field "FactoryId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èì¡¼
+x	java:S116"^Rename this field "MaterialGroupTypeId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å¡ø™ùÿÿÿÿ
+p	java:S116"VRename this field "SafetyStock" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“¢û§şÿÿÿÿ
+s	java:S116"YRename this field "ExpirationTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öœ³¥ûÿÿÿÿ
+p	java:S116("VRename this field "RequireFIFO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ëÊÁüÿÿÿÿ
+v	java:S116%"ZRename this field "MaxWashQuantity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­Ù…»8ôÑË©À.
+j	java:S116 "PRename this field "State" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ¾ñàúÿÿÿÿ
+f	java:S116"QRename this field "UnitId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸Â€
+R	java:S125¨"<This block of commented-out lines of code should be removed.(§íÄó
+R	java:S125Ä"<This block of commented-out lines of code should be removed.(Âö×Æ
+R	java:S125…"<This block of commented-out lines of code should be removed.(ÍÓØØ
+W	java:S125¡"<This block of commented-out lines of code should be removed.(–”‰‰úÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(¬«ÕÅüÿÿÿÿ
+{	java:S116"aRename this field "SupplierMaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(í¡şúúÿÿÿÿ
+b	java:S116	"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×­ÒÒ
+s	java:S116
+"YRename this field "MaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®Ğ¤éüÿÿÿÿ
+s	java:S116$"WRename this field "WashQuantity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ĞæŠ8ôÑË©À.
+j	java:S116&"URename this field "ValidBegin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¬Œ×
+h	java:S116'"SRename this field "ValidEnd" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¤Ë«
+W	java:S125¶"<This block of commented-out lines of code should be removed.(Ä¦›Åşÿÿÿÿ
+P	java:S125G"<This block of commented-out lines of code should be removed.(Îÿ„
+n	java:S116"TRename this field "SetupFlag" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ×æåúÿÿÿÿ
+W	java:S125Ë"<This block of commented-out lines of code should be removed.(Á‹«¶üÿÿÿÿ
+v	java:S116"aRename this field "CustomerMaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±¸³±
+W	java:S125¯"<This block of commented-out lines of code should be removed.(ÛÃ£ùşÿÿÿÿ

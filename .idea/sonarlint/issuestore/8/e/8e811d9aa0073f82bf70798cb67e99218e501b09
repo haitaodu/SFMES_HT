@@ -1,0 +1,35 @@
+
+>
+java:S1148e"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148'"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148R"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+l	java:S117¢"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğó–»øÿÿÿÿ
+B
+java:S1168Ô"+Return an empty collection instead of null.(¥¹ï
+?
+java:S1148Ó"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148…"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148v"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148?"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148”"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+A
+java:S1168w"+Return an empty collection instead of null.(¥¹ï
+?
+java:S1148»"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+A
+java:S1168f"+Return an empty collection instead of null.(¥¹ï
+B
+java:S1168†"+Return an empty collection instead of null.(¥¹ï
+g	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î­Ô³
+B
+java:S1168¼"+Return an empty collection instead of null.(¥¹ï
+j
+java:S1192s"ODefine a constant instead of duplicating this literal "StationGroupId" 3 times.(ÆŸ­ğøÿÿÿÿ
+A
+java:S1168@"+Return an empty collection instead of null.(¥¹ï

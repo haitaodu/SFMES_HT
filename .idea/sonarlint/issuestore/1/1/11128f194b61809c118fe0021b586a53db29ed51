@@ -1,0 +1,20 @@
+
+j	java:S116"URename this field "SupplierId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ž»ÖÕ
+q	java:S116"WRename this field "SupplierCode" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òúüãÿÿÿÿÿ
+q	java:S116"WRename this field "SupplierName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Åúåýÿÿÿÿ
+c	java:S116	"ORename this field "DUNS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñÆð)
+o	java:S116
+"ZRename this field "SupplierCountry" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸Î¸·
+u	java:S116"[Rename this field "SupplierProvince" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†´µ¯ùÿÿÿÿ
+t	java:S116"ZRename this field "SupplierAddress" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ›ÿºúÿÿÿÿ
+p	java:S116"[Rename this field "SupplierPostCode" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Žëé×
+k	java:S116"VRename this field "SupplierFax" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹­˜È
+u	java:S116"`Rename this field "SupplierContactPerson" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡«¦æ
+m	java:S116"XRename this field "SupplierEmail" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰¿é‚
+x	java:S116"^Rename this field "SupplierCreatorName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡˜ï ûÿÿÿÿ
+w	java:S116"cRename this field "SupplierCreationDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü­õo
+q	java:S116"]Rename this field "SupplierEditorName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÓ¿
+z	java:S116"`Rename this field "SupplierEditeDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡ç¿Òýÿÿÿÿ
+r	java:S116"XRename this field "SupplierState" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶¾¨¨þÿÿÿÿ
+u	java:S116"[Rename this field "SupplierTelphone" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øë”€ÿÿÿÿÿ
+s	java:S116"^Rename this field "SupplierMobilePhone" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âˆæÔ

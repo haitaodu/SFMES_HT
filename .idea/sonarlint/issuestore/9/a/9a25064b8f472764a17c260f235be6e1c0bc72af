@@ -1,0 +1,29 @@
+
+w
+java:S2629j"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(ƒû›¾þÿÿÿÿ
+W
+java:S3457G"AFormat specifiers should be used instead of string concatenation.(Âß˜”
+2
+java:S3626£"Remove this redundant jump.(ûÁÝ…
+k
+java:S3252ì"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(Å†æ»üÿÿÿÿ
+L
+java:S1117é"5Rename "n" which hides the field declared at line 36.(ÁÝé…
+W
+java:S1117y"<Rename "rowCount" which hides the field declared at line 34.(í…øäüÿÿÿÿ
+
+java:S1192Ÿ"eDefine a constant instead of duplicating this literal "FROM BOMItemModel WHERE BOMHeadId=:i" 3 times.(œºÒìûÿÿÿÿ
+r
+java:S2629G"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(Âß˜”
+H
+java:S1481ê"1Remove this unused "bomItemModel" local variable.(ç”¥»
+L
+java:S1117¥"5Rename "n" which hides the field declared at line 36.(ÁÝé…
+\
+java:S1117¤"@Rename "bomItemDatas" which hides the field declared at line 32.(‡§åËùÿÿÿÿ
+\
+java:S3457j"AFormat specifiers should be used instead of string concatenation.(ƒû›¾þÿÿÿÿ
+3
+java:S1643—"Use a StringBuilder instead.(Ê´Ÿë
+3
+java:S1643µ"Use a StringBuilder instead.(Ê´Ÿë

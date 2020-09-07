@@ -1,0 +1,22 @@
+
+e	java:S116"RRename this field "Creator" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒóŞˆ
+h	java:S116"PRename this field "Phone" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¹È§üÿÿÿÿ
+k	java:S116"SRename this field "UserCode" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§Óıßûÿÿÿÿ
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º‰Ñ
+c	java:S116"PRename this field "Level" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸ñÔ‚
+g	java:S116"ORename this field "Role" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶é¡çüÿÿÿÿ
+p	java:S116"XRename this field "LastLoginTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ÊÏŒúÿÿÿÿ
+h	java:S116"PRename this field "State" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ¾ñàúÿÿÿÿ
+O	java:S125"<This block of commented-out lines of code should be removed.(­‡ë
+j	java:S116"WRename this field "EmailAddress" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èèùµ
+`	java:S116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×­ÒÒ
+f	java:S116"SRename this field "UserName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È”¸„
+e	java:S116"RRename this field "Station" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†ù—í
+j	java:S116"RRename this field "Account" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³œÃûşÿÿÿÿ
+i	java:S116"QRename this field "Editor" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’˜ıƒûÿÿÿÿ
+o	java:S116"WRename this field "EditDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›óà½şÿÿÿÿ
+j	java:S116"WRename this field "PlatformName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·…¦Ø
+i	java:S116"VRename this field "FactoryName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£òÍË
+o	java:S116"WRename this field "ICCardNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùë­Ùıÿÿÿÿ
+n	java:S116"[Rename this field "CreationDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùÓğø
+m	java:S116"URename this field "Department" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”îÿÿÿÿÿ

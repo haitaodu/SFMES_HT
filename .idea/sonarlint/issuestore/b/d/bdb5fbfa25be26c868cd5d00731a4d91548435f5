@@ -1,0 +1,17 @@
+
+q	java:S116"URename this field "Designator" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÞËïþ8Í…–÷¸.
+x	java:S116"WRename this field "MaterialName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú¿ººùÿÿÿÿ8Í…–÷¸.
+|	java:S116"[Rename this field "IsNeedSetupCheck" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò²‰»øÿÿÿÿ8Í…–÷¸.
+q	java:S116"URename this field "MaterialId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰Ù·‡8Í…–÷¸.
+y	java:S116"XRename this field "IsAlternative" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌŸÓÈùÿÿÿÿ8Í…–÷¸.
+q	java:S116"PRename this field "Layer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿ø©Ÿûÿÿÿÿ8Í…–÷¸.
+c	java:S1073"BConstructor has 13 parameters, which is greater than 7 authorized.(ê¼¿¸þÿÿÿÿ8Í…–÷¸.
+p	java:S116"ORename this field "Unit" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌŸœÆúÿÿÿÿ8Í…–÷¸.
+z	java:S116"YRename this field "StationGroupId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã‡òÛþÿÿÿÿ8Í…–÷¸.
+l	java:S116"QRename this field "UnitId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àì…Y8Í…–÷¸.
+t	java:S116"SRename this field "Quantity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì¬«þÿÿÿÿ8Í…–÷¸.
+o	java:S116"NRename this field "Key" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è°ÛÉüÿÿÿÿ8Í…–÷¸.
+>
+java:S11162"Remove this empty statement.(óãà“ýÿÿÿÿ8Í…–÷¸.
+s	java:S116"WRename this field "StationGroup" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†Å·ž8Í…–÷¸.
+z	java:S116"YRename this field "MaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÂÔ„øÿÿÿÿ8Í…–÷¸.

@@ -1,0 +1,26 @@
+
+k	java:S116"VRename this field "RequireFIFO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ì½Ñ
+p	java:S116"VRename this field "SafetyStock" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“¢û§şÿÿÿÿ
+n	java:S116"TRename this field "SetupFlag" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯Û·ÿÿÿÿÿ
+s	java:S116"YRename this field "ExpirationTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öœ³¥ûÿÿÿÿ
+w	java:S116#"VRename this field "StationName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ¡°ÿÿÿÿÿ8ÚÜÙ¥À.
+s	java:S116!"WRename this field "WashQuantity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ĞæŠ8àÏØ¥À.
+q	java:S116"WRename this field "EditDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›óà½şÿÿÿÿ
+s	java:S116"YRename this field "MaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®Ğ¤éüÿÿÿÿ
+g	java:S116"RRename this field "Creator" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒóŞˆ
+v	java:S116""ZRename this field "MaxWashQuantity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­Ù…»8àÏØ¥À.
+j	java:S116"URename this field "ValidBegin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¬Œ×
+v	java:S116"aRename this field "CustomerMaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±¸³±
+y	java:S116 "dRename this field "RequireCheckCustomerLabel" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹»ø
+m	java:S116"XRename this field "FactoryNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡ÙòÒ
+q	java:S116"\Rename this field "MaterialGroupType" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ¦ˆ±
+{	java:S116"aRename this field "SupplierMaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(í¡şúúÿÿÿÿ
+{	java:S116"aRename this field "MinimumPackageQuantity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‹÷Åşÿÿÿÿ
+j	java:S116"URename this field "StateValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±Çİª
+p	java:S116"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¼Â­ùÿÿÿÿ
+p	java:S116"[Rename this field "CreationDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùÓğø
+k	java:S116"QRename this field "Editor" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’˜ıƒûÿÿÿÿ
+i	java:S116"ORename this field "Unit" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´ÃğÛøÿÿÿÿ
+h	java:S116"SRename this field "ValidEnd" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¤Ë«
+b	java:S116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×­ÒÒ
+t	java:S116$"XRename this field "ContainerName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½±Í¯8¯êæ±Æ.

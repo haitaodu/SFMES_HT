@@ -1,0 +1,15 @@
+
+7
+java:S1116'"Remove this empty statement.(ÿ·®²ıÿÿÿÿ
+o	java:S116"URename this field "MaterialId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈÈÂşÿÿÿÿ
+h	java:S116"SRename this field "Quantity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìİÀó
+g	java:S116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬µä›şÿÿÿÿ
+l	java:S116&"RRename this field "Version" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°“Ö¢şÿÿÿÿ
+W	java:S107("BConstructor has 11 parameters, which is greater than 7 authorized.(Ô¨ş©
+j	java:S116 "PRename this field "Layer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÙòıÿÿÿÿ
+r	java:S116$"XRename this field "IsAlternative" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸•½Ôıÿÿÿÿ
+i	java:S116"TRename this field "BOMHeadId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·Õ·ú
+s	java:S116"YRename this field "StationGroupId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Ø°ùÿÿÿÿ
+j	java:S116"URename this field "Designator" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Ù´¨
+u	java:S116"[Rename this field "IsNeedSetupCheck" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ¢«éúÿÿÿÿ
+d	java:S116""ORename this field "Unit" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­«ÅÅ

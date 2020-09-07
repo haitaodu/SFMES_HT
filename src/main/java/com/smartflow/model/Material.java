@@ -46,8 +46,6 @@ public class Material {
 	private Boolean RequireCheckCustomerLabel;
 	private int WashQuantity;
 	private int MaxWashQuantity;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ContainerTypeId")
     private ContainerType ContainerType;
 
 
@@ -61,7 +59,8 @@ public class Material {
 	public void setId(Integer id) {
 		Id = id;
 	}
-
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ContainerTypeId")
 	public com.smartflow.model.ContainerType getContainerType() {
 		return ContainerType;
 	}

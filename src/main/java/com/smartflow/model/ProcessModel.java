@@ -36,6 +36,7 @@ public class ProcessModel {
 	private Integer CreatorId;
 	@Column(name="CreationDateTime")
 	private Date CreationDateTime;
+
 	@ManyToOne
 	@JoinColumn(name = "CellId")
 	private Cell Cell;

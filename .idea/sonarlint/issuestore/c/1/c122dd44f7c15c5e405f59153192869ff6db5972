@@ -1,0 +1,14 @@
+
+W	java:S107"BConstructor has 12 parameters, which is greater than 7 authorized.(ßï‚•
+l	java:S116"RRename this field "Factory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’¦æ£üÿÿÿÿ
+e	java:S116"PRename this field "State" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßÆ¢
+l	java:S116"WRename this field "EditDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿû®‚
+g	java:S116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á³À¬úÿÿÿÿ
+s	java:S116"YRename this field "MaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÂÔ„øÿÿÿÿ
+2
+java:S1116"Remove this empty statement.(Ë¾—¼
+o	java:S116"URename this field "ValidBegin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Ö‰ùüÿÿÿÿ
+u	java:S116"[Rename this field "CreationDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õîä¯üÿÿÿÿ
+h	java:S116"SRename this field "ValidEnd" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áåî¶
+m	java:S116"XRename this field "ProcessNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úîÿ
+k	java:S116"QRename this field "Editor" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äáøÈøÿÿÿÿ

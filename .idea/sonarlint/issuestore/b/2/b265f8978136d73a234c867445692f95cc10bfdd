@@ -1,0 +1,13 @@
+
+e	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ÿÅÒşÿÿÿÿ8á”¼.
+p	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ÃÛğùÿÿÿÿ8á”¼.
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(—ûÎÖ8á”¼.
+‡
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(—ûÎÖ8‚»İÌÀ.
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£Ñßû8á”¼.
+p	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å™·¸ûÿÿÿÿ8á”¼.
+k
+java:S1192"PDefine a constant instead of duplicating this literal "æŸ¥è¯¢å¤±è´¥ï¼š" 3 times.(û§œŠ8á”¼.
+Œ
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ÿÅÒşÿÿÿÿ8‚»İÌÀ.
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—ûÎÖ8á”¼.

@@ -1,0 +1,11 @@
+
+i	java:S116"QRename this field "Editor" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’˜ýƒûÿÿÿÿ
+e	java:S116"RRename this field "Creator" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒóÞˆ
+`	java:S116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×­ÒÒ
+q	java:S116"YRename this field "MaterialNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®Ð¤éüÿÿÿÿ
+h	java:S116"PRename this field "State" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ¾ñàúÿÿÿÿ
+q	java:S116"YRename this field "LocationNumber" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁèºÝþÿÿÿÿ
+o	java:S116"WRename this field "EditDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›óà½þÿÿÿÿ
+a	java:S116"NRename this field "JPH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÿ³Æ
+n	java:S116"[Rename this field "CreationDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùÓðø
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œë½í

@@ -1,0 +1,57 @@
+
+|
+java:S2293Û"YReplace the type specification in this constructor call with the diamond operator ("<>").(™ºöºıÿÿÿÿ8¾¼.
+i
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¥¥şğ
+g
+java:S3252‘"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(›¶‚¦ÿÿÿÿÿ8¾¼.
+l
+java:S1192Â"IDefine a constant instead of duplicating this literal "Quantity" 8 times.(³Ôáõÿÿÿÿÿ8¾¼.
+n
+java:S1192Ä"QDefine a constant instead of duplicating this literal "IsNeedSetupCheck" 8 times.(§š„q8¾¼.
+n	java:S117£"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íµ³8¾¼.
+N
+java:S1117À"7Rename "map" which hides the field declared at line 53.(ƒ¢Œó
+j
+java:S1192¥"MDefine a constant instead of duplicating this literal "StationGroup" 3 times.(Ğ¸Æa8¾¼.
+e
+java:S1192Å"GDefine a constant instead of duplicating this literal "UnitId" 4 times.(Ôô‰Ø8¾¼.
+c	java:S112¾"FDefine and throw a dedicated exception instead of using a generic one.(“ÁğÎ8¾¼.
+ƒ
+java:S1192Ë"eDefine a constant instead of duplicating this literal "æ­¤ç‰©æ–™å·ä¸ºåŸææ–™æ— æ³•æ³¨å†Œ" 3 times.(¥Ñ€µ8¾¼.
+k	java:S117c"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”˜ôäÿÿÿÿÿ
+q
+java:S1192Æ"NDefine a constant instead of duplicating this literal "IsAlternative" 8 times.(è›¢ÿÿÿÿÿ8¾¼.
+`
+java:S3252º"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(›¶‚¦ÿÿÿÿÿ
+U
+java:S1117–"7Rename "map" which hides the field declared at line 53.(ƒ¢Œó8¾¼.
+U
+java:S1117¿"7Rename "map" which hides the field declared at line 53.(ƒ¢Œó8¾¼.
+f
+java:S1192ù"HDefine a constant instead of duplicating this literal "Version" 5 times.(É¦êÑ8¾¼.
+u
+java:S1192Ò"WDefine a constant instead of duplicating this literal "ä½ åœ¨BOMå­è¡¨ä¸­ç¬¬" 15 times.(’ã¢°8¾¼.
+n
+java:S1192Ã"KDefine a constant instead of duplicating this literal "ReturnCode" 3 times.(³¯Ú‰ùÿÿÿÿ8¾¼.
+k
+java:S1192P"PDefine a constant instead of duplicating this literal "MaterialNumber" 22 times.(şˆÃÑûÿÿÿÿ
+b
+java:S1192h"LDefine a constant instead of duplicating this literal "BomItemList" 6 times.(í†›½
+u
+java:S3776¶"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(’¸È¦ùÿÿÿÿ8¾¼.
+l
+java:S1192Ä"NDefine a constant instead of duplicating this literal "ReturnMessage" 3 times.(œÒó½8¾¼.
+m
+java:S1192Ã"ODefine a constant instead of duplicating this literal "StationGroupId" 8 times.(»¥ÛÉ8¾¼.
+Z
+java:S1117Û"7Rename "map" which hides the field declared at line 53.(™ºöºıÿÿÿÿ8¾¼.
+_
+java:S1192K"IDefine a constant instead of duplicating this literal "RowCount" 4 times.(õë¼…
+b	java:S112C"FDefine and throw a dedicated exception instead of using a generic one.(¹ìÓŒ8÷¾Ş±Æ.
+g	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(ÿ¯¤Æşÿÿÿÿ8÷¾Ş±Æ.
+c	java:S112–"FDefine and throw a dedicated exception instead of using a generic one.(Æ÷’€8÷¾Ş±Æ.
+c	java:S112¼"FDefine and throw a dedicated exception instead of using a generic one.(‘èú8÷¾Ş±Æ.
+c	java:S112í"FDefine and throw a dedicated exception instead of using a generic one.(úê¥¡8÷¾Ş±Æ.
+c	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ï¡ß¾8÷¾Ş±Æ.
+c	java:S112Ö"FDefine and throw a dedicated exception instead of using a generic one.(™ÊÏã8÷¾Ş±Æ.

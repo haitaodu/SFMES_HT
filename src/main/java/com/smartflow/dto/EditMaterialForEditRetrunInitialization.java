@@ -35,7 +35,6 @@ public class EditMaterialForEditRetrunInitialization {
 	private String FactoryId;
 	private int WashQuantity;
 	private int MaxWashQuantity;
-	private int StationId;
 	private Date ValidBegin;
 	private Date ValidEnd;
 	private boolean RequireFIFO;//是否需要先进先出
@@ -114,14 +113,7 @@ public class EditMaterialForEditRetrunInitialization {
 	public void setMaxWashQuantity(int maxWashQuantity) {
 		MaxWashQuantity = maxWashQuantity;
 	}
-	@JsonProperty("StationId")
-	public int getStationId() {
-		return StationId;
-	}
 
-	public void setStationId(int stationId) {
-		StationId = stationId;
-	}
 
 	@JsonProperty("UnitId")
 	public Integer getUnitId() {

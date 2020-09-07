@@ -44,16 +44,23 @@ import com.smartflow.util.ReadDataUtil;
 public class MaterialController extends BaseController{
 	private static final Logger logger = Logger.getLogger(MaterialController.class);
 	
-	@Autowired
-	MaterialService materialService;
+	final
+    MaterialService materialService;
 	
-	@Autowired
-	StationService stationService;
+	final
+    StationService stationService;
 	
-	@Autowired
-	StationGroupService stationGroupService;
-	
-	/**
+	final
+    StationGroupService stationGroupService;
+
+    @Autowired
+    public MaterialController(MaterialService materialService, StationService stationService, StationGroupService stationGroupService) {
+        this.materialService = materialService;
+        this.stationService = stationService;
+        this.stationGroupService = stationGroupService;
+    }
+
+    /**
 	 * 分页查询初始化物料类型、工厂下拉框
 	 * @return
 	 */
@@ -146,7 +153,6 @@ public class MaterialController extends BaseController{
 				materialListDTO.setValidEnd(material.getValidEnd());
 				materialListDTO.setWashQuantity(material.getWashQuantity());
 				materialListDTO.setMaxWashQuantity(materialListDTO.getMaxWashQuantity());
-				materialListDTO.setStationName(stationService.getStationById(material.getStationId()).getName());
 				String requireFIFO = null;
 				if (material.getRequireFIFO()!=null) {
 					if (material.getRequireFIFO()==true)
@@ -210,7 +216,6 @@ public class MaterialController extends BaseController{
 				materialListDTO.setSafetyStock(material.getSafetyStock());
 				materialListDTO.setWashQuantity(material.getWashQuantity());
 				materialListDTO.setMaxWashQuantity(materialListDTO.getMaxWashQuantity());
-				materialListDTO.setStationName(stationService.getStationById(material.getStationId()).getName());
 				String setupFlag = null;
 				if(material.getSetupFlag()==true)
 					setupFlag = "True";
@@ -320,7 +325,7 @@ public class MaterialController extends BaseController{
 				TDto.setValidEnd(material.getValidEnd());
 				TDto.setMaxWashQuantity(material.getMaxWashQuantity());
 				TDto.setWashQuantity(material.getWashQuantity());
-				TDto.setStationId(material.getStationId());
+
 				if (material.getRequireFIFO()!=null) {
 					TDto.setRequireFIFO(material.getRequireFIFO());
 				}
@@ -408,7 +413,6 @@ public class MaterialController extends BaseController{
 					}
 					material.setWashQuantity(creationMaterialDTO.getWashQuantity());
 					material.setMaxWashQuantity(creationMaterialDTO.getMaxWashQuantity());
-					material.setStationId(creationMaterialDTO.getStationId());
 					material.setCreationDateTime(new Date());
 					material.setCreatorId(creationMaterialDTO.getCreatorId());
 					material.setEditDateTime(new Date());
@@ -478,7 +482,6 @@ public class MaterialController extends BaseController{
 						material.setNumberOfPanels(0);
 					    material.setWashQuantity(editMaterialDTO.getWashQuantity());
 					    material.setMaxWashQuantity(editMaterialDTO.getMaxWashQuantity());
-					    material.setStationId(editMaterialDTO.getStationId());
 					if (editMaterialDTO.getUnit()!=null) {
 						material.setUnit(editMaterialDTO.getUnit());
 					}

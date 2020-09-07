@@ -1,0 +1,14 @@
+
+\	java:S107"BConstructor has 10 parameters, which is greater than 7 authorized.(œÕ­Ãıÿÿÿÿ
+i	java:S116"TRename this field "Secquence" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë‰úê
+i	java:S116"TRename this field "ProcessId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Šã¸
+g	java:S116"MRename this field "Id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬µä›şÿÿÿÿ
+p	java:S116"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¼Â­ùÿÿÿÿ
+s	java:S116"YRename this field "StationGroupId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Ø°ùÿÿÿÿ
+u	java:S116"[Rename this field "StationGroupName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥Åşÿÿÿÿÿ
+u	java:S116"[Rename this field "IsNeedSetupCheck" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õğÿµùÿÿÿÿ
+k	java:S116"QRename this field "Editor" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’˜ıƒûÿÿÿÿ
+q	java:S116"WRename this field "EditDateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›óà½şÿÿÿÿ
+c	java:S116"NRename this field "Key" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß’¯¥
+1
+java:S1116"Remove this empty statement.(Œ®“h

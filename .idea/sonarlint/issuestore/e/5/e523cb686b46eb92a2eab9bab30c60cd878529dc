@@ -1,0 +1,12 @@
+
+N	java:S106)"9Replace this use of System.out or System.err by a logger.(ûø§£
+N	java:S106*"9Replace this use of System.out or System.err by a logger.(‘ÙëÚ
+L
+java:S17519"6Remove this "return" statement or make it conditional.(ÛÍô
+L
+java:S1751Q"6Remove this "return" statement or make it conditional.(şÏï
+V	java:S125	"<This block of commented-out lines of code should be removed.(Î“å…ıÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(ˆ½·äûÿÿÿÿ
+Q	java:S1258"<This block of commented-out lines of code should be removed.(¬¢ˆÖ
+V	java:S125K"<This block of commented-out lines of code should be removed.(â¼Îøÿÿÿÿ
+Q	java:S125P"<This block of commented-out lines of code should be removed.(¡„ˆß

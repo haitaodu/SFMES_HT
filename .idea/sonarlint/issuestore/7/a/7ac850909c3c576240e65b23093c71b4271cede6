@@ -1,0 +1,63 @@
+
+g
+java:S1192Ò"PDefine a constant instead of duplicating this literal "ç™»é™†å¤±è´¥ï¼š" 3 times.(œëÜ¬
+y
+java:S1192Í"bDefine a constant instead of duplicating this literal "ç™»é™†å¤±è´¥ï¼šç”¨æˆ·åä¸å­˜åœ¨" 3 times.(£ÏÉ¦
+_
+java:S1192¶"HDefine a constant instead of duplicating this literal "Message" 6 times.(çÁÔè
+h
+java:S1192µ"LDefine a constant instead of duplicating this literal "ReturnCode" 15 times.(³¯Ú‰ùÿÿÿÿ
+e
+java:S1192Ñ"NDefine a constant instead of duplicating this literal "ReturnMessage" 9 times.(¶¶™³
+e
+java:S1192†"IDefine a constant instead of duplicating this literal "success" 10 times.(ŒŒÔ²ÿÿÿÿÿ
+|
+java:S1192Â"eDefine a constant instead of duplicating this literal "ç™»é™†å¤±è´¥ï¼šè¯¥ç”¨æˆ·å·²è¢«ç¦ç”¨" 3 times.(şŞæó
+y
+java:S1192Ç"bDefine a constant instead of duplicating this literal "ç™»é™†å¤±è´¥ï¼šå¯†ç è¾“å…¥é”™è¯¯" 3 times.(²‹ï
+
+java:S1192¾"eDefine a constant instead of duplicating this literal "ç™»é™†å¤±è´¥ï¼šè¯¥ç”¨æˆ·å·²è¢«åˆ é™¤" 3 times.(¸ºªÌüÿÿÿÿ
+\
+java:S1192S"FDefine a constant instead of duplicating this literal "token" 4 times.(ÂàÜş
+S
+java:S1155c">Use isEmpty() to check whether the collection is empty or not.(¨ùÜL
+l	java:S117Ü"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„Î÷çùÿÿÿÿ
+l	java:S117Û"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊãÃáûÿÿÿÿ
+g	java:S117ş"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯óŸÿ
+?
+java:S1148—"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148Õ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148ä"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148¡"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148ñ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+u
+java:S1149a"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰
+m
+java:S3776B"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(¢íØ‚øÿÿÿÿ
+S	java:S106C"9Replace this use of System.out or System.err by a logger.(¸ÑùÈùÿÿÿÿ
+N	java:S106U"9Replace this use of System.out or System.err by a logger.(­«Î†
+S	java:S106V"9Replace this use of System.out or System.err by a logger.(å²Ê¼ıÿÿÿÿ
+N	java:S106W"9Replace this use of System.out or System.err by a logger.(±½¡×
+N	java:S106X"9Replace this use of System.out or System.err by a logger.(‡¡–à
+M	java:S106Y"9Replace this use of System.out or System.err by a logger.(ş¬^
+S	java:S106Z"9Replace this use of System.out or System.err by a logger.(­ÔÒ–øÿÿÿÿ
+S	java:S106s"9Replace this use of System.out or System.err by a logger.(åö¡½úÿÿÿÿ
+T	java:S106™"9Replace this use of System.out or System.err by a logger.(áêÎŒıÿÿÿÿ
+n
+java:S3776Ÿ"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ªÍøûùÿÿÿÿ
+T	java:S106®"9Replace this use of System.out or System.err by a logger.(å²Ê¼ıÿÿÿÿ
+O	java:S106¯"9Replace this use of System.out or System.err by a logger.(±½¡×
+n
+java:S3776í"RRefactor this method to reduce its Cognitive Complexity from 43 to the 15 allowed.(‡§È¶ÿÿÿÿÿ
+r
+java:S2159‚"VRemove this call to "equals"; comparisons between unrelated types always return false.(ÛøÃ˜şÿÿÿÿ
+Q	java:S125M"<This block of commented-out lines of code should be removed.(Š‹³´
+Q	java:S125["<This block of commented-out lines of code should be removed.(Ô„ÒÇ
+Q	java:S125^"<This block of commented-out lines of code should be removed.(Ä¬Ş
+R	java:S125‡"<This block of commented-out lines of code should be removed.(¡Õ±š
+W	java:S125¸"<This block of commented-out lines of code should be removed.(°ÅÏûÿÿÿÿ
+R	java:S125¨"<This block of commented-out lines of code should be removed.(Åèá

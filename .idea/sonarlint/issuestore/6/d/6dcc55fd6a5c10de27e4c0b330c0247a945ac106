@@ -1,0 +1,70 @@
+
+a
+java:S1192"FDefine a constant instead of duplicating this literal "label" 4 times.(¦Ù…˜8ç¶ø¹.
+X
+java:S1117"8Rename "json" which hides the field declared at line 41.(Æ®Ëğüÿÿÿÿ8¢Æöê¹.
+_
+java:S3252"DUse static access with "com.alibaba.fastjson.JSON" for "parseArray".(ÎüÇ8Çä÷•º.
+_
+java:S1192"KDefine a constant instead of duplicating this literal "ValidBegin" 4 times.(îÍ¶Ş
+i
+java:S1192"VDefine a constant instead of duplicating this literal "ä½ åœ¨å·¥è‰ºæ­¥éª¤ç¬¬" 6 times.(Ø÷È
+^
+java:S1192"JDefine a constant instead of duplicating this literal "Secquence" 6 times.(»ñ°
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íµ³8ÍŞúñ¹.
+W
+java:S1481"<Remove this unused "materialDataForSearches" local variable.(ùØÓ8Çä÷•º.
+‡
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(“ÁğÎ8ç’‘–º.
+c
+java:S1192"ODefine a constant instead of duplicating this literal "StationGroupId" 6 times.(’¬šô
+j
+java:S1192"QDefine a constant instead of duplicating this literal "IsNeedSetupCheck" 6 times.(²ç‡ şÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”˜ôäÿÿÿÿÿ
+L
+java:S1481",Remove this unused "version" local variable.(éöçèùÿÿÿÿ8Çä÷•º.
+h
+java:S1192"ODefine a constant instead of duplicating this literal "MaterialNumber" 4 times.(şˆÃÑûÿÿÿÿ
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(“ÁğÎ8Çä÷•º.
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿áœğúÿÿÿÿ
+d
+java:S1192"PDefine a constant instead of duplicating this literal "ProcessStepList" 5 times.(’ÓĞ
+d
+java:S2583"DChange this condition so that it does not always evaluate to "false"(‘ë¹¬şÿÿÿÿ8Çä÷•º.
+Q
+java:S1117"8Rename "json" which hides the field declared at line 41.(Ä‡…¹ıÿÿÿÿ
+]
+java:S1192"IDefine a constant instead of duplicating this literal "ValidEnd" 4 times.(šÏóÁ
+X
+java:S1117"8Rename "json" which hides the field declared at line 41.(Ÿ£¢òúÿÿÿÿ8Çä÷•º.
+e
+java:S1192"LDefine a constant instead of duplicating this literal "Description" 8 times.(‘Á­™øÿÿÿÿ
+l
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(óİ±
+p	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿß§€şÿÿÿÿ8Çä÷•º.
+Q
+java:S1117"8Rename "json" which hides the field declared at line 41.(Ä‡…¹ıÿÿÿÿ
+Q
+java:S1117"8Rename "json" which hides the field declared at line 41.(Ä‡…¹ıÿÿÿÿ
+k
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(®ã…¸şÿÿÿÿ
+Q
+java:S1117"8Rename "json" which hides the field declared at line 41.(©Ã¡¢ùÿÿÿÿ
+Q
+java:S1117"8Rename "json" which hides the field declared at line 41.(Æ®Ëğüÿÿÿÿ
+g
+java:S1192"LDefine a constant instead of duplicating this literal "FactoryList" 3 times.(É‹±–8Çä÷•º.
+X
+java:S1117"8Rename "json" which hides the field declared at line 41.(Æ®Ëğüÿÿÿÿ8°îÎ¼.
+j
+java:S1192"ODefine a constant instead of duplicating this literal "materialNumber" 3 times.(Ğôã˜8Çä÷•º.
+A
+java:S1125"(Remove the literal "true" boolean value.(î¼¥ üÿÿÿÿ
+y
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ÿ£¢òúÿÿÿÿ8Çä÷•º.
+h
+java:S1192"MDefine a constant instead of duplicating this literal "StationGroup" 3 times.(¼Êïş8°îÎ¼.
+X
+java:S1117"8Rename "json" which hides the field declared at line 41.(Ä‡…¹ıÿÿÿÿ8Çä÷•º.
+M
+java:S1481"4Remove this unused "stationService1" local variable.(Ÿ”Ûâûÿÿÿÿ
