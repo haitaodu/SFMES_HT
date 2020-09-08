@@ -11,26 +11,26 @@ import java.util.Date;
  */
 
 public class ProcsessEditeView {
-    int	Id;
+    Integer Id;
     String ProcessNumber;
     String MaterialNumber;
-    int FactoryId;
-    int State;
+    Integer FactoryId;
+    Integer State;
     Date ValidBegin;
     Date ValidEnd;
     Date CreationDateTime;
     Date    EditDateTime;
-    int    Editor;
+    Integer    Editor;
     String parentProcessNumber;
-    int version;
+    Integer version;
 
 
 
     public ProcsessEditeView() {};
-    public ProcsessEditeView(int id, String processNumber, String materialNumber, int factoryId, int state,
+    public ProcsessEditeView(Integer id, String processNumber, String materialNumber, Integer factoryId, Integer state,
                              Date validBegin, Date validEnd, Date creationDateTime, Date editDateTime,
-                             int editor
-            , String parentProcessNumber, int version) {
+                             Integer editor
+            , String parentProcessNumber, Integer version) {
 
         Id = id;
         ProcessNumber = processNumber;
@@ -46,10 +46,10 @@ public class ProcsessEditeView {
         this.version=version;
     }
     @JsonProperty("Version")
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
     @JsonProperty("ParentProcessNumber")
@@ -60,10 +60,10 @@ public class ProcsessEditeView {
         this.parentProcessNumber = parentProcessNumber;
     }
     @JsonProperty("Id")
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         Id = id;
     }
     @JsonProperty("ProcessNumber")
@@ -81,17 +81,17 @@ public class ProcsessEditeView {
         MaterialNumber = materialNumber;
     }
     @JsonProperty("Factory")
-    public int getFactoryId() {
+    public Integer getFactoryId() {
         return FactoryId;
     }
-    public void setFactory(int factoryId) {
+    public void setFactory(Integer factoryId) {
         FactoryId = factoryId;
     }
     @JsonProperty("State")
-    public int getState() {
+    public Integer getState() {
         return State;
     }
-    public void setState(int state) {
+    public void setState(Integer state) {
         State = state;
     }
     @JsonProperty("ValidBegin")
@@ -123,10 +123,10 @@ public class ProcsessEditeView {
         EditDateTime = editDateTime;
     }
     @JsonProperty("Editor")
-    public int getEditor() {
+    public Integer getEditor() {
         return Editor;
     }
-    public void setEditor(int editor) {
+    public void setEditor(Integer editor) {
         Editor = editor;
     }
 }

@@ -11,24 +11,24 @@ import java.util.Date;
  */
 
 public class ProcessItemEditeView {
-    private int Secquence;
+    private Integer Secquence;
     private Integer ProcessId;
-    private int Id;
+    private Integer Id;
     private String Description;
-    private int StationGroupId;
+    private Integer StationGroupId;
     private String StationGroupName;
     private boolean IsNeedSetupCheck;
     private String Editor;
     private Date EditDateTime;
-    private int Key;
+    private Integer Key;
     @JsonProperty("Secquence")
-    public int getSecquence() {
+    public Integer getSecquence() {
         return Secquence;
     }
     public ProcessItemEditeView() {};
 
 
-    public ProcessItemEditeView(int secquence, Integer processId, int id, String description, int stationGroupId, String stationGroupName, boolean isNeedSetupCheck, String editor, Date editDateTime, int key) {
+    public ProcessItemEditeView(Integer secquence, Integer processId, Integer id, String description, Integer stationGroupId, String stationGroupName, boolean isNeedSetupCheck, String editor, Date editDateTime, Integer key) {
         Secquence = secquence;
         ProcessId = processId;
         Id = id;
@@ -41,7 +41,7 @@ public class ProcessItemEditeView {
         Key = key;
     }
 
-    public void setSecquence(int secquence) {
+    public void setSecquence(Integer secquence) {
         Secquence = secquence;
     }
     @JsonProperty("ProcessId")
@@ -52,10 +52,10 @@ public class ProcessItemEditeView {
         ProcessId = processId;
     }
     @JsonProperty("Id")
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         Id = id;
     }
     @JsonProperty("Description")
@@ -66,10 +66,10 @@ public class ProcessItemEditeView {
         Description = description;
     }
     @JsonProperty("StationGroupId")
-    public int getStationGroupId() {
+    public Integer getStationGroupId() {
         return StationGroupId;
     }
-    public void setStationGroupId(int stationGroupId) {
+    public void setStationGroupId(Integer stationGroupId) {
         StationGroupId = stationGroupId;
     }
     @JsonProperty("StationGroup")
@@ -103,10 +103,10 @@ public class ProcessItemEditeView {
         EditDateTime = editDateTime;
     }
     @JsonProperty("key")
-    public int getKey() {
+    public Integer getKey() {
         return Key;
     }
-    public void setKey(int key) {
+    public void setKey(Integer key) {
         this.Key = key;
     }
 }

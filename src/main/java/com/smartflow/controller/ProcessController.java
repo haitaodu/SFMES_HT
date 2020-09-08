@@ -27,7 +27,7 @@ import java.util.*;
  * @author haita
  */
 @Controller
-@RequestMapping("api/Process")
+//@RequestMapping("api/Process")
 public class ProcessController extends BaseController {
 	private final
 	ProcessService processService;
@@ -50,7 +50,7 @@ public class ProcessController extends BaseController {
 		this.bomHeadService = bomHeadService;
 	}
 
-	@PostMapping(value="/GetTByCondition")
+	@PostMapping(value="api/Process/GetTByCondition")
 	@CrossOrigin(origins = "*",maxAge = 3600)
 	public @ResponseBody Object getPageData
 			(HttpServletRequest request,HttpServletResponse response)
@@ -80,7 +80,7 @@ public class ProcessController extends BaseController {
 		}
 		return json;
 	}
-	@GetMapping (value="/GetTById/{Id}")
+	@GetMapping (value="api/Process/GetTById/{Id}")
 	public @ResponseBody Object readDataById(@PathVariable Integer Id)
 	{
 		Map<String, Object> json=new HashMap<>();
@@ -97,7 +97,7 @@ public class ProcessController extends BaseController {
 	}
 	
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@PostMapping(value="/Delete")
+	@PostMapping(value="api/Process/Delete")
 	public @ResponseBody Object delDataById(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
 		Map<String, Object> json=new HashMap<>();
@@ -129,7 +129,7 @@ public class ProcessController extends BaseController {
 		return json;
 
 	}
-	@GetMapping (value="/GetProcessListOfALl")
+	@GetMapping (value="api/Process/GetProcessListOfALl")
 	public @ResponseBody Object getProcessListOfALl()
 	{
 		Map<String, Object> json=new HashMap<>();
@@ -329,7 +329,7 @@ public class ProcessController extends BaseController {
 		return json;
 	}
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@GetMapping(value="/GetAddInitialize")
+	@GetMapping(value="api/Process/GetAddInitialize")
 	public @ResponseBody Object getAddInitialize(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{		
 		Map<String, Object> json=new HashMap<String,Object>();
@@ -354,7 +354,7 @@ public class ProcessController extends BaseController {
 
 	}
 	@CrossOrigin(origins="*",maxAge=3600)
-	@GetMapping(value="/GetInitializeList")
+	@GetMapping(value="api/Process/GetInitializeList")
 	public @ResponseBody Map<String, Object> getFactoryNameList(){
 		Map<String, Object> json = new HashMap<>();
 		try{
@@ -505,7 +505,7 @@ public class ProcessController extends BaseController {
 
 
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@PostMapping(value="/GetMaterialListByMaterialNumber")
+	@PostMapping(value="api/Process/GetMaterialListByMaterialNumber")
 	public @ResponseBody Object getMaterialListByMaterialNumber
 			(HttpServletRequest request,
 			 HttpServletResponse response) throws Exception {
@@ -545,7 +545,7 @@ public class ProcessController extends BaseController {
 
 
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@GetMapping (value="/GetStationGroupList/{Id}")
+	@GetMapping (value="api/Process/GetStationGroupList/{Id}")
 	public @ResponseBody Object getStationGroupList(@PathVariable Integer Id) {
 		Map<String, Object> json;
 		Map<String, Object> map=new  HashMap<>();
