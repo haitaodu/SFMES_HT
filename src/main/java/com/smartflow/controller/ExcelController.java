@@ -329,9 +329,8 @@ public class ExcelController extends BaseController {
 //        Date vBDate = utcFormat.parse(validBegin);
 //        validEnd = validEnd.replace("Z", " UTC");
 //        Date vEDate= utcFormat.parse(validEnd);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date vBDate = sdf.parse(validBegin);
-        Date vEDate= sdf.parse(validEnd);
+        Date vBDate = new Date(createProcessDTO.getValidBegin());
+        Date vEDate= new Date(createProcessDTO.getValidEnd());
         Date nowTime = new Date();
         ProcessModel processModel=new ProcessModel();
         if (StringUtils.isEmpty(validBegin)) {
