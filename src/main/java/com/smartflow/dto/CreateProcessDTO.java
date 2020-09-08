@@ -26,4 +26,6 @@ public class CreateProcessDTO {
     @Size(max=46,message="{process.ParentProcessNumber.required}")
     private String ParentProcessNumber;
     private String Description;
+    @NotBlank(message="{process.MaterialNumber.invalid}")
+    private String MaterialSplits;
 }

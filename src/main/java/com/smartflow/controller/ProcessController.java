@@ -505,7 +505,7 @@ public class ProcessController extends BaseController {
 
 
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@PostMapping(value="/GetMaterialListByMaterialNumber")
+	@PostMapping(value="api/Process/GetMaterialListByMaterialNumber")
 	public @ResponseBody Object getMaterialListByMaterialNumber
 			(HttpServletRequest request,
 			 HttpServletResponse response) throws Exception {
@@ -545,7 +545,7 @@ public class ProcessController extends BaseController {
 
 
 	@CrossOrigin(origins = "*",maxAge = 3600)
-	@GetMapping (value="/GetStationGroupList/{Id}")
+	@GetMapping (value="api/Process/GetStationGroupList/{Id}")
 	public @ResponseBody Object getStationGroupList(@PathVariable Integer Id) {
 		Map<String, Object> json;
 		Map<String, Object> map=new  HashMap<>();

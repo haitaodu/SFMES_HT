@@ -321,11 +321,14 @@ public class ExcelController extends BaseController {
         String validBegin = createProcessDTO.getValidBegin();
         String validEnd = createProcessDTO.getValidEnd();
 
-        SimpleDateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z");
-        validBegin = validBegin.replace("Z", " UTC");
-        Date vBDate = utcFormat.parse(validBegin);
-        validEnd = validEnd.replace("Z", " UTC");
-        Date vEDate= utcFormat.parse(validEnd);
+//        SimpleDateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z");
+//        validBegin = validBegin.replace("Z", " UTC");
+//        Date vBDate = utcFormat.parse(validBegin);
+//        validEnd = validEnd.replace("Z", " UTC");
+//        Date vEDate= utcFormat.parse(validEnd);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date vBDate = sdf.parse(validBegin);
+        Date vEDate= sdf.parse(validEnd);
         Date nowTime = new Date();
         ProcessModel processModel=new ProcessModel();
         if (StringUtils.isEmpty(validBegin)) {
@@ -341,7 +344,7 @@ public class ExcelController extends BaseController {
             json= this.setJson(STATUS_ERROR, "此工艺号已被注册", -1);
             return processModel;
         }
-        Map<String,Object> map=getVersionMaterialNumber(createProcessDTO.getMaterialNumber());
+        Map<String,Object> map=getVersionMaterialNumber(createProcessDTO.getMaterialSplits());
         if (materialService.getMaterialByNumber((String) map.get("materialNumber"))==null) {
             json= this.setJson(STATUS_ERROR, "你输入的物料号有错", -1);
             return processModel;
