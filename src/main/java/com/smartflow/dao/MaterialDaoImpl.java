@@ -39,6 +39,9 @@ public class MaterialDaoImpl implements MaterialDao{
 		if (getDTOByConditionOfMaterialListDTO.getFactoryId()!=null && !"".equals(getDTOByConditionOfMaterialListDTO.getFactoryId())) {
 			hql += "and factoryId = "+getDTOByConditionOfMaterialListDTO.getFactoryId();
 		}
+		if(getDTOByConditionOfMaterialListDTO.getContainerTypeId() != null){
+			hql += " and containerType.id = " + getDTOByConditionOfMaterialListDTO.getContainerTypeId();
+		}
 		try{
 			Query query = session.createQuery(hql);
 			return Integer.parseInt(query.uniqueResult().toString());
@@ -69,6 +72,9 @@ public class MaterialDaoImpl implements MaterialDao{
 //		}
 		if (getDTOByConditionOfMaterialListDTO.getFactoryId()!=null && !"".equals(getDTOByConditionOfMaterialListDTO.getFactoryId())) {
 			hql += "and factoryId = "+getDTOByConditionOfMaterialListDTO.getFactoryId();
+		}
+		if(getDTOByConditionOfMaterialListDTO.getContainerTypeId() != null){
+			hql += " and containerType.id = " + getDTOByConditionOfMaterialListDTO.getContainerTypeId();
 		}
 		try{
 			Query query = session.createQuery(hql);

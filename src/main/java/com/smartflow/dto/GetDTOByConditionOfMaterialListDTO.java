@@ -13,6 +13,7 @@ public class GetDTOByConditionOfMaterialListDTO {
 	private Integer MaterialGroupType;
 //	private Integer IsProduct;
 	private Integer FactoryId;
+	private Integer ContainerTypeId;
 	@NotNull(message="{pageIndex.required}")
 	@JsonProperty("PageIndex")
 	public Integer getPageIndex() {
@@ -71,9 +72,12 @@ public class GetDTOByConditionOfMaterialListDTO {
 	public void setFactoryId(Integer factoryId) {
 		FactoryId = factoryId;
 	}
-	
-	
-	
-	
-	
+	@JsonProperty("ContainerTypeId")
+	public Integer getContainerTypeId() {
+		return ContainerTypeId;
+	}
+
+	public void setContainerTypeId(Integer containerTypeId) {
+		ContainerTypeId = containerTypeId;
+	}
 }
