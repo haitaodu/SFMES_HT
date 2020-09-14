@@ -58,7 +58,7 @@ public class MaterialListDTO {
 	public void setMaxWashQuantity(int maxWashQuantity) {
 		MaxWashQuantity = maxWashQuantity;
 	}
-	@JsonProperty("StationName")
+	@JsonProperty("TraceStation")
 	public String getStationName() {
 		return StationName;
 	}

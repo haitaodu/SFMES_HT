@@ -106,5 +106,12 @@ public interface StationGroupService {
 	 * @return
 	 */
 	public List<String> getStationNameByStationGroupId(Integer stationGroupId);
+
+
+	/**
+	 * 查询物料上料点(AGV轨道)所有的工站列表
+	 * @return  上料点(AGV)列表
+	 */
+	public List<Map<String, Object>> getTraceStation();
 	
 }

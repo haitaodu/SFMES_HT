@@ -201,8 +201,6 @@ public class StationDaoImpl implements StationDao{
 	public List<Station_StationGroup> getStation_StationGroupByStationId(Integer stationId) {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
-		//String sql = "select * from core.Station_StationGroup where StationtId = :StationtId";
-		//Query query = session.createSQLQuery(sql).addEntity(Station_StationGroup.class);
 		String hql = "from Station_StationGroup where StationtId = :StationtId";
 		try{
 			Query query = session.createQuery(hql);

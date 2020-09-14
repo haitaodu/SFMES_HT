@@ -110,4 +110,11 @@ public interface StationGroupDao {
 	 * @return
 	 */
 	public List<String> getStationNameByStationGroupId(Integer stationGroupId);
+
+
+	/**
+	 * 查询物料上料点所有的工站列表
+	 * @return  上料点料表
+	 */
+	public List<Map<String, Object>> getTraceStation();
 }

@@ -11,6 +11,9 @@ import com.smartflow.dao.StationGroupDao;
 import com.smartflow.model.StationGroup;
 import com.smartflow.model.Station_StationGroup;
 
+/**
+ * @author haita
+ */
 @Service
 public class StationGroupServiceImpl implements StationGroupService {
 
@@ -87,7 +90,11 @@ public class StationGroupServiceImpl implements StationGroupService {
 	public List<String> getStationNameByStationGroupId(Integer stationGroupId) {
 		return stationGroupDao.getStationNameByStationGroupId(stationGroupId);
 	}
-	
-	
+
+	@Override
+	public List<Map<String, Object>> getTraceStation() {
+		return stationGroupDao.getTraceStation();
+	}
+
 
 }

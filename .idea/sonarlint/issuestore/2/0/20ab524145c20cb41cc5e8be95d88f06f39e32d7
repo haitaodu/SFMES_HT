@@ -1,58 +1,34 @@
 
+h
+java:S1192î"LDefine a constant instead of duplicating this literal "Description" 4 times.(‘Á­™øÿÿÿÿ
+?
+java:S1148è"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 c
-java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(şÓÈûÿÿÿÿ
-Z
-java:S1192"FDefine a constant instead of duplicating this literal "label" 6 times.(äüĞ“
-a
-java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÀÆäùÿÿÿÿ
-_
-java:S1192"FDefine a constant instead of duplicating this literal "State" 4 times.(·Êìùÿÿÿÿ
-5
-java:S1116"Remove this empty statement.(ú¿¢šüÿÿÿÿ
-T	java:S125"<This block of commented-out lines of code should be removed.(áÏ¿şÿÿÿÿ
-r
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ÿ£¢òúÿÿÿÿ
-<
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-a
-java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Œûşÿÿÿÿ
-T	java:S125"<This block of commented-out lines of code should be removed.(ğ³¸Éøÿÿÿÿ
-W
-java:S1155">Use isEmpty() to check whether the collection is empty or not.(á‡Ÿüşÿÿÿÿ
-<
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-T	java:S125"<This block of commented-out lines of code should be removed.(å›ªŞûÿÿÿÿ
-`
-java:S1192"LDefine a constant instead of duplicating this literal "FactoryList" 3 times.(ç•ß…
-i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”˜ôäÿÿÿÿÿ
-i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÈÙÅÿÿÿÿÿ
-^
-java:S1192"JDefine a constant instead of duplicating this literal "FactoryId" 6 times.(äÑ’Å
-d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°£ÇÖ
-<
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-O	java:S125"<This block of commented-out lines of code should be removed.(ËĞ“ø
-O	java:S125"<This block of commented-out lines of code should be removed.(À·ıø
-<
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-[
-java:S4488"HReplace "@RequestMapping(method = RequestMethod.PUT)" with "@PutMapping"(˜­ÿZ
-<
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-e
-java:S1192"LDefine a constant instead of duplicating this literal "Description" 4 times.(‘Á­™øÿÿÿÿ
-d
-java:S1192"KDefine a constant instead of duplicating this literal "AreaNumber" 6 times.(•ÜÑ¶ÿÿÿÿÿ
-<
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-c
-java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(êõ¸Üıÿÿÿÿ
-r
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(™ºöºıÿÿÿÿ
-\
-java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ö‡©—
-O	java:S125"<This block of commented-out lines of code should be removed.(À·ıø
-a
-java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(’’‘Öúÿÿÿÿ
-<
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+java:S1192´"LDefine a constant instead of duplicating this literal "FactoryList" 3 times.(ç•ß…
+k	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”˜ôäÿÿÿÿÿ
+?
+java:S1148º"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+W	java:S125¸"<This block of commented-out lines of code should be removed.(áÏ¿şÿÿÿÿ
+b
+java:S1192ğ"FDefine a constant instead of duplicating this literal "State" 4 times.(·Êìùÿÿÿÿ
+7
+java:S1116Y"Remove this empty statement.(ú¿¢šüÿÿÿÿ
+]
+java:S1192«"FDefine a constant instead of duplicating this literal "label" 6 times.(äüĞ“
+R	java:S125Å"<This block of commented-out lines of code should be removed.(À·ıø
+Y
+java:S1155~">Use isEmpty() to check whether the collection is empty or not.(á‡Ÿüşÿÿÿÿ
+>
+java:S1148q"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?
+java:S1148á"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+h
+java:S1192,"KDefine a constant instead of duplicating this literal "AreaNumber" 5 times.(ã …œ8“Ã­Ç.
+R	java:S125Ÿ"<This block of commented-out lines of code should be removed.(À·ıø
+l	java:S117Á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÈÙÅÿÿÿÿÿ
+g
+java:S1192."JDefine a constant instead of duplicating this literal "FactoryId" 5 times.(…‘¡Ï8“Ã­Ç.
+g	java:S117á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°£ÇÖ
+W	java:S125Ç"<This block of commented-out lines of code should be removed.(å›ªŞûÿÿÿÿ
+?
+java:S1148Ó"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ

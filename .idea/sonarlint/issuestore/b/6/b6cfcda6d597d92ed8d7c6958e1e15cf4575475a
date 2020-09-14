@@ -1,8 +1,8 @@
 
-k	java:S117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïí×§ýÿÿÿÿ
-f	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à”ÄÙ
-h	java:S100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïí×§ýÿÿÿÿ
 c	java:S100W"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à”ÄÙ
-c	java:S100]"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï°Ž²
-V	java:S125,"<This block of commented-out lines of code should be removed.(ƒ±ÒËûÿÿÿÿ
 Q	java:S125i"<This block of commented-out lines of code should be removed.(¦Ìüï
+k	java:S117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïí×§ýÿÿÿÿ
+c	java:S100]"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï°Ž²
+f	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à”ÄÙ
+V	java:S125,"<This block of commented-out lines of code should be removed.(ƒ±ÒËûÿÿÿÿ
+h	java:S100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïí×§ýÿÿÿÿ

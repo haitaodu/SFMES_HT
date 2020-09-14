@@ -1,35 +1,39 @@
 
+?
+java:S1148¾"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 >
-java:S1148e"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
->
-java:S1148'"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
->
-java:S1148R"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-l	java:S117¢"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğó–»øÿÿÿÿ
+java:S1148h"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 B
-java:S1168Ô"+Return an empty collection instead of null.(¥¹ï
+java:S1168¿"+Return an empty collection instead of null.(¥¹ï
 ?
-java:S1148Ó"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-?
-java:S1148…"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
->
-java:S1148v"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
->
-java:S1148?"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-?
-java:S1148”"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+java:S1148Ö"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 A
-java:S1168w"+Return an empty collection instead of null.(¥¹ï
+java:S1168i"+Return an empty collection instead of null.(¥¹ï
+F
+java:S1148æ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8æâ“®È.
+I
+java:S1168ç"+Return an empty collection instead of null.(¥¹ï8æâ“®È.
+B
+java:S1168×"+Return an empty collection instead of null.(¥¹ï
+>
+java:S1148U"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+g	java:S117±"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î­Ô³
+l	java:S117¥"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğó–»øÿÿÿÿ
+>
+java:S1148B"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148y"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 ?
-java:S1148»"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+java:S1148ˆ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 A
-java:S1168f"+Return an empty collection instead of null.(¥¹ï
-B
-java:S1168†"+Return an empty collection instead of null.(¥¹ï
-g	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î­Ô³
-B
-java:S1168¼"+Return an empty collection instead of null.(¥¹ï
+java:S1168C"+Return an empty collection instead of null.(¥¹ï
+?
+java:S1148—"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148*"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+A
+java:S1168z"+Return an empty collection instead of null.(¥¹ï
 j
-java:S1192s"ODefine a constant instead of duplicating this literal "StationGroupId" 3 times.(ÆŸ­ğøÿÿÿÿ
-A
-java:S1168@"+Return an empty collection instead of null.(¥¹ï
+java:S1192v"ODefine a constant instead of duplicating this literal "StationGroupId" 3 times.(ÆŸ­ğøÿÿÿÿ
+B
+java:S1168‰"+Return an empty collection instead of null.(¥¹ï

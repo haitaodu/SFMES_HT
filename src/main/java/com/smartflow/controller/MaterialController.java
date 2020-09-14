@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import com.smartflow.model.ContainerType;
+import com.smartflow.model.Station;
 import com.smartflow.service.ContainerTypeService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,15 +60,16 @@ public class MaterialController extends BaseController{
 	final
 	ContainerTypeService containerTypeService;
 
-	@Autowired
-	HibernateTemplate hibernateTemplate;
+	final
+    HibernateTemplate hibernateTemplate;
     @Autowired
-    public MaterialController(MaterialService materialService, StationService stationService, StationGroupService stationGroupService, ContainerTypeService containerTypeService) {
+    public MaterialController(MaterialService materialService, StationService stationService, StationGroupService stationGroupService, ContainerTypeService containerTypeService, HibernateTemplate hibernateTemplate) {
         this.materialService = materialService;
         this.stationService = stationService;
         this.stationGroupService = stationGroupService;
 		this.containerTypeService = containerTypeService;
-	}
+        this.hibernateTemplate = hibernateTemplate;
+    }
 
     /**
 	 * 分页查询初始化物料类型、工厂下拉框
@@ -84,6 +86,7 @@ public class MaterialController extends BaseController{
 			map.put("MaterialGroupType", MaterialGroupType);
 			map.put("Factory", Factory);
 			map.put("Container",containerTypeService.getContainerType());
+			map.put("TraceStation",stationGroupService.getTraceStation());
 			json = this.setJson(200, "初始化成功", map);
 		}catch(Exception e){
 			json = this.setJson(0, "初始化数据失败:"+e.getMessage(), -1);
@@ -134,6 +137,7 @@ public class MaterialController extends BaseController{
 				if (material.getEditorId()!=null) {
 					materialListDTO.setEditor(stationService.getUserNameById(material.getEditorId()));
 				}
+				materialListDTO.setStationName(material.getStation().getName());
                 materialListDTO.setContainerName(material.getContainerType().getName());
 				materialListDTO.setExpirationTime(material.getExpirationTime());
 				materialListDTO.setFactoryNumber(stationGroupService.getFactoryNameById(material.getFactoryId()));
@@ -215,6 +219,7 @@ public class MaterialController extends BaseController{
 				if (material.getEditorId()!=null) {
 					materialListDTO.setEditor(stationService.getUserNameById(material.getEditorId()));
 				}
+                materialListDTO.setStationName(material.getStation().getName());
 				materialListDTO.setExpirationTime(material.getExpirationTime());
 				materialListDTO.setFactoryNumber(stationGroupService.getFactoryNameById(material.getFactoryId()));
 				materialListDTO.setId(material.getId());
@@ -292,6 +297,7 @@ public class MaterialController extends BaseController{
 			map.put("TDto", TDto);
 			map.put("Station",stationService.getWashList());
 			map.put("Container",containerTypeService.getContainerType());
+			map.put("TraceStation",stationGroupService.getTraceStation());
 			json = this.setJson(200, "查询成功！", map);
 		}catch(Exception e){
 			json = this.setJson(0, "查询失败："+e.getMessage(), -1);
@@ -337,6 +343,7 @@ public class MaterialController extends BaseController{
 				TDto.setMaxWashQuantity(material.getMaxWashQuantity());
 				TDto.setWashQuantity(material.getWashQuantity());
                 TDto.setContainerTypeId(material.getContainerType().getId());
+                TDto.setTraceStationId(material.getStation().getId());
 				if (material.getRequireFIFO()!=null) {
 					TDto.setRequireFIFO(material.getRequireFIFO());
 				}
@@ -351,6 +358,7 @@ public class MaterialController extends BaseController{
 			map.put("Location", Location);
 			map.put("Factory", Factory);
 			map.put("TDto", TDto);
+            map.put("TraceStation",stationGroupService.getTraceStation());
 			map.put("Container",containerTypeService.getContainerType());
 			map.put("Station",stationService.getWashList());
 			json = this.setJson(200, "查询成功！", map);
@@ -407,6 +415,7 @@ public class MaterialController extends BaseController{
 						material.setIsProduct(false);
 						material.setIsMultiPanel(false);
 						material.setNumberOfPanels(0);
+						material.setStation(hibernateTemplate.get(Station.class,creationMaterialDTO.getTraceStationId()));
 						material.setContainerType(hibernateTemplate.get(ContainerType.class,creationMaterialDTO.getContainerTypeId()));
 					if (creationMaterialDTO.getUnit()!=null) {
 						material.setUnit(creationMaterialDTO.getUnit());
@@ -497,6 +506,7 @@ public class MaterialController extends BaseController{
 						material.setNumberOfPanels(0);
 					    material.setWashQuantity(editMaterialDTO.getWashQuantity());
 					    material.setMaxWashQuantity(editMaterialDTO.getMaxWashQuantity());
+					    material.setStation(hibernateTemplate.get(Station.class,editMaterialDTO.getTraceStationId()));
 					if (editMaterialDTO.getUnit()!=null) {
 						material.setUnit(editMaterialDTO.getUnit());
 					}

@@ -1,74 +1,111 @@
 
-F
-java:S1148ƒ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8±··©À.
-s
-java:S1192°"PDefine a constant instead of duplicating this literal "æŸ¥è¯¢æˆåŠŸï¼" 4 times.(æÛ²çûÿÿÿÿ8àÆÇ¥À.
-K
-java:S1125"(Remove the literal "true" boolean value.(ÜÊîüÿÿÿÿ8¢ñÊ¥À.
-d
-java:S1192ß"FDefine a constant instead of duplicating this literal "False" 3 times.(·°­Œ8àÆÇ¥À.
-a
-java:S1155¤">Use isEmpty() to check whether the collection is empty or not.(óúÇÊøÿÿÿÿ8ğÉå©À.
-L
-java:S1125ú")Remove the literal "false" boolean value.(ÄìÌëûÿÿÿÿ8¢ñÊ¥À.
-s	java:S117‘"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥ğÏçşÿÿÿÿ8²ŒÌ¥À.
-k	java:S117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œå³Şıÿÿÿÿ
-F
-java:S1148Ü"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ğÉå©À.
-L
-java:S1125 ")Remove the literal "false" boolean value.(Ö¬›Àÿÿÿÿÿ8àÆÇ¥À.
-p
-java:S3776À"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(ö• 8àÆÇ¥À.
-K
-java:S1125ï"(Remove the literal "true" boolean value.(ÜÊîüÿÿÿÿ8àÆÇ¥À.
+M
+java:S5411¶"*Use the primitive boolean expression here.(ÄìÌëûÿÿÿÿ8æ’Ã­Ç.
+s	java:S117¡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢û’¬øÿÿÿÿ8¢ñÊ¥À.
 G
-java:S1125Ş")Remove the literal "false" boolean value.(¼‹®8àÆÇ¥À.
-r	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µäÌÅøÿÿÿÿ8²ŒÌ¥À.
-s	java:S117’"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢û’¬øÿÿÿÿ8¢ñÊ¥À.
+java:S1125š")Remove the literal "false" boolean value.(¼‹®8àÆÇ¥À.
 n
-java:S1192²"PDefine a constant instead of duplicating this literal "æŸ¥è¯¢å¤±è´¥ï¼š" 4 times.(û§œŠ8àÆÇ¥À.
+java:S1192À"PDefine a constant instead of duplicating this literal "æŸ¥è¯¢å¤±è´¥ï¼š" 4 times.(û§œŠ8àÆÇ¥À.
 F
-java:S1148´"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¢ñÊ¥À.
-s	java:S117¬"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ÏÙäşÿÿÿÿ8²ŒÌ¥À.
-L
-java:S1125¨")Remove the literal "false" boolean value.(ÄìÌëûÿÿÿÿ8àÆÇ¥À.
-u
-java:S3776Ë"RRefactor this method to reduce its Cognitive Complexity from 40 to the 15 allowed.(€°ÿúÿÿÿÿ8ğÉå©À.
-F
-java:S1148À"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8àÆÇ¥À.
-^
-java:S1192L"HDefine a constant instead of duplicating this literal "Factory" 3 times.(§ç¡
-?
-java:S1148 "#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-G
-java:S1125Œ")Remove the literal "false" boolean value.(¼‹®8àÆÇ¥À.
-s	java:S117¯"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùıì¦ûÿÿÿÿ8¢ñÊ¥À.
-l	java:S117“"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µäÌÅøÿÿÿÿ
+java:S1148Ø"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8±··©À.
+p
+java:S3776Î"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(ö• 8àÆÇ¥À.
 h
-java:S3776]"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(íÉÛ
-F
-java:S1125¦"(Remove the literal "true" boolean value.(×¤¨¢8àÆÇ¥À.
+java:S3776j"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(íÉÛ
+a
+java:S1155¿">Use isEmpty() to check whether the collection is empty or not.(óúÇÊøÿÿÿÿ8ğÉå©À.
+M
+java:S5411ë"*Use the primitive boolean expression here.(°•Š¸ûÿÿÿÿ8æ’Ã­Ç.
+k	java:S117m"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œå³Şıÿÿÿÿ
+^
+java:S1192W"HDefine a constant instead of duplicating this literal "Factory" 3 times.(§ç¡
 K
-java:S1125Ü"(Remove the literal "true" boolean value.(°•Š¸ûÿÿÿÿ8àÆÇ¥À.
-n	java:S117´"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êĞó›8àÆÇ¥À.
-L
-java:S1125ñ")Remove the literal "false" boolean value.(Ö¬›Àÿÿÿÿÿ8¢ñÊ¥À.
-h	java:S112Ÿ"FDefine and throw a dedicated exception instead of using a generic one.(´Ã¶«úÿÿÿÿ8õÜˆ˜Æ.
-s	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùıì¦ûÿÿÿÿ8¢ñÊ¥À.
+java:S1125¬"(Remove the literal "true" boolean value.(ÜÊîüÿÿÿÿ8¢ñÊ¥À.
+s	java:S117Á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥ğÏçşÿÿÿÿ8àÆÇ¥À.
+t
+java:S2159§"VRemove this call to "equals"; comparisons between unrelated types always return false.(À‚€Õ8æ’Ã­Ç.
+s	java:S117À"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùıì¦ûÿÿÿÿ8¢ñÊ¥À.
+t
+java:S2159"VRemove this call to "equals"; comparisons between unrelated types always return false.(«ìøî8æ’Ã­Ç.
+d
+java:S1192î"FDefine a constant instead of duplicating this literal "False" 3 times.(·°­Œ8àÆÇ¥À.
+f	java:S117T"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ€È±
 u
-java:S3776è"RRefactor this method to reduce its Cognitive Complexity from 53 to the 15 allowed.(†Õßıÿÿÿÿ8±··©À.
-s	java:S117°"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥ğÏçşÿÿÿÿ8àÆÇ¥À.
-s	java:S117±"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢û’¬øÿÿÿÿ8¢ñÊ¥À.
-s	java:S117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µäÌÅøÿÿÿÿ8¢ñÊ¥À.
-f	java:S117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ€È±
-f	java:S117q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’Ù ò
-E
-java:S1148Q"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ğÉå©À.
-n	java:S117”"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êĞó›8²ŒÌ¥À.
+java:S3776ã"RRefactor this method to reduce its Cognitive Complexity from 40 to the 15 allowed.(€°ÿúÿÿÿÿ8ğÉå©À.
 F
-java:S1125ø"(Remove the literal "true" boolean value.(×¤¨¢8¢ñÊ¥À.
-n	java:S117À"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö• 8àÆÇ¥À.
+java:S1148ğ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ğÉå©À.
+k	java:S117U"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µäÌÅøÿÿÿÿ
+H
+java:S5411‡"*Use the primitive boolean expression here.(×¤¨¢8æ’Ã­Ç.
+n	java:S117£"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êĞó›8àÆÇ¥À.
+y
+java:S2159 "VRemove this call to "equals"; comparisons between unrelated types always return false.(˜­Ûıÿÿÿÿ8æ’Ã­Ç.
+f	java:S117~"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’Ù ò
+F
+java:S1148±"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ğÉå©À.
+L
+java:S1125¶")Remove the literal "false" boolean value.(ÄìÌëûÿÿÿÿ8àÆÇ¥À.
 K
-java:S1125Š"(Remove the literal "true" boolean value.(°•Š¸ûÿÿÿÿ8àÆÇ¥À.
+java:S1125ë"(Remove the literal "true" boolean value.(°•Š¸ûÿÿÿÿ8àÆÇ¥À.
+t
+java:S2159É"VRemove this call to "equals"; comparisons between unrelated types always return false.(…Œë 8æ’Ã­Ç.
+s	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥ğÏçşÿÿÿÿ8²ŒÌ¥À.
+H
+java:S5411´"*Use the primitive boolean expression here.(×¤¨¢8æ’Ã­Ç.
+L
+java:S1125€")Remove the literal "false" boolean value.(Ö¬›Àÿÿÿÿÿ8¢ñÊ¥À.
+u
+java:S3776ü"RRefactor this method to reduce its Cognitive Complexity from 53 to the 15 allowed.(†Õßıÿÿÿÿ8±··©À.
+M
+java:S5411®"*Use the primitive boolean expression here.(Ö¬›Àÿÿÿÿÿ8æ’Ã­Ç.
 F
-java:S1148“"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8²ŒÌ¥À.
+java:S1148Â"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¢ñÊ¥À.
+s	java:S117½"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ÏÙäşÿÿÿÿ8¢ñÊ¥À.
+H
+java:S5411š"*Use the primitive boolean expression here.(¼‹®8æ’Ã­Ç.
+M
+java:S5411‰"*Use the primitive boolean expression here.(ÄìÌëûÿÿÿÿ8æ’Ã­Ç.
+s	java:S117¢"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µäÌÅøÿÿÿÿ8²ŒÌ¥À.
+K
+java:S1125˜"(Remove the literal "true" boolean value.(°•Š¸ûÿÿÿÿ8àÆÇ¥À.
+l
+java:S1192X"JDefine a constant instead of duplicating this literal "Container" 3 times.(®ü´üÿÿÿÿ8æ’Ã­Ç.
+F
+java:S1125‡"(Remove the literal "true" boolean value.(×¤¨¢8àÆÇ¥À.
+F
+java:S1125´"(Remove the literal "true" boolean value.(×¤¨¢8¢ñÊ¥À.
+K
+java:S1125ş"(Remove the literal "true" boolean value.(ÜÊîüÿÿÿÿ8àÆÇ¥À.
+G
+java:S1125í")Remove the literal "false" boolean value.(¼‹®8àÆÇ¥À.
+?
+java:S1148’"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+M
+java:S5411¬"*Use the primitive boolean expression here.(ÜÊîüÿÿÿÿ8æ’Ã­Ç.
+L
+java:S1125®")Remove the literal "false" boolean value.(Ö¬›Àÿÿÿÿÿ8àÆÇ¥À.
+M
+java:S5411ş"*Use the primitive boolean expression here.(ÜÊîüÿÿÿÿ8æ’Ã­Ç.
+n	java:S117Î"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö• 8àÆÇ¥À.
+H
+java:S5411í"*Use the primitive boolean expression here.(¼‹®8æ’Ã­Ç.
+L
+java:S1125‰")Remove the literal "false" boolean value.(ÄìÌëûÿÿÿÿ8¢ñÊ¥À.
+M
+java:S5411€"*Use the primitive boolean expression here.(Ö¬›Àÿÿÿÿÿ8æ’Ã­Ç.
+s	java:S117Â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢û’¬øÿÿÿÿ8¢ñÊ¥À.
+n	java:S117Å"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êĞó›8²ŒÌ¥À.
+s	java:S117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùıì¦ûÿÿÿÿ8¢ñÊ¥À.
+E
+java:S1148^"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8àÆÇ¥À.
+y
+java:S2159Ì"VRemove this call to "equals"; comparisons between unrelated types always return false.(å†°Ÿûÿÿÿÿ8æ’Ã­Ç.
+M
+java:S5411˜"*Use the primitive boolean expression here.(°•Š¸ûÿÿÿÿ8æ’Ã­Ç.
+F
+java:S1148®"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8²ŒÌ¥À.
+s
+java:S1192¾"PDefine a constant instead of duplicating this literal "æŸ¥è¯¢æˆåŠŸï¼" 4 times.(æÛ²çûÿÿÿÿ8àÆÇ¥À.
+o
+java:S1192Y"MDefine a constant instead of duplicating this literal "TraceStation" 3 times.(€Ò’ıÿÿÿÿ8á¸ûÜÈ.
+s	java:S117Ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µäÌÅøÿÿÿÿ8á¸ûÜÈ.

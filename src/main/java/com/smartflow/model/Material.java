@@ -47,6 +47,7 @@ public class Material {
 	private int WashQuantity;
 	private int MaxWashQuantity;
     private ContainerType ContainerType;
+    private Station station;
 
 
 
@@ -59,6 +60,16 @@ public class Material {
 	public void setId(Integer id) {
 		Id = id;
 	}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "TrackStationId")
+	public Station getStation() {
+		return station;
+	}
+
+	public void setStation(Station station) {
+		this.station = station;
+	}
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ContainerTypeId")
 	public com.smartflow.model.ContainerType getContainerType() {
