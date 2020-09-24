@@ -107,4 +107,6 @@ public interface StationService {
 
 
 	public List<Map<String,Object>> getWashList();
+
+
 }

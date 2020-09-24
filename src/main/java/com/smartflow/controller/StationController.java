@@ -206,8 +206,7 @@ public class StationController extends BaseController{
 				station.setIpAddress(creationStationDTO.getStationIP());
 				station.setFactoryId(1);
 				stationService.addStation(station);
-				qualificationService.addQualificationAndStationAccessControl(station);
-				json = this.setJson(200, "添加成功",0);    
+				json = this.setJson(200, "添加成功",0);
 			}else{
 				json = this.setJson(0, "添加失败：工站编号不能重复！",-1);  
 			}
@@ -253,7 +252,6 @@ public class StationController extends BaseController{
 			}else{
 				json = this.setJson(0, "工站编号不能重复！", -1);    
 			}
-			qualificationService.updateQualificationAndStationAccessControl(station);
 		} catch (Exception e) {
 			json = this.setJson(0, "修改失败："+e.getMessage(),-1);
 			logger.error(e);
@@ -278,7 +276,7 @@ public class StationController extends BaseController{
 					station.setStationNumber("Del@"+station.getStationNumber());
 					station.setState(-1);
 					stationService.updateStation(station);
-					qualificationService.updateQualificationAndStationAccessControl(station);
+					//qualificationService.updateQualificationAndStationAccessControl(station);
 				}
 				json = this.setJson(200, "删除成功",0);  
 			}else{

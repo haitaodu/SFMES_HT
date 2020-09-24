@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.smartflow.model.StationGroup;
 import com.smartflow.model.Station_StationGroup;
 
+/**
+ * @author haita
+ */
 @Repository
 public class StationGroupDaoImpl implements StationGroupDao {
 
@@ -215,7 +218,21 @@ public class StationGroupDaoImpl implements StationGroupDao {
 		}
 	}
 
-
+	@Override
+	public List<Map<String, Object>> getTraceStation() {
+		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		String sql = "select Id [key],CONCAT(StationNumber,'('+Name+')') label from core.Station where State = 1 and StationType=7";
+		try{
+			Query query = session.createSQLQuery(sql);
+			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			session.close();
+		}
+	}
 
 
 }

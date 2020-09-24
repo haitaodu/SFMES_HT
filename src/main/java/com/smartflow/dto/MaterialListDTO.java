@@ -1,5 +1,9 @@
 package com.smartflow.dto;
 
+
+
+
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
@@ -58,7 +62,7 @@ public class MaterialListDTO {
 	public void setMaxWashQuantity(int maxWashQuantity) {
 		MaxWashQuantity = maxWashQuantity;
 	}
-	@JsonProperty("StationName")
+	@JsonProperty("TraceStation")
 	public String getStationName() {
 		return StationName;
 	}
