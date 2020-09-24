@@ -276,7 +276,7 @@ public class StationController extends BaseController{
 					station.setStationNumber("Del@"+station.getStationNumber());
 					station.setState(-1);
 					stationService.updateStation(station);
-					qualificationService.updateQualificationAndStationAccessControl(station);
+					//qualificationService.updateQualificationAndStationAccessControl(station);
 				}
 				json = this.setJson(200, "删除成功",0);  
 			}else{
