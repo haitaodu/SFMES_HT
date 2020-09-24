@@ -21,11 +21,11 @@ public interface SupplierInterfaceDao {
 	    //根据前端给出的数据更改相关表内的相关行的数据
 	    public void upDateData(SupplierModel supplierModel);
 	    //依据前端给出的页码，以及每个页的容量，返回分页数据
-	    public List<SupplierListDTO> getPageData(Integer pageNumber,Integer pageSize,String SupplierCode,String SupplierName);
+	    public List<SupplierListDTO> getPageData(Integer pageNumber, Integer pageSize, String SupplierCode, String SupplierName);
 	    //输出总的记录条数
-	    public Integer getRowCount(String SupplierCode,String SupplierName);
+	    public Integer getRowCount(String SupplierCode, String SupplierName);
 	    //查询表中包含SupplierCode和SupplierName的数据的个数0或者1，进而作前端重复性判断
-	    public int getDataForCheckUnique(String SupplierCode,String SupplierName);
+	    public int getDataForCheckUnique(String SupplierCode, String SupplierName);
 	    //判断该供应商编号是否被注册过
 	   public boolean isRegisterSupplierNumber(String SupplierNumber);
 }

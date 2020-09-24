@@ -3,6 +3,7 @@ package com.smartflow.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.smartflow.model.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,14 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.smartflow.model.AttributeDataRecord;
-import com.smartflow.model.Cell_Station;
-import com.smartflow.model.PartFailureDataRecord;
-import com.smartflow.model.Recipe;
-import com.smartflow.model.RecipeItem;
-import com.smartflow.model.Station;
-import com.smartflow.model.Station_StationGroup;
 
 @Repository
 public class StationDaoImpl implements StationDao{
@@ -247,5 +240,25 @@ public class StationDaoImpl implements StationDao{
 		}
 	}
 
+	@Override
+	public List<Map<String, Object>> getStationTypeList() {
+		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		String sql = "select Id [key],StationTypeName label from core.StationType";
+		try{
+			Query query = session.createSQLQuery(sql);
+			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			session.close();
+		}
+	}
 
+	@Override
+	public String getStationTypeNameByStationTypeId(Integer stationTypeId) {
+		StationType stationType = hibernateTemplate.get(StationType.class, stationTypeId);
+		return stationType == null ? null : stationType.getStationTypeName();
+	}
 }

@@ -124,7 +124,8 @@ public class StationController extends BaseController{
 				String creator = stationService.getUserNameById(station.getCreatorId());
 				String editor = stationService.getUserNameById(station.getEditorId());
 				StationDTO.setEditor(editor);
-				StationDTO.setStationType(getStationLabel(station.getStationType()));
+				StationDTO.setStationType(station.getStationType() == null ? null : stationService.getStationTypeNameByStationTypeId(station.getStationType()));
+				//StationDTO.setStationType(getStationLabel(station.getStationType()));
 				String state = PageUtil.paseState(station.getState());
 				StationDTO.setState(state);
 				StationDTO.setCreator(creator);
@@ -296,16 +297,16 @@ public class StationController extends BaseController{
 	 */
 	private List<Map<String,Object>>getStationTypeList()
 	{
-
-		List<Map<String, Object>> stationTypeList = new ArrayList<>();
-
-		for (StationEnum stationEnum:StationEnum.values())
-		{
-			Map<String, Object> stationType = new HashMap<>(2);
-			stationType.put("key", stationEnum.getKey());
-			stationType.put("label", stationEnum.getValue());
-			stationTypeList.add(stationType);
-		}
+		List<Map<String, Object>> stationTypeList = stationService.getStationTypeList();
+//		List<Map<String, Object>> stationTypeList = new ArrayList<>();
+//
+//		for (StationEnum stationEnum:StationEnum.values())
+//		{
+//			Map<String, Object> stationType = new HashMap<>(2);
+//			stationType.put("key", stationEnum.getKey());
+//			stationType.put("label", stationEnum.getValue());
+//			stationTypeList.add(stationType);
+//		}
 
 		return  stationTypeList;
 	}

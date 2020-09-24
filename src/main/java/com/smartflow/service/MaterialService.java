@@ -159,7 +159,7 @@ public interface MaterialService {
 	 */
 	public void deleteMaterial(Material material);
 	//根据前端传来的物料号模糊查询物料信息
-	public List<MaterialDataForSearch> getDataForSearch(String  materialNumber);
+	public List<MaterialDataForSearch> getDataForSearch(String materialNumber);
 	//查找全部的物料信息
 	public List<String> getMaterials();
 	//根据物料号精准查找物料信息

@@ -28,13 +28,13 @@ public interface CellService {
 	 * @param pageSize
 	 * @return
 	 */
-	public List<Cell> getCellByCondition(Integer pageIndex,Integer pageSize,String cellNumber,String description);
+	public List<Cell> getCellByCondition(Integer pageIndex, Integer pageSize, String cellNumber, String description);
 	
 	/**
 	 * 查询Cell总条数
 	 * @return
 	 */
-	public Integer getTotalCountFromCell(String cellNumber,String description);
+	public Integer getTotalCountFromCell(String cellNumber, String description);
 	
 	/**
 	 * 查询cellNumber存在的次数,判断cellNumber是否重复添加
@@ -86,7 +86,7 @@ public interface CellService {
 	 * @param cellId
 	 * @return
 	 */
-	public List<Cell_Station> getCell_StationByStationIdAndCellId(Integer stationId,Integer cellId);
+	public List<Cell_Station> getCell_StationByStationIdAndCellId(Integer stationId, Integer cellId);
 	
 	/**
 	 * 删除Cell_Station

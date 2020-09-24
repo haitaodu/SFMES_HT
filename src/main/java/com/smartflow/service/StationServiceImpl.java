@@ -107,6 +107,13 @@ public class StationServiceImpl implements StationService {
 	}
 
 
+	@Override
+	public List<Map<String, Object>> getStationTypeList() {
+		return stationDao.getStationTypeList();
+	}
 
-
+	@Override
+	public String getStationTypeNameByStationTypeId(Integer stationTypeId) {
+		return stationDao.getStationTypeNameByStationTypeId(stationTypeId);
+	}
 }

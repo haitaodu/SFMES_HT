@@ -19,7 +19,7 @@ public interface BOMHeadDao {
 	 * @param materialNumberForSearch materialNumber
 	 * @return 分页数组
 	 */
-	 List<BOMDataForPage> readPageData(int pagesize,int pageindex,String materialNumberForSearch);
+	 List<BOMDataForPage> readPageData(int pagesize, int pageindex, String materialNumberForSearch);
 
 
 	/**
@@ -66,7 +66,7 @@ public interface BOMHeadDao {
 	 * @param bomItemModels bom item entity
  	 * @return 返回是否成功
 	 */
-	 Boolean add_BOMHead_Data(BOMHeadModel bomHeadModel,List<BOMItemModel> bomItemModels);
+	 Boolean add_BOMHead_Data(BOMHeadModel bomHeadModel, List<BOMItemModel> bomItemModels);
 
 
 	/**
@@ -89,7 +89,7 @@ public interface BOMHeadDao {
 	 * @param id id
 	 * @param bomItemModels bomitemmodels
  	 */
-	 void  addBOMItemByBOMHeadId(int id,List<BOMItemModel> bomItemModels);
+	 void  addBOMItemByBOMHeadId(int id, List<BOMItemModel> bomItemModels);
 
 
 	/**
@@ -134,7 +134,7 @@ public interface BOMHeadDao {
 	 * @param materialNumberForSearch
 	 * @return
 	 */
-	 List<BOMDataForPage> readPageDataForParent(int pagesize,int pageindex,String materialNumberForSearch);
+	 List<BOMDataForPage> readPageDataForParent(int pagesize, int pageindex, String materialNumberForSearch);
 	//由字节点求顶级父节点的总的行数（RowCount）
 
 	/**
@@ -150,7 +150,7 @@ public interface BOMHeadDao {
 	 * @version version  版本号
 	 * @return 返回是否已经注册的信息
 	 */
-	  boolean isRegisterMaterialNumber(String materialNumber,int version);
+	  boolean isRegisterMaterialNumber(String materialNumber, int version);
 
 	/**
 	 * 根据物料号获取已经注册的bom的最新版本

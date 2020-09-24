@@ -163,7 +163,7 @@ public interface MaterialDao {
 	//根据Id号找到相应的数据记录
 	public Material getDataById(int id);
 	//根据前端给出的物料号提示模糊查询物料信息
-	public List<MaterialDataForSearch> getDataForSearch(String  materialNumber);
+	public List<MaterialDataForSearch> getDataForSearch(String materialNumber);
 	//查找全部物料信息
 	public List<String> getMaterials();
 	//根据物料号精准查找物料信息
