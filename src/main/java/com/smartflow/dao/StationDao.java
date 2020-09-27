@@ -15,7 +15,7 @@ public interface StationDao {
 	 * 查询工站总条数
 	 * @return
 	 */
-	public Integer getTotalCount(String stationNumber, String stationName);
+	public Integer getTotalCount(String stationNumber, String stationName, String ipAddress, Integer stationType);
 	
 	/**
 	 * 获取工站列表(分页查询)
@@ -23,7 +23,7 @@ public interface StationDao {
 	 * @param pageSize
 	 * @return
 	 */
-	public List<Station> getStationList(Integer pageIndex, Integer pageSize, String stationNumber, String stationName);
+	public List<Station> getStationList(Integer pageIndex, Integer pageSize, String stationNumber, String stationName, String ipAddress, Integer stationType);
 	
 	/**
 	 * ͨ通过用户id查询用户名

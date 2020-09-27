@@ -13,13 +13,13 @@ public interface StationService {
 	 * 查询工站总条数
 	 * @return
 	 */
-	public Integer getTotalCount(String stationNumber, String stationName);
+	public Integer getTotalCount(String stationNumber, String stationName, String ipAddress, Integer stationType);
 	
 	/**
 	 * 查看工站组
 	 * @return
 	 */
-	public List<Station> getStationList(Integer pageIndex, Integer pageSize, String stationNumber, String stationName);
+	public List<Station> getStationList(Integer pageIndex, Integer pageSize, String stationNumber, String stationName, String ipAddress, Integer stationType);
 	
 	/**
 	 * 通过用户id查询用户名

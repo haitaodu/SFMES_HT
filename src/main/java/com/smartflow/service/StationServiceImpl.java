@@ -27,13 +27,13 @@ public class StationServiceImpl implements StationService {
 	}
 
 	@Override
-	public Integer getTotalCount(String stationNumber,String stationName) {
-		return stationDao.getTotalCount(stationNumber, stationName);
+	public Integer getTotalCount(String stationNumber,String stationName, String ipAddress, Integer stationType) {
+		return stationDao.getTotalCount(stationNumber, stationName, ipAddress, stationType);
 	}
 	
 	@Override
-	public List<Station> getStationList(Integer pageIndex,Integer pageSize,String stationNumber,String stationName) {
-		return stationDao.getStationList(pageIndex, pageSize, stationNumber, stationName);
+	public List<Station> getStationList(Integer pageIndex,Integer pageSize,String stationNumber,String stationName, String ipAddress, Integer stationType) {
+		return stationDao.getStationList(pageIndex, pageSize, stationNumber, stationName, ipAddress, stationType);
 	}
 
 	@Override

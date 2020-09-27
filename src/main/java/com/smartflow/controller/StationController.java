@@ -18,6 +18,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +52,31 @@ public class StationController extends BaseController{
 	}
 
 	/**
+	 * 分页查询初始化工站类型
+	 * @return
+	 */
+	@CrossOrigin(origins="*",maxAge=3600)
+	@RequestMapping(value="/GetTByConditionInit",method=RequestMethod.GET)
+	public @ResponseBody Map<String, Object> getTByConditionInit(){
+		Map<String, Object> json = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
+		try{
+			List<Map<String,Object>> stationTypeList = getStationTypeList();
+			Map<String,Object> stationTypeMap = new HashMap<>();
+			stationTypeMap.put("key", 0);
+			stationTypeMap.put("label", "所有");
+			stationTypeList.add(0, stationTypeMap);
+			map.put("StationTypeList", stationTypeList);
+			json = this.setJson(200, "初始化成功", map);
+		}catch(Exception e){
+			json = this.setJson(0, "初始化数据失败:"+e.getMessage(), -1);
+			logger.error(e);
+			e.printStackTrace();
+		}
+		return json;
+	}
+
+	/**
 	 * 多条件分页查询工站
 	 * @param request
 	 * @param response
@@ -65,13 +91,15 @@ public class StationController extends BaseController{
 		Integer pageSize = jsonObject.get("PageSize") == null ? null : Integer.parseInt(jsonObject.get("PageSize").toString());
 		String stationNumber = jsonObject.getString("StationNumber");
 		String stationName = jsonObject.getString("StationName");
-		Integer count = stationService.getTotalCount(stationNumber, stationName);
+		String ipAddress = jsonObject.getString("IPAddress");
+		Integer stationType = StringUtils.isEmpty(jsonObject.get("StationType")) ? null : Integer.parseInt(jsonObject.get("StationType").toString());
+		Integer count = stationService.getTotalCount(stationNumber, stationName, ipAddress, stationType);
 		try {	
 			List<StationDTO> Tdto = new ArrayList<>();
 			List<Station> stationList = null;
 				stationList = stationService.getStationList(pageIndex,
 						pageSize,
-						stationNumber, stationName);
+						stationNumber, stationName, ipAddress, stationType);
 			if (stationList!=null && !stationList.isEmpty()) {
 				for (Station station : stationList) {
 					String creator = stationService.getUserNameById(station.getCreatorId());
