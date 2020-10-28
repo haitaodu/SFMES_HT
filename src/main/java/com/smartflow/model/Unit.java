@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import java.io.Serializable;
+
 @Entity
 @Table(name="core.Unit")
-public class Unit {
+public class Unit implements Serializable {
 	private Integer Id;
 	private String UnitCode;
 	private String Name;

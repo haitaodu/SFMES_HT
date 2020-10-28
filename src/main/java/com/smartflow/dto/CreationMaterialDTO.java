@@ -55,7 +55,7 @@ public class CreationMaterialDTO {
 		ContainerTypeId = containerTypeId;
 	}
 
-	@JsonProperty("WashQuantity")
+	@JsonProperty("MaxDeliveryQuantity")
 	public int getWashQuantity() {
 		return WashQuantity;
 	}

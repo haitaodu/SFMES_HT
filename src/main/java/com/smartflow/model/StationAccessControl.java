@@ -1,10 +1,11 @@
 package com.smartflow.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 @Entity
 @Table(name="core.StationAccessControl")
-public class StationAccessControl {
+public class StationAccessControl implements Serializable {
     @javax.persistence.Id
     @GeneratedValue
     private Integer Id;

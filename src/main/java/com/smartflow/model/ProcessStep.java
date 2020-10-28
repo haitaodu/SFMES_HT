@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="core.ProcessStep")
-public class ProcessStep {
+public class ProcessStep implements Serializable {
 @Id
 @GeneratedValue
 @Column(name="Id")

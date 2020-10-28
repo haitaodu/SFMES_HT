@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="core.RecipeItem")
-public class RecipeItem {
+public class RecipeItem implements Serializable {
 	private Integer Id;
 	//private Integer RecipeId;
 	private Recipe recipe;

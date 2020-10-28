@@ -4,10 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "core.MESMenu")
-public class MESMenu {
+public class MESMenu implements Serializable {
     private Integer Id;
     private String Name;
     private String Route;

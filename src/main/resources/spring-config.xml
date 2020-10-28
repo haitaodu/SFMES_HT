@@ -3,11 +3,20 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <context:component-scan base-package="com.smartflow.dao,com.smartflow.service">
     </context:component-scan>
+
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
 <!-- 配置数据源 服务器2017DEV数据库MESDB-->
     <bean id="dataSource"
@@ -41,8 +50,23 @@
             </property>
     </bean>
 
+    <dubbo:application name="dubbo-demo"/>
+    <dubbo:registry address="zookeeper://192.168.1.211:2181" check="false" subscribe="false">
+    </dubbo:registry>
+    <dubbo:protocol name="dubbo" port="20880">
+    </dubbo:protocol>
 
+    <dubbo:service interface="com.smartflow.service.CellService" ref="cellServiceImpl">
+    </dubbo:service>
 
+    <dubbo:service interface="com.smartflow.service.UserErrorService" ref="userErrorServiceImpl">
+    </dubbo:service>
+
+    <dubbo:service interface="com.smartflow.service.UserService" ref="userServiceImpl">
+    </dubbo:service>
+
+    <dubbo:service interface="com.smartflow.service.DepartmentService" ref="departmentServiceImpl">
+    </dubbo:service>
 <!-- 配置sessionFactory -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource">
@@ -57,13 +81,17 @@
                 <prop key="hibernate.cache.use_second_level_cache">true</prop>
                 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
                 <prop key="hibernate.cache.configurationResourceName">ehcache.xml</prop>
-                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.6:1433</prop>
+                <prop key="hibernate.connection.url">jdbc:sqlserver://192.168.1.252\sql2017dev:1433;database=MESDB</prop>
                 <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
             </props>
         </property>
         <property name="packagesToScan" value="com.smartflow.model">
         </property>
     </bean>
+
+
+
+
 
     <!-- 配置hibernateTemplate -->
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">

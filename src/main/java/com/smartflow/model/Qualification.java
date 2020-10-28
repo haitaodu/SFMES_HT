@@ -3,10 +3,11 @@ package com.smartflow.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 @Entity
 @Table(name="core.Qualification")
-public class Qualification {
+public class Qualification implements Serializable {
     @javax.persistence.Id
     @GeneratedValue
     private Integer Id;

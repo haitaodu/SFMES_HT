@@ -183,4 +183,16 @@ public interface UserDao {
 	 * @param loginRecord
 	 */
 	public void updateLoginRecord(LoginRecord loginRecord);
+
+
+	public List<User> getUsersByDepartment(int id);
+
+	/**
+	 * 根据用户名查找User实体
+	 * @param userName 用户名
+	 * @return 返回用户实体
+	 */
+	public User getUserByName(String userName);
+
+	List<Map<String,Object>> getUserList();
 }

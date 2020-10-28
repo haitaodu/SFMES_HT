@@ -81,11 +81,7 @@ public class StationGroupServiceImpl implements StationGroupService {
 	public void deleteStationGroup(StationGroup stationGroup) {
 		stationGroupDao.deleteStationGroup(stationGroup);
 	}
-//	@Transactional
-//	@Override
-//	public void deleteStation_StationGroupByStationGroupId(Integer stationGroupId) {
-//		stationGroupDao.deleteStation_StationGroupByStationGroupId(stationGroupId);
-//	}
+
 	@Override
 	public List<String> getStationNameByStationGroupId(Integer stationGroupId) {
 		return stationGroupDao.getStationNameByStationGroupId(stationGroupId);

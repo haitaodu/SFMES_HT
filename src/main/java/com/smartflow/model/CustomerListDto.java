@@ -1,10 +1,11 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CustomerListDto {
+public class CustomerListDto implements Serializable {
 	private int  Id;  
 	private String  CustomerCode;   
 	private String  Name;  

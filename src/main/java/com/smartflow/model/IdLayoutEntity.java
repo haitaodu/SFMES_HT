@@ -1,6 +1,7 @@
 package com.smartflow.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "IdLayout", schema = "core", catalog = "MESDB_SXHTDL")
-public class IdLayoutEntity {
+public class IdLayoutEntity implements Serializable {
     @Id
     @GeneratedValue
     @Column(name="Id")

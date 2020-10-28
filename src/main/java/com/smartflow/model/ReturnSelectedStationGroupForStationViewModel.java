@@ -2,7 +2,9 @@ package com.smartflow.model;
 
 import com.smartflow.dto.EditInitializationStationDTO;
 
-public class ReturnSelectedStationGroupForStationViewModel {
+import java.io.Serializable;
+
+public class ReturnSelectedStationGroupForStationViewModel implements Serializable {
 	private String Factory;
 	private String SelectedStationGroup;
 	private String TotalStationGroup;

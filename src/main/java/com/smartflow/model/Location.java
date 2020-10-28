@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,7 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 @Entity
 @Table(name="core.Location")
-public class Location {
+public class Location implements Serializable {
 	private Integer Id;
 	private String LocationNumber;
 	private String Description;

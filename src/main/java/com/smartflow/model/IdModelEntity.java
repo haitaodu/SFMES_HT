@@ -1,6 +1,7 @@
 package com.smartflow.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "IdModel", schema = "core", catalog = "MESDB_SXHTDL")
-public class IdModelEntity {
+public class IdModelEntity implements Serializable {
     @Id
     @GeneratedValue
     @Column(name="Id")

@@ -21,9 +21,15 @@ import com.smartflow.model.Station_StationGroup;
 @Repository
 public class StationGroupDaoImpl implements StationGroupDao {
 
-	@Autowired
-	HibernateTemplate hibernateTemplate;
-	@Override
+	final
+    HibernateTemplate hibernateTemplate;
+
+    @Autowired
+    public StationGroupDaoImpl(HibernateTemplate hibernateTemplate) {
+        this.hibernateTemplate = hibernateTemplate;
+    }
+
+    @Override
 	public Integer getTotalCount(String groupNumber,String description) {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession(); 

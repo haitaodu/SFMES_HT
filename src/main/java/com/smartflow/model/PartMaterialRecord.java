@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="trace.PartMaterialRecord")
-public class PartMaterialRecord {
+public class PartMaterialRecord implements Serializable {
 
 	private BigInteger Id;
 	private BigInteger PartSerialNumberId;

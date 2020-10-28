@@ -4,10 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name="core.MSL")
-public class MSL {
+public class MSL implements Serializable {
 	private Integer Id;
 	private String Name;
 	private Integer ExposureTimeInMinutes;

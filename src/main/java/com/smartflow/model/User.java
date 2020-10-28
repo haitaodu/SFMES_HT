@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="core.[User]")
-public class User {
+public class User implements Serializable {
 	private Integer Id;
 	private String UserName;
 	private String Password;

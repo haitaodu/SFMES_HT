@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 
 @Entity
 @Table(name="core.Station_StationGroup")
-public class Station_StationGroup {
+public class Station_StationGroup implements Serializable {
 	private Integer Id;
 	private Integer StationtId;
 	private Integer StationGroupId;

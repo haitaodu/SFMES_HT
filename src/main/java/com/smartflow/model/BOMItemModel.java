@@ -5,13 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @author haita
  */
 @Entity
 @Table(name="core.BOMItem")
-public class BOMItemModel {
+public class BOMItemModel implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name="Id")

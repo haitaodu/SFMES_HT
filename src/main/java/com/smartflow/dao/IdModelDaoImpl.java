@@ -60,7 +60,8 @@ public class IdModelDaoImpl implements  IdModelDao{
     @Override
     public List<IdLayoutEntity> getByIdModelId(int id) {
         return (List<IdLayoutEntity>) hibernateTemplate.findByNamedParam
-                ("from IdLayoutEntity where idModelId=:arg order by  sequence","arg",id);
+                ("from IdLayoutEntity where idModelId=:arg order by  sequence",
+                        "arg",id);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.smartflow.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name="core.ContainerType")
-public class ContainerType {
+public class ContainerType implements Serializable {
     private int id;
     private String typeCode;
     private String name;

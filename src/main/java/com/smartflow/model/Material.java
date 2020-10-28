@@ -21,10 +21,9 @@ public class Material {
 	private Integer NumberOfPanels;
 	private Integer Unit;
 	private Boolean SetupFlag;
-	private Integer ProcurementType;
+
 	private BigDecimal MinimumPackageQuantity;
 	private BigDecimal ExpirationTime;
-	private BigDecimal SafetyStock;
 	private Integer DefaultStorageLocationId;
 	private Integer DefaultTargetFeedingLocationId;
 	private Integer ContainerSize;
@@ -44,7 +43,7 @@ public class Material {
 	private String CADDrawingPartNumber;
 	private Boolean RequireFIFO;
 	private Boolean RequireCheckCustomerLabel;
-	private int WashQuantity;
+	private int MaxDeliveryQuantity;
 	private int MaxWashQuantity;
     private ContainerType ContainerType;
     private Station station;
@@ -158,12 +157,7 @@ public class Material {
 	public void setSetupFlag(Boolean setupFlag) {
 		SetupFlag = setupFlag;
 	}
-	public Integer getProcurementType() {
-		return ProcurementType;
-	}
-	public void setProcurementType(Integer procurementType) {
-		ProcurementType = procurementType;
-	}
+
 	public BigDecimal getMinimumPackageQuantity() {
 		return MinimumPackageQuantity;
 	}
@@ -176,12 +170,7 @@ public class Material {
 	public void setExpirationTime(BigDecimal expirationTime) {
 		ExpirationTime = expirationTime;
 	}
-	public BigDecimal getSafetyStock() {
-		return SafetyStock;
-	}
-	public void setSafetyStock(BigDecimal safetyStock) {
-		SafetyStock = safetyStock;
-	}
+
 	public Integer getDefaultStorageLocationId() {
 		return DefaultStorageLocationId;
 	}
@@ -300,15 +289,15 @@ public class Material {
 		RequireCheckCustomerLabel = requireCheckCustomerLabel;
 	}
 
-	public int getWashQuantity() {
-		return WashQuantity;
-	}
+    public int getMaxDeliveryQuantity() {
+        return MaxDeliveryQuantity;
+    }
 
-	public void setWashQuantity(int washQuantity) {
-		WashQuantity = washQuantity;
-	}
+    public void setMaxDeliveryQuantity(int maxDeliveryQuantity) {
+        MaxDeliveryQuantity = maxDeliveryQuantity;
+    }
 
-	public int getMaxWashQuantity() {
+    public int getMaxWashQuantity() {
 		return MaxWashQuantity;
 	}
 

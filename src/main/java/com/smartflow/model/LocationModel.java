@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="core.Location")
-public class LocationModel {
+public class LocationModel implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name="Id")

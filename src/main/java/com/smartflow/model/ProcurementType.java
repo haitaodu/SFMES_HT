@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import java.io.Serializable;
+
 @Entity
 @Table(name="core.ProcurementType")
-public class ProcurementType {
+public class ProcurementType implements Serializable {
 	private Integer Id;
 	private String ProcurementCode;
 	private String Name;

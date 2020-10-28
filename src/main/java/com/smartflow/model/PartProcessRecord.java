@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.persistence.Table;
 
 @Table(name="trace.PartProcessRecord")
 @Entity
-public class PartProcessRecord {
+public class PartProcessRecord implements Serializable {
 	
 	private Integer Id;
 	private Integer ProcessStepId;
