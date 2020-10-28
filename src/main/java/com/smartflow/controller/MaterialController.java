@@ -48,19 +48,19 @@ import com.smartflow.util.ReadDataUtil;
 public class MaterialController extends BaseController{
 	private static final Logger logger = Logger.getLogger(MaterialController.class);
 	
-	final
+	private final
     MaterialService materialService;
 	
 	final
     StationService stationService;
 	
-	final
+	private final
     StationGroupService stationGroupService;
 
-	final
+	private final
 	ContainerTypeService containerTypeService;
 
-	final
+	private final
     HibernateTemplate hibernateTemplate;
     @Autowired
     public MaterialController(MaterialService materialService, StationService stationService, StationGroupService stationGroupService, ContainerTypeService containerTypeService, HibernateTemplate hibernateTemplate) {
@@ -147,7 +147,6 @@ public class MaterialController extends BaseController{
 				}				
 				materialListDTO.setMaterialNumber(material.getMaterialNumber());
 				materialListDTO.setMinimumPackageQuantity(material.getMinimumPackageQuantity());
-				materialListDTO.setSafetyStock(material.getSafetyStock());
 				String setupFlag = null;
 				if(material.getSetupFlag()==true)
 					setupFlag = "是";
@@ -165,7 +164,7 @@ public class MaterialController extends BaseController{
 				materialListDTO.setUnit(materialService.getUnitNameByUnitId(material.getUnit()));
 				materialListDTO.setValidBegin(material.getValidBegin());
 				materialListDTO.setValidEnd(material.getValidEnd());
-				materialListDTO.setWashQuantity(material.getWashQuantity());
+				materialListDTO.setWashQuantity(material.getMaxDeliveryQuantity());
 				materialListDTO.setMaxWashQuantity(materialListDTO.getMaxWashQuantity());
 				String requireFIFO = null;
 				if (material.getRequireFIFO()!=null) {
@@ -228,8 +227,7 @@ public class MaterialController extends BaseController{
 				}
 				materialListDTO.setMaterialNumber(material.getMaterialNumber());
 				materialListDTO.setMinimumPackageQuantity(material.getMinimumPackageQuantity());
-				materialListDTO.setSafetyStock(material.getSafetyStock());
-				materialListDTO.setWashQuantity(material.getWashQuantity());
+				materialListDTO.setWashQuantity(material.getMaxDeliveryQuantity());
 				materialListDTO.setMaxWashQuantity(materialListDTO.getMaxWashQuantity());
 				String setupFlag = null;
 				if(material.getSetupFlag()==true)
@@ -328,20 +326,19 @@ public class MaterialController extends BaseController{
 				TDto.setCustomerMaterialNumber(material.getCustomerMaterialNumber());
 				TDto.setDescription(material.getDescription());
 				TDto.setExpirationTime(material.getExpirationTime());
-				TDto.setFactoryId(material.getFactoryId().toString());
+				TDto.setFactoryId(material.getFactoryId());
 				TDto.setId(material.getId());
-				TDto.setMaterialGroupTypeId(material.getMaterialGroupType() == null ? "" : material.getMaterialGroupType().toString());
+				TDto.setMaterialGroupTypeId(material.getMaterialGroupType());
 				TDto.setMaterialNumber(material.getMaterialNumber());
 				TDto.setMinimumPackageQuantity(material.getMinimumPackageQuantity());
-				TDto.setSafetyStock(material.getSafetyStock());
 				TDto.setSetupFlag(material.getSetupFlag());
-				TDto.setState(material.getState().toString());
+				TDto.setState(material.getState());
 				TDto.setSupplierMaterialNumber(material.getSupplierMaterialNumber());
 				TDto.setUnitId(material.getUnit());
 				TDto.setValidBegin(material.getValidBegin());
 				TDto.setValidEnd(material.getValidEnd());
 				TDto.setMaxWashQuantity(material.getMaxWashQuantity());
-				TDto.setWashQuantity(material.getWashQuantity());
+				TDto.setWashQuantity(material.getMaxDeliveryQuantity());
                 TDto.setContainerTypeId(material.getContainerType().getId());
                 TDto.setTraceStationId(material.getStation().getId());
 				if (material.getRequireFIFO()!=null) {
@@ -426,7 +423,7 @@ public class MaterialController extends BaseController{
 
 					material.setMinimumPackageQuantity(creationMaterialDTO.getMinimumPackageQuantity());
 					material.setExpirationTime(creationMaterialDTO.getExpirationTime());
-					material.setSafetyStock(creationMaterialDTO.getSafetyStock());
+
 					if (creationMaterialDTO.getState()!=null) {
 						material.setState(creationMaterialDTO.getState());	
 					}
@@ -435,7 +432,7 @@ public class MaterialController extends BaseController{
 						material.setFactoryId(creationMaterialDTO.getFactoryId()==null?null:Integer.parseInt(creationMaterialDTO.getFactoryId()));
 					}
 
-					material.setWashQuantity(creationMaterialDTO.getWashQuantity());
+					material.setMaxDeliveryQuantity(creationMaterialDTO.getWashQuantity());
 					material.setMaxWashQuantity(creationMaterialDTO.getMaxWashQuantity());
 					material.setCreationDateTime(new Date());
 					material.setCreatorId(creationMaterialDTO.getCreatorId());
@@ -504,7 +501,7 @@ public class MaterialController extends BaseController{
 						material.setIsProduct(false);
 						material.setIsMultiPanel(false);
 						material.setNumberOfPanels(0);
-					    material.setWashQuantity(editMaterialDTO.getWashQuantity());
+					    material.setMaxDeliveryQuantity(editMaterialDTO.getWashQuantity());
 					    material.setMaxWashQuantity(editMaterialDTO.getMaxWashQuantity());
 					    material.setStation(hibernateTemplate.get(Station.class,editMaterialDTO.getTraceStationId()));
 					if (editMaterialDTO.getUnit()!=null) {
@@ -513,10 +510,8 @@ public class MaterialController extends BaseController{
 					material.setContainerType(hibernateTemplate.get(ContainerType.class,editMaterialDTO.getContainerTypeId()));
 
 					material.setSetupFlag(editMaterialDTO.getSetupFlag());
-						material.setProcurementType(editMaterialDTO.getProcurementType());
 						material.setMinimumPackageQuantity(editMaterialDTO.getMinimumPackageQuantity());
 						material.setExpirationTime(editMaterialDTO.getExpirationTime());
-						material.setSafetyStock(editMaterialDTO.getSafetyStock());
 					if (editMaterialDTO.getState()!=null) {
 						material.setState(editMaterialDTO.getState());
 					}

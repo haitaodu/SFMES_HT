@@ -1,11 +1,12 @@
 package com.smartflow.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name="core.User_Qualification")
-public class User_Qualification {
+public class User_Qualification implements Serializable {
     @javax.persistence.Id
     @GeneratedValue
     private Integer Id;

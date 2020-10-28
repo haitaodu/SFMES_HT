@@ -2,6 +2,7 @@ package com.smartflow.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 //此类型为数据库core.Process所对应的映射类
 @Entity
 @Table(name="core.Process")
-public class ProcessModel {
+public class ProcessModel implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name="Id")

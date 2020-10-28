@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement(name = "customerModel")
 @Table(name="core.Customer")
-public class CustomerModel {
+public class CustomerModel implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name="Id")

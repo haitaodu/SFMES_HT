@@ -3,6 +3,8 @@ package com.smartflow.service;
 import java.util.List;
 import java.util.Map;
 
+import com.smartflow.dao.UserErrorDao;
+import com.smartflow.model.UserError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,9 +17,17 @@ import com.smartflow.model.User;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
+	private final
 	UserDao userDao;
-	
+	private final
+	UserErrorDao userErrorDao;
+
+	@Autowired
+	public UserServiceImpl(UserDao userDao, UserErrorDao userErrorDao) {
+		this.userDao = userDao;
+		this.userErrorDao = userErrorDao;
+	}
+
 	@Override
 	public List<User> getUserByCondition(GetDTOByConditionOfUserDTO getDTOByConditionOfUserDTO) {
 		return userDao.getUserByCondition(getDTOByConditionOfUserDTO);
@@ -138,5 +148,31 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateLoginRecord(LoginRecord loginRecord) {
 		userDao.updateLoginRecord(loginRecord);
+	}
+
+	@Override
+	public List<User> getUsersByDepartment(int id) {
+		return userDao.getUsersByDepartment(id
+		);
+	}
+
+	@Override
+	public void insert(UserError userError) {
+		userErrorDao.insert(userError);
+	}
+
+	@Override
+	public void update(UserError userError) {
+          userErrorDao.update(userError);
+	}
+
+	@Override
+	public User getUserByName(String userName) {
+		return userDao.getUserByName(userName);
+	}
+
+	@Override
+	public List<Map<String, Object>> getUserList() {
+		return userDao.getUserList();
 	}
 }

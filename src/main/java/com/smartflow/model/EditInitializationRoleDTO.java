@@ -1,6 +1,8 @@
 package com.smartflow.model;
 
-public class EditInitializationRoleDTO {
+import java.io.Serializable;
+
+public class EditInitializationRoleDTO implements Serializable {
 
 	private Integer Id;
 	private String RoleName;

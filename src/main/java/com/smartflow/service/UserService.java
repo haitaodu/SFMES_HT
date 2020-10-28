@@ -8,6 +8,7 @@ import com.smartflow.dto.UserDTO;
 import com.smartflow.model.LoginRecord;
 import com.smartflow.model.Roles_Users;
 import com.smartflow.model.User;
+import com.smartflow.model.UserError;
 
 public interface UserService {
 
@@ -180,5 +181,26 @@ public interface UserService {
 	 * @param loginRecord
 	 */
 	public void updateLoginRecord(LoginRecord loginRecord);
+
+	/**
+	 *
+	 * @param id 部门id
+	 * @return 返回部门员工
+	 */
+	public List<User> getUsersByDepartment(int id);
+
+	void insert(UserError userError);
+
+	void update(UserError  userError);
+
+	/**
+	 * 根据用户名查找User实体
+	 * @param userName 用户名
+	 * @return 返回用户实体
+	 */
+	public User getUserByName(String userName);
+
+
+	List<Map<String,Object>> getUserList();
 }
 

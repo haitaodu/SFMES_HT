@@ -21,13 +21,10 @@ public class EditMaterialDTO {
 	private Integer MaterialGroupType;
 	private Integer Unit;
 	private boolean SetupFlag;
-	private Integer ProcurementType;
 	private BigDecimal MinimumPackageQuantity;
 	private BigDecimal ExpirationTime;
-	private BigDecimal SafetyStock;
 	private Integer State;
 	private String FactoryId;
-	private Date EditDateTime;
 	private Integer EditorId;
 	private String ValidBegin;
 	private String ValidEnd;
@@ -56,7 +53,7 @@ public class EditMaterialDTO {
 		ContainerTypeId = containerTypeId;
 	}
 
-	@JsonProperty("WashQuantity")
+	@JsonProperty("MaxDeliveryQuantity")
 	public int getWashQuantity() {
 		return WashQuantity;
 	}
@@ -138,13 +135,6 @@ public class EditMaterialDTO {
 	public void setSetupFlag(boolean setupFlag) {
 		SetupFlag = setupFlag;
 	}
-	@JsonProperty("ProcurementType")
-	public Integer getProcurementType() {
-		return ProcurementType;
-	}
-	public void setProcurementType(Integer procurementType) {
-		ProcurementType = procurementType;
-	}
 	@Digits(integer = 10, fraction = 0, message="{material.MinimumPackageQuantity.required}")
 	@JsonProperty("MinimumPackageQuantity")
 	public BigDecimal getMinimumPackageQuantity() {
@@ -162,13 +152,6 @@ public class EditMaterialDTO {
 		ExpirationTime = expirationTime;
 	}
 	@Digits(integer = 15, fraction = 0, message="{material.SafetyStock.required}")
-	@JsonProperty("SafetyStock")
-	public BigDecimal getSafetyStock() {
-		return SafetyStock;
-	}
-	public void setSafetyStock(BigDecimal safetyStock) {
-		SafetyStock = safetyStock;
-	}
 	@NotNull(message="{material.State.required}")
 	@JsonProperty("State")
 	public Integer getState() {
@@ -184,13 +167,6 @@ public class EditMaterialDTO {
 	}
 	public void setFactoryId(String factoryId) {
 		FactoryId = factoryId;
-	}
-	@JsonProperty("EditDateTime")
-	public Date getEditDateTime() {
-		return EditDateTime;
-	}
-	public void setEditDateTime(Date editDateTime) {
-		EditDateTime = editDateTime;
 	}
 	@JsonProperty("EditorId")
 	public Integer getEditorId() {

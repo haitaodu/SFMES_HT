@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="core.Factory")
-public class Factory {
+public class Factory implements Serializable {
 	private Integer Id;
 	private String FactoryCode;
 	private String Name;

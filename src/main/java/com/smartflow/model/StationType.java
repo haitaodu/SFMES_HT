@@ -4,10 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 @Entity
 @Table(name="core.StationType")
-public class StationType {
+public class StationType implements Serializable {
     private Integer Id;
 	private String StationTypeName;
 	private Date CreateTime;

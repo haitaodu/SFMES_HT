@@ -6,10 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name="core.Supplier")
-public class SupplierInEditInitializeModel {
+public class SupplierInEditInitializeModel implements Serializable {
 @Id
 @GeneratedValue
 @Column(name="Id")

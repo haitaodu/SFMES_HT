@@ -1,13 +1,14 @@
 package com.smartflow.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 
 @Entity
 @Table(name = "core.JPH")
-public class JPH {
+public class JPH implements Serializable {
     @Id
     @GeneratedValue
     private Integer Id;

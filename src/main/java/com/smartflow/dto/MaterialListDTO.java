@@ -46,7 +46,7 @@ public class MaterialListDTO {
 	public void setContainerName(String containerName) {
 		ContainerName = containerName;
 	}
-	@JsonProperty("WashQuantity")
+	@JsonProperty("MaxDeliveryQuantity")
 	public int getWashQuantity() {
 		return WashQuantity;
 	}

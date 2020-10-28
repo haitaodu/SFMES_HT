@@ -21,6 +21,10 @@ import org.springframework.util.CollectionUtils;
 @Repository
 public class UserDaoImpl implements UserDao {
 
+    /*
+    虚拟EMAIL_ID
+     */
+    private final static int EMAIL_ID=28;
 	@Autowired
 	HibernateTemplate hibernateTemplate;
 	@Override
@@ -378,6 +382,35 @@ public class UserDaoImpl implements UserDao {
 		hibernateTemplate.update(loginRecord);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getUsersByDepartment(int id) {
+		return (List<User>)hibernateTemplate.findByNamedParam
+				("from User where department.id=:id AND id!=28","id",id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public User getUserByName(String userName) {
+		return (User)hibernateTemplate.findByNamedParam
+				("from User where userName=:userName",
+						"userName",userName).get(0);
+	}
+
+	@Override
+	public List<Map<String, Object>> getUserList() {
+		String sql = "select Id [key],UserName label from core.[User]";
+		Session session = hibernateTemplate.getSessionFactory().openSession();
+		try{
+			Query query = session.createSQLQuery(sql);
+			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			session.close();
+		}
+	}
 
 
 }

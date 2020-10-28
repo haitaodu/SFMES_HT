@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="trace.PartFailureDataRecord")
-public class PartFailureDataRecord {
+public class PartFailureDataRecord implements Serializable {
 	private Integer Id;
 	private Integer PartSerialNumberId;
 	private String SequenceNumber;

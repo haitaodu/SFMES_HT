@@ -13,7 +13,7 @@ public class EditMaterialForEditRetrunInitialization {
 //	private String Specification;
 	private String CustomerMaterialNumber;
 	private String SupplierMaterialNumber;
-	private String MaterialGroupTypeId;//改为String类型
+	private int MaterialGroupTypeId;//改为String类型
 //	private boolean IsProduct;
 //	private boolean IsMultiPanel;
 //	private boolean RequireBackflush;
@@ -29,10 +29,10 @@ public class EditMaterialForEditRetrunInitialization {
 //	private String DefaultTargetFeedingLocationId;
 //	private Integer ContainerSize;
 //	private String MSLId;//改为String类型
-	private String State;
+	private int State;
 //	private String DefaultStationGroupId;//改为String类型
 //	private String CompanyId;//改为String类型
-	private String FactoryId;
+	private int FactoryId;
 	private int WashQuantity;
 	private int MaxWashQuantity;
 	private Date ValidBegin;
@@ -111,10 +111,10 @@ public class EditMaterialForEditRetrunInitialization {
 		SupplierMaterialNumber = supplierMaterialNumber;
 	}
 	@JsonProperty("MaterialGroupTypeId")
-	public String getMaterialGroupTypeId() {
+	public int getMaterialGroupTypeId() {
 		return MaterialGroupTypeId;
 	}
-	public void setMaterialGroupTypeId(String materialGroupTypeId) {
+	public void setMaterialGroupTypeId(int materialGroupTypeId) {
 		MaterialGroupTypeId = materialGroupTypeId;
 	}
 
@@ -208,10 +208,10 @@ public class EditMaterialForEditRetrunInitialization {
 //		MSLId = mSLId;
 //	}
 	@JsonProperty("State")
-	public String getState() {
+	public int getState() {
 		return State;
 	}
-	public void setState(String state) {
+	public void setState(int state) {
 		State = state;
 	}
 //	@JsonProperty("DefaultStationGroupId")
@@ -229,10 +229,10 @@ public class EditMaterialForEditRetrunInitialization {
 //		CompanyId = companyId;
 //	}
 	@JsonProperty("FactoryId")
-	public String getFactoryId() {
+	public int getFactoryId() {
 		return FactoryId;
 	}
-	public void setFactoryId(String factoryId) {
+	public void setFactoryId(int factoryId) {
 		FactoryId = factoryId;
 	}
 	@JsonProperty("ValidBegin")

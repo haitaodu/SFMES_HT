@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +16,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Table(name="core.Recipe")
-public class Recipe {
+public class Recipe implements Serializable {
 	private Integer Id;
 	private String RecipeName;
 	private String Version;

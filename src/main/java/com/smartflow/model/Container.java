@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="core.Container")
-public class Container {
+public class Container implements Serializable {
 	private int Id;
 	private String ContainerNumber;
 	private Material Material;

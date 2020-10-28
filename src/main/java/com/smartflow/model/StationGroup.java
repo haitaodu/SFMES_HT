@@ -1,5 +1,6 @@
 package com.smartflow.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Entity
 @Table(name="core.StationGroup")
-public class StationGroup {
+public class StationGroup implements Serializable {
 	private Integer Id;
 	private String GroupNumber;
 	private String Description;

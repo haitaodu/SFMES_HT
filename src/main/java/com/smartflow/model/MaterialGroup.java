@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import java.io.Serializable;
+
 @Entity
 @Table(name="core.MaterialGroup")
-public class MaterialGroup {
+public class MaterialGroup implements Serializable {
 	private Integer Id;
 	private String MaterialGroupCode;
 	private String Name;
