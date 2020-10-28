@@ -22,7 +22,7 @@ public class StationDaoImpl implements StationDao{
 
 
 	@Override
-	public Integer getTotalCount(String stationNumber,String stationName) {
+	public Integer getTotalCount(String stationNumber,String stationName, String ipAddress, Integer stationType) {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		String hql = "select count(*) from Station where State !=- 1 ";
@@ -31,6 +31,12 @@ public class StationDaoImpl implements StationDao{
 		}
 		if (stationName!=null) {
 			hql += "and name like '%"+stationName+"%'";
+		}
+		if(ipAddress != null){
+			hql += "and ipAddress = '"+ipAddress+"'";
+		}
+		if(stationType != null && stationType != 0){
+			hql += " and stationType = "+stationType;
 		}
 		try{
 			Query query = session.createQuery(hql);
@@ -45,7 +51,7 @@ public class StationDaoImpl implements StationDao{
 	}
 	
 	@Override
-	public List<Station> getStationList(Integer pageIndex,Integer pageSize,String stationNumber,String stationName) {
+	public List<Station> getStationList(Integer pageIndex,Integer pageSize,String stationNumber,String stationName, String ipAddress, Integer stationType) {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		String hql = "from Station where State !=- 1 ";
@@ -54,6 +60,12 @@ public class StationDaoImpl implements StationDao{
 		}
 		if (stationName!=null) {
 			hql += "and name like '%"+stationName+"%'";
+		}
+		if(ipAddress != null){
+			hql += "and ipAddress = '"+ipAddress+"'";
+		}
+		if(stationType != null && stationType != 0){
+			hql += " and stationType = "+stationType;
 		}
 		try{
 			Query query = session.createQuery(hql);
