@@ -125,6 +125,10 @@ public interface ProcessService {
 	 */
 	public ProcsessEditeView getProcessEditeView(int id);
 
-
+	/**
+	 * 初始化总工艺/子工艺下拉框
+	 * @return
+	 */
+	public List<Map<String,Object>> getProcessListInt();
 
 }

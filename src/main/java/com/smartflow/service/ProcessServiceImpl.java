@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
@@ -126,4 +128,20 @@ ProcessDao process;
 		return process.getProcessEditeView(id);
 	}
 
+	@Override
+	public List<Map<String, Object>> getProcessListInt() {
+		List<Map<String,Object>> mapList = new ArrayList<>();
+		List<String> parentProcessNumberList = process.getParentProcess();
+		int i = 1;
+		for (String parentProcessNumber:parentProcessNumberList) {
+			Map<String,Object> map = new HashMap<>();
+			map.put("key", i);
+			map.put("label", parentProcessNumber);
+			List<Map<String,Object>> processList = process.getProcessListByParentProcessNumber(parentProcessNumber);
+			map.put("children", processList);
+			mapList.add(map);
+			i++;
+		}
+		return mapList;
+	}
 }

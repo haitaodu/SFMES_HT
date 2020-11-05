@@ -112,7 +112,8 @@ public class StationController extends BaseController{
 					stationDTO.setCreationDateTime(station.getCreationDateTime());
 					stationDTO.setEditDateTime(station.getEditDateTime());
 					stationDTO.setEditor(editor);
-					stationDTO.setStationType(getStationLabel(station.getStationType()));
+//					stationDTO.setStationType(getStationLabel(station.getStationType()));
+					stationDTO.setStationType(station.getStationType() == null ? null : stationService.getStationTypeNameByStationTypeId(station.getStationType()));
 					stationDTO.setState(state);
 					stationDTO.setCreator(creator);
 					stationDTO.setStationIP(station.getIpAddress());

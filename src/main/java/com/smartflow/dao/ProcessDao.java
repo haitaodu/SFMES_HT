@@ -130,4 +130,18 @@ public interface ProcessDao {
 	 * @return 返回工艺编辑
 	 */
 	public ProcsessEditeView getProcessEditeView(int id);
+
+	/**
+	 * 查询父工艺集合
+	 * @return
+	 */
+	public List<String> getParentProcess();
+
+	/**
+	 * 根据父工艺号查询子工艺
+	 * @param parentProcessNumber
+	 * @return
+	 */
+	public List<Map<String,Object>> getProcessListByParentProcessNumber(String parentProcessNumber);
+
 }

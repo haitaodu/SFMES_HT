@@ -375,6 +375,25 @@ public class ProcessDaoImpl implements ProcessDao {
 		}
 		return processItemDetailViews;
 	}
+
+	@Override
+	public List<String> getParentProcess() {
+		return (List<String>)hibernate.find("select distinct ParentProcessNumber from ProcessModel where State = 1");
+	}
+
+	@Override
+	public List<Map<String, Object>> getProcessListByParentProcessNumber(String parentProcessNumber) {
+		String hql = "select Id as key, ProcessNumber as label from ProcessModel where State = 1 and ParentProcessNumber = :parentProcessNumber";
+		Session session = hibernate.getSessionFactory().openSession();
+		try{
+			Query query = session.createQuery(hql);
+			query.setParameter("parentProcessNumber", parentProcessNumber);
+			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+		}catch (Exception e){
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
+	}
 }
 
 
