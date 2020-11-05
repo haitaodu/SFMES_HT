@@ -1,9 +1,11 @@
 package com.smartflow.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.smartflow.view.StationList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ public class StationServiceImpl implements StationService {
 
 	private final
 	StationDao stationDao;
+
+	private final static int  printStation=11;
 
 	private final
 	HibernateTemplate hibernateTemplate;
@@ -116,4 +120,26 @@ public class StationServiceImpl implements StationService {
 	public String getStationTypeNameByStationTypeId(Integer stationTypeId) {
 		return stationDao.getStationTypeNameByStationTypeId(stationTypeId);
 	}
+
+	@Override
+	public Map<String,Object> getStationList(String stationNumer, long workOrderId) {
+     int cellId=stationDao.getCellByWorkOrderId(workOrderId,stationNumer);
+     List<StationList> stationLists=stationDao.getStationList(workOrderId,cellId);
+     List<String> stationNames=new ArrayList<>();
+     Map<String,Object> map= new HashMap<>();
+     for (StationList stationList:stationLists
+			 ) {
+		 if (stationList.getStationType()==printStation)
+		 {
+		 	map.put("PrintStation",stationList.getStationNumber());
+			 break;
+		 }
+           stationNames.add(stationList.getStationNumber());
+
+		}
+     map.put("List",stationNames);
+     return map;
+	}
+
+
 }

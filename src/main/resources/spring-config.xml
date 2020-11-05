@@ -26,15 +26,17 @@
           <!--<property name="jdbcUrl" value="jdbc:sqlserver://smartflow.diskstation.me\SQL2017DEV:8021;databaseName=MESDB_SXHTDL">-->
           <!--</property>-->
         <!--<property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.252\SQL2017DEV:1433;database=MESDB_SXHTDL3"></property>-->
-      <property name="jdbcUrl" value="${jdbc.jdbcUrl}">
+      <property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.252;database=MESDB_SXHTDL3">
       </property>
-            <property name="user" value="${jdbc.user}">
+            <property name="user" value="sa">
             </property>
-            <property name="password" value="${jdbc.password}">
+            <property name="password" value="1qaz@wsx">
             </property>
             <property name="maxIdleTime" value="60">
             </property>
-            <property name="minPoolSize" value="60">
+            <property name="initialPoolSize" value="10">
+            </property>
+            <property name="minPoolSize" value="10">
             </property>
             <property name="idleConnectionTestPeriod" value="100">
             </property>
@@ -67,6 +69,9 @@
 
     <dubbo:service interface="com.smartflow.service.DepartmentService" ref="departmentServiceImpl">
     </dubbo:service>
+
+    <dubbo:service interface="com.smartflow.service.StationService" ref="stationServiceImpl">
+    </dubbo:service>
 <!-- 配置sessionFactory -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource">
@@ -86,6 +91,11 @@
             </props>
         </property>
         <property name="packagesToScan" value="com.smartflow.model">
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.smartflow.view.StationList</value>
+            </list>
         </property>
     </bean>
 

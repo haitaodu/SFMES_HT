@@ -1,27 +1,36 @@
 package com.smartflow.dao;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Map;
 
 import com.smartflow.model.*;
+import com.smartflow.view.StationList;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.transform.Transformers;
-import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * @author haita
+ */
 @Repository
 public class StationDaoImpl implements StationDao{
 
-	@Autowired
-	HibernateTemplate hibernateTemplate;
+	final
+    HibernateTemplate hibernateTemplate;
+
+    @Autowired
+    public StationDaoImpl(HibernateTemplate hibernateTemplate) {
+        this.hibernateTemplate = hibernateTemplate;
+    }
 
 
-	@Override
+    @Override
 	public Integer getTotalCount(String stationNumber,String stationName, String ipAddress, Integer stationType) {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -84,8 +93,6 @@ public class StationDaoImpl implements StationDao{
 	public String getUserNameById(Integer userId) {	
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
-//		String sql = "select UserName from core.[User] where Id = "+userId;
-//		Query query = session.createSQLQuery(sql);
 		String hql = "select u.userName from User u where u.id = "+userId;
 		try{
 			Query query = session.createQuery(hql);
@@ -113,7 +120,7 @@ public class StationDaoImpl implements StationDao{
 		Session session = sessionFactory.openSession();
 		String sql = "select Id [key],concat(GroupNumber,'('+Description+')') label from core.StationGroup where State = 1";
 		try{
-			Query query = session.createSQLQuery(sql);//.addScalar("key", StandardBasicTypes.INTEGER).addScalar("label", StandardBasicTypes.STRING);
+			Query query = session.createSQLQuery(sql);
 			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -272,5 +279,30 @@ public class StationDaoImpl implements StationDao{
 	public String getStationTypeNameByStationTypeId(Integer stationTypeId) {
 		StationType stationType = hibernateTemplate.get(StationType.class, stationTypeId);
 		return stationType == null ? null : stationType.getStationTypeName();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<StationList> getStationList(long workOrderId, int cellId) {
+	    String hql="from StationList where workerId=:workOrderId " +
+                "and cellId=:cellId order by  processStepId";
+        String[] paramName= new String[]{"workOrderId","cellId"};
+        Object[] value=new Object[]{workOrderId,cellId};
+        return (List<StationList>)hibernateTemplate.findByNamedParam
+                (hql, paramName,value);
+	}
+
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public int getCellByWorkOrderId(long workOrderId, String stationNumber) {
+		String hql="from StationList where workerId=:workOrderId " +
+				"and stationNumber=:stationNumber";
+		String[] paramName= new String[]{"workOrderId","stationNumber"};
+		Object[] value=new Object[]{workOrderId,stationNumber};
+		List<StationList> stationLists= (List<StationList>)hibernateTemplate.findByNamedParam
+				(hql, paramName,value);
+		return stationLists.get(0).getCellId();
 	}
 }

@@ -101,7 +101,7 @@ public class BOMController  extends BaseController {
 		init();
         logger.debug(new Date()+"进入BOM详情接口");
 		map.put("BomHead", bomHeadService.getBomDataById(Id));
-		map.put("BomItemList", bomHeadService.getDataByIdInItemAddBracket(Id));
+		map.put("BomItemList", bomHeadService.getBOMItemGetById(Id));
 		try {
 			json= this.setJson(200, "查询成功", map);
 		} catch (Exception e) {

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.smartflow.model.Station;
 import com.smartflow.model.Station_StationGroup;
+import com.smartflow.view.StationList;
 
 /**
  * @author haita
@@ -121,4 +122,17 @@ public interface StationDao {
 	 * @return
 	 */
 	public String getStationTypeNameByStationTypeId(Integer stationTypeId);
-} 
+
+
+	/**
+	 *
+	 * @param workOrderId 工单Id
+	 * @param cellId 岛区Id
+	 * @return 返回工站信息列表
+	 */
+	public List<StationList> getStationList(long workOrderId,int cellId);
+
+
+
+	public int getCellByWorkOrderId(long workOrderId,String stationNumber);
+}
