@@ -11,6 +11,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.smartflow.dto.bom.BomItemDetail;
+import com.smartflow.dto.bom.BomItemForEdite;
+import org.apache.ibatis.scripting.xmltags.ForEachSqlNode;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -101,7 +104,7 @@ public class BOMController  extends BaseController {
 		init();
         logger.debug(new Date()+"进入BOM详情接口");
 		map.put("BomHead", bomHeadService.getBomDataById(Id));
-		map.put("BomItemList", bomHeadService.getBOMItemGetById(Id));
+		map.put("BomItemList",parseToDetail(bomHeadService.getBOMItemGetById(Id)));
 		try {
 			json= this.setJson(200, "查询成功", map);
 		} catch (Exception e) {
@@ -614,5 +617,29 @@ public class BOMController  extends BaseController {
 	{
 		this.json=new HashMap<>();
 		this.map=new HashMap<>();
+	}
+
+	private List<BomItemDetail> parseToDetail(List<BomItemForEdite> bomItemForEdites)
+	{
+		List<BomItemDetail> bomItemDetails=new ArrayList<>();
+		for (BomItemForEdite bom:bomItemForEdites
+			 ) {
+			BomItemDetail bomItemDetail=new BomItemDetail();
+			bomItemDetail.setDesignator(bom.getDesignator());
+			bomItemDetail.setIsAlternative(bom.isIsAlternative().equals(true)?"是":"否");
+			bomItemDetail.setIsNeedSetupCheck(bom.isIsNeedSetupCheck().equals(true)?"是":"否");
+			bomItemDetail.setKey(bom.getKey());
+			bomItemDetail.setMaterialId(bom.getMaterialId());
+			bomItemDetail.setLayer(bom.getLayer());
+			bomItemDetail.setMaterialName(bom.getMaterialName());
+			bomItemDetail.setMaterialNumber(bom.getMaterialNumber());
+			bomItemDetail.setQuantity(bom.getQuantity());
+			bomItemDetail.setStationGroup(bom.getStationGroup());
+			bomItemDetail.setStationGroupId(bom.getStationGroupId());
+			bomItemDetail.setUnit(bom.getUnit());
+			bomItemDetail.setUnitId(bom.getUnitId());
+			bomItemDetails.add(bomItemDetail);
+		}
+		return bomItemDetails;
 	}
 }

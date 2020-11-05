@@ -26,7 +26,7 @@
           <!--<property name="jdbcUrl" value="jdbc:sqlserver://smartflow.diskstation.me\SQL2017DEV:8021;databaseName=MESDB_SXHTDL">-->
           <!--</property>-->
         <!--<property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.252\SQL2017DEV:1433;database=MESDB_SXHTDL3"></property>-->
-      <property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.252;database=MESDB_SXHTDL3">
+      <property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.6;database=MESDB_SXHTDL">
       </property>
             <property name="user" value="sa">
             </property>
@@ -53,7 +53,7 @@
     </bean>
 
     <dubbo:application name="dubbo-demo"/>
-    <dubbo:registry address="zookeeper://192.168.1.211:2181" check="false" subscribe="false">
+    <dubbo:registry address="zookeeper://192.168.1.6:2181" check="false" subscribe="false">
     </dubbo:registry>
     <dubbo:protocol name="dubbo" port="20880">
     </dubbo:protocol>
