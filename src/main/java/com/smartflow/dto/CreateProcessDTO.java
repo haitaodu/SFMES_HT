@@ -6,8 +6,6 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.validation.executable.ValidateOnExecution;
-import java.util.List;
 
 /**
  * @author haita
@@ -33,7 +31,4 @@ public class CreateProcessDTO {
     private String Description;
     @NotBlank(message="{process.MaterialNumber.invalid}")
     private String MaterialSplits;// "物料号|版本号|名称"
-
-    private boolean Flag;//是否复制总工艺/子工艺步骤
-    private List<Integer> ProcessIdList;//总工艺id和子工艺id数组集合
 }

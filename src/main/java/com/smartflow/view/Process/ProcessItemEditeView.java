@@ -21,7 +21,6 @@ public class ProcessItemEditeView {
     private String Editor;
     private Date EditDateTime;
     private Integer Key;
-    private Boolean IsMandatory;
     @JsonProperty("Secquence")
     public Integer getSecquence() {
         return Secquence;
@@ -109,13 +108,5 @@ public class ProcessItemEditeView {
     }
     public void setKey(Integer key) {
         this.Key = key;
-    }
-    @JsonProperty("IsMandatory")
-    public Boolean getMandatory() {
-        return IsMandatory;
-    }
-
-    public void setMandatory(Boolean mandatory) {
-        IsMandatory = mandatory;
     }
 }

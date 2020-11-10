@@ -1,27 +1,22 @@
 package com.smartflow.service;
 
-import com.smartflow.dao.CellDao;
-import com.smartflow.model.Cell;
-import com.smartflow.model.Cell_Station;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.smartflow.dao.CellDao;
+import com.smartflow.dto.CellDTO;
+import com.smartflow.model.Cell;
+import com.smartflow.model.Cell_Station;
 @Service
 public class CellServiceImpl implements CellService {
 
-	private final
-	CellDao cellDao;
-
 	@Autowired
-	public CellServiceImpl(CellDao cellDao) {
-		this.cellDao = cellDao;
-	}
-
+	CellDao cellDao;
+	
 	@Override
 	public Cell getCellById(Integer cellId) {
 		return cellDao.getCellById(cellId);

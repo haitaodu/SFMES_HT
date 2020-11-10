@@ -13,7 +13,7 @@ public class EditMaterialForEditRetrunInitialization {
 //	private String Specification;
 	private String CustomerMaterialNumber;
 	private String SupplierMaterialNumber;
-	private Integer MaterialGroupTypeId;//改为String类型
+	private int MaterialGroupTypeId;//改为String类型
 //	private boolean IsProduct;
 //	private boolean IsMultiPanel;
 //	private boolean RequireBackflush;
@@ -111,10 +111,10 @@ public class EditMaterialForEditRetrunInitialization {
 		SupplierMaterialNumber = supplierMaterialNumber;
 	}
 	@JsonProperty("MaterialGroupTypeId")
-	public Integer getMaterialGroupTypeId() {
+	public int getMaterialGroupTypeId() {
 		return MaterialGroupTypeId;
 	}
-	public void setMaterialGroupTypeId(Integer materialGroupTypeId) {
+	public void setMaterialGroupTypeId(int materialGroupTypeId) {
 		MaterialGroupTypeId = materialGroupTypeId;
 	}
 
