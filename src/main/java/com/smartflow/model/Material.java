@@ -21,7 +21,6 @@ public class Material {
 	private Integer NumberOfPanels;
 	private Integer Unit;
 	private Boolean SetupFlag;
-
 	private BigDecimal MinimumPackageQuantity;
 	private BigDecimal ExpirationTime;
 	private Integer DefaultStorageLocationId;
