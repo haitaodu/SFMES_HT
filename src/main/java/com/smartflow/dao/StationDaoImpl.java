@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 /**
  * @author haita
@@ -35,13 +36,13 @@ public class StationDaoImpl implements StationDao{
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		String hql = "select count(*) from Station where State !=- 1 ";
-		if (stationNumber!=null) {
+		if (!StringUtils.isEmpty(stationNumber)) {
 			hql += "and stationNumber like '%"+stationNumber+"%' ";
 		}
-		if (stationName!=null) {
+		if (!StringUtils.isEmpty(stationName)) {
 			hql += "and name like '%"+stationName+"%'";
 		}
-		if(ipAddress != null){
+		if(!StringUtils.isEmpty(ipAddress)){
 			hql += "and ipAddress = '"+ipAddress+"'";
 		}
 		if(stationType != null && stationType != 0){
@@ -64,13 +65,13 @@ public class StationDaoImpl implements StationDao{
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		String hql = "from Station where State !=- 1 ";
-		if (stationNumber!=null) {
+		if (!StringUtils.isEmpty(stationNumber)) {
 			hql += "and stationNumber like '%"+stationNumber+"%' ";
 		}
-		if (stationName!=null) {
+		if (!StringUtils.isEmpty(stationName)) {
 			hql += "and name like '%"+stationName+"%'";
 		}
-		if(ipAddress != null){
+		if(!StringUtils.isEmpty(ipAddress)){
 			hql += "and ipAddress = '"+ipAddress+"'";
 		}
 		if(stationType != null && stationType != 0){
