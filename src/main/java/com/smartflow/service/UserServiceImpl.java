@@ -29,11 +29,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUserByCondition(GetDTOByConditionOfUserDTO getDTOByConditionOfUserDTO) {
+	public List<User> getUserByCondition(GetDTOByConditionOfUserDTO
+													 getDTOByConditionOfUserDTO) {
 		return userDao.getUserByCondition(getDTOByConditionOfUserDTO);
 	}
 	@Override
-	public Integer getTotalCountFromUser(GetDTOByConditionOfUserDTO getDTOByConditionOfUserDTO) {
+	public Integer getTotalCountFromUser(GetDTOByConditionOfUserDTO
+													 getDTOByConditionOfUserDTO) {
 		return userDao.getTotalCountFromUser(getDTOByConditionOfUserDTO);
 	}
 	@Override

@@ -3,9 +3,10 @@ package com.smartflow.service;
 import com.smartflow.dao.UserErrorDao;
 import com.smartflow.model.UserError;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author ：tao
@@ -17,8 +18,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class UserErrorServiceImpl implements UserErrorService{
-@Autowired
-    UserErrorDao userErrorDao;
+private final
+UserErrorDao userErrorDao;
+
+    @Autowired
+    public UserErrorServiceImpl(UserErrorDao userErrorDao) {
+        this.userErrorDao = userErrorDao;
+    }
 
     @Override
     public void insert(UserError userError) {
@@ -33,5 +39,10 @@ public class UserErrorServiceImpl implements UserErrorService{
     @Override
     public UserError getById(int id) {
         return userErrorDao.getById(id);
+    }
+
+    @Override
+    public List<UserError> getByErrorId(int errorId) {
+        return userErrorDao.getByErrorId(errorId);
     }
 }

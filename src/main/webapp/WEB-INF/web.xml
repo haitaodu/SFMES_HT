@@ -29,13 +29,9 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-
-
   <context-param>
-
     <param-name>spring.profiles.active</param-name>
-
     <param-value>development</param-value>
-
   </context-param>
+
 </web-app>
