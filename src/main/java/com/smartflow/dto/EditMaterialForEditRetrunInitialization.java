@@ -13,7 +13,7 @@ public class EditMaterialForEditRetrunInitialization {
 //	private String Specification;
 	private String CustomerMaterialNumber;
 	private String SupplierMaterialNumber;
-	private int MaterialGroupTypeId;//改为String类型
+	private Integer MaterialGroupTypeId;//改为String类型
 //	private boolean IsProduct;
 //	private boolean IsMultiPanel;
 //	private boolean RequireBackflush;
