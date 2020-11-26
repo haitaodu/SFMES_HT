@@ -165,7 +165,7 @@ public class MaterialController extends BaseController{
 				materialListDTO.setValidBegin(material.getValidBegin());
 				materialListDTO.setValidEnd(material.getValidEnd());
 				materialListDTO.setWashQuantity(material.getMaxDeliveryQuantity());
-				materialListDTO.setMaxWashQuantity(materialListDTO.getMaxWashQuantity());
+				materialListDTO.setMaxWashQuantity(material.getMaxWashQuantity());
 				String requireFIFO = null;
 				if (material.getRequireFIFO()!=null) {
 					if (material.getRequireFIFO()==true)

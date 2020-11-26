@@ -248,7 +248,7 @@ public class StationDaoImpl implements StationDao{
 	public List<Map<String, Object>> getWashList() {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
-		String sql = "select Id [key],CONCAT(StationNumber,'('+Name+')') label from core.Station where State = 1 and StationType=7 or StationType=8";
+		String sql = "select Id [key],CONCAT(StationNumber,'('+Name+')') label from core.Station where State = 1 and StationType=7 or StationType=8 and State=1";
 		try{
 			Query query = session.createSQLQuery(sql);
 			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();

@@ -1,11 +1,12 @@
 package com.smartflow.dao;
 
 import com.smartflow.model.UserError;
-import org.springframework.beans.factory.HierarchicalBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author ：tao
@@ -24,12 +25,14 @@ public class UserErrorDaoImpl implements  UserErrorDao {
 
     @Transactional
     @Override
-    public void insert(UserError userError) {
+    public void insert(UserError userError)
+    {
      hibernateTemplate.save(userError);
     }
 
     @Override
-    public void update(UserError userError) {
+    public void update(UserError userError)
+    {
         hibernateTemplate.update(userError);
     }
 
@@ -38,5 +41,14 @@ public class UserErrorDaoImpl implements  UserErrorDao {
         return (UserError) hibernateTemplate.findByNamedParam
                 ("from UserError where errorid=:errorid",
                         "errorid",id).get(0);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<UserError> getByErrorId(int errorId) {
+        return (List<UserError>) hibernateTemplate.findByNamedParam
+                ("from UserError where errorid=:errorid",
+                        "errorid",errorId);
+
     }
 }
