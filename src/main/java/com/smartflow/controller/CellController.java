@@ -292,9 +292,9 @@ public class CellController extends BaseController{
 				cell.setDescription(editCellDTO.getDescription());
 				cell.setEditDateTime(new Date());
 				cell.setEditorId(editCellDTO.getEditorId());
-				cell.setState(editCellDTO.getState());	
-				cell.setCreatorId(editCellDTO.getEditorId());
-				cell.setCreationDateTime(new Date());
+				cell.setState(editCellDTO.getState());
+//				cell.setCreatorId(editCellDTO.getEditorId());
+//				cell.setCreationDateTime(new Date());
 				cell.setAreaId(editCellDTO.getAreaId());
 				cellService.updateCell(cell);
 				json = this.setJson(200, "修改成功！", 0);

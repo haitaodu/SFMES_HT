@@ -65,17 +65,12 @@ public class JPHServiceImpl implements JPHService {
                 getJPHListOutputDTO.setEditor(jph.getEditor().getUserName());
                 getJPHListOutputDTO.setName(jph.getMaterial().getDescription());
                 String state=null;
-                if (jph.getState()==0)
-                {
-                    state="未激活";
-                }
-                if (jph.getState()==1)
-                {
-                    state="已激活";
-                }
-              else
-                {
-                    state="已删除";
+                if (jph.getState() == 0) {
+                    state = "未激活";
+                } else if (jph.getState() == 1) {
+                    state = "已激活";
+                } else {
+                    state = "已删除";
                 }
                 getJPHListOutputDTO.setState(state);
                 getJPHListOutputDTOList.add(getJPHListOutputDTO);
@@ -104,9 +99,7 @@ public class JPHServiceImpl implements JPHService {
     @Override
     public void updateJPH(EditJPHInputDTO editJPHInputDTO) throws  NullPointerException{
         JPH  jph=hibernateTemplate.get(JPH.class,editJPHInputDTO.getId());
-        jph.setCreationDateTime(new Date());
         User user=hibernateTemplate.get(User.class,editJPHInputDTO.getEditorId());
-        jph.setCreator(user);
         jph.setEditDateTime(new Date());
         jph.setEditor(user);
         jph.setJPH(editJPHInputDTO.getJPH());
@@ -143,17 +136,12 @@ public class JPHServiceImpl implements JPHService {
         jphDetailOutPut.setMaterialNumber(parseFieldToMapUtil.parseFiledToString(jph.getMaterial().getMaterialNumber(),
                 jph.getMaterial().getDescription()));
         String state=null;
-        if (jph.getState()==0)
-        {
-            state="未激活";
-        }
-        if (jph.getState()==1)
-        {
-            state="已激活";
-        }
-        else
-        {
-            state="已删除";
+        if (jph.getState() == 0) {
+            state = "未激活";
+        } else if (jph.getState() == 1) {
+            state = "已激活";
+        } else {
+            state = "已删除";
         }
         jphDetailOutPut.setState(state);
         return  jphDetailOutPut;

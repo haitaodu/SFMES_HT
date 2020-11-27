@@ -189,7 +189,7 @@ public class AreaDaoImpl implements AreaDao{
 		// TODO Auto-generated method stub
 		SessionFactory sessionFactory = hibernate.getSessionFactory();
 		Session session = sessionFactory.openSession();  
-		String sql = "select Id [key],Name label from core.Area WHERE State=1";
+		String sql = "select Id [key],Name label from core.Area WHERE State != -1";
 		Query query = session.createSQLQuery(sql);
 	
 		List<Map<String, Object>> areaList=query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();

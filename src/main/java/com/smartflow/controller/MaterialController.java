@@ -401,6 +401,25 @@ public class MaterialController extends BaseController{
 					}
 				}
 				if (count==0) {
+					Date validBegin = null;
+					String validBeginStr = creationMaterialDTO.getValidBegin();
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");//注意格式化的表达式
+					if (validBeginStr!=null && !"".equals(validBeginStr)) {
+						validBeginStr = validBeginStr.replace("Z", " UTC");
+						validBegin = format.parse(validBeginStr);
+						material.setValidBegin(validBegin);
+					}
+					Date validEnd = null;
+					String validEndStr = creationMaterialDTO.getValidEnd();
+					if(validEndStr!=null && !"".equals(validEndStr)){
+						validEndStr = validEndStr.replace("Z", " UTC");
+						validEnd = format.parse(validEndStr);
+						material.setValidEnd(validEnd);
+					}
+					if(validEnd.before(validBegin)){
+						json = this.setJson(0, "添加失败：失效时间要大于生效时间！", -1);
+						return json;
+					}
 					material.setMaterialNumber(creationMaterialDTO.getMaterialNumber());
 						material.setVersion(1);
 					if (creationMaterialDTO.getDescription()!=null && !"".equals(creationMaterialDTO.getDescription())) {
@@ -438,25 +457,14 @@ public class MaterialController extends BaseController{
 					material.setCreatorId(creationMaterialDTO.getCreatorId());
 					material.setEditDateTime(new Date());
 					material.setEditorId(creationMaterialDTO.getCreatorId());
-					String validBeginStr = creationMaterialDTO.getValidBegin(); 
-					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");//注意格式化的表达式
-					if (validBeginStr!=null && !"".equals(validBeginStr)) {
-						validBeginStr = validBeginStr.replace("Z", " UTC");
-						Date validBegin = format.parse(validBeginStr);
-						material.setValidBegin(validBegin);
-					}				
-					String validEndStr = creationMaterialDTO.getValidEnd();	
-					if(validEndStr!=null && !"".equals(validEndStr)){
-						validEndStr = validEndStr.replace("Z", " UTC");
-						Date validEnd = format.parse(validEndStr);
-						material.setValidEnd(validEnd);
-					}
+
 					if (!"".equals(creationMaterialDTO.getRequireFIFO())) {
 						material.setRequireFIFO(creationMaterialDTO.getRequireFIFO());//是否需要先进先出
 					}
 					if (!"".equals(creationMaterialDTO.getRequireCheckCustomerLabel())) {
 						material.setRequireCheckCustomerLabel(creationMaterialDTO.getRequireCheckCustomerLabel());//是否需要扫描客户标签
 					}
+					material.setRequireBackflush(false);
 					materialService.addMaterial(material);
 					json = this.setJson(200, "添加成功！", 0);
 				}else{
@@ -490,6 +498,25 @@ public class MaterialController extends BaseController{
 			if (editMaterialDTO.getMaterialNumber()!=null && !"".equals(editMaterialDTO.getMaterialNumber())) {
 				Integer count = materialService.getCountByMaterialNumber(editMaterialDTO.getMaterialNumber());
 				if (count==0 || editMaterialDTO.getMaterialNumber().equals(material.getMaterialNumber())) {
+					String validBeginStr = editMaterialDTO.getValidBegin();
+					Date validBegin = null;
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");//注意格式化的表达式
+					if (validBeginStr!=null && !"".equals(validBeginStr)) {
+						validBeginStr = validBeginStr.replace("Z", " UTC");//注意是空格+UTC
+						validBegin = format.parse(validBeginStr);
+						material.setValidBegin(validBegin);
+					}
+					Date validEnd = null;
+					String validEndStr = editMaterialDTO.getValidEnd();
+					if(validEndStr!=null && !"".equals(validEndStr)){
+						validEndStr = validEndStr.replace("Z", " UTC");
+						validEnd = format.parse(validEndStr);
+						material.setValidEnd(validEnd);
+					}
+					if(validEnd.before(validBegin)){
+						json = this.setJson(0, "添加失败：失效时间要大于生效时间！", -1);
+						return json;
+					}
 					material.setMaterialNumber(editMaterialDTO.getMaterialNumber());
 						material.setVersion(1);
 					if (editMaterialDTO.getDescription()!=null && !"".equals(editMaterialDTO.getDescription())) {
@@ -520,19 +547,7 @@ public class MaterialController extends BaseController{
 					}
 					material.setEditDateTime(new Date());
 					material.setEditorId(editMaterialDTO.getEditorId());
-					String validBeginStr = editMaterialDTO.getValidBegin(); 
-					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");//注意格式化的表达式
-					if (validBeginStr!=null && !"".equals(validBeginStr)) {
-						validBeginStr = validBeginStr.replace("Z", " UTC");//注意是空格+UTC
-						Date validBegin = format.parse(validBeginStr);
-						material.setValidBegin(validBegin);
-					}				
-					String validEndStr = editMaterialDTO.getValidEnd();	
-					if(validEndStr!=null && !"".equals(validEndStr)){
-						validEndStr = validEndStr.replace("Z", " UTC");
-						Date validEnd = format.parse(validEndStr);
-						material.setValidEnd(validEnd);
-					}
+
 					if (!"".equals(editMaterialDTO.getRequireFIFO())) {
 						material.setRequireFIFO(editMaterialDTO.getRequireFIFO());//是否需要先进先出
 					}

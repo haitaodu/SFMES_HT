@@ -12,6 +12,8 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import com.smartflow.model.Cell;
 import com.smartflow.model.Cell_Station;
+import org.springframework.util.StringUtils;
+
 @Repository
 public class CellDaoImpl implements CellDao {
 
@@ -46,10 +48,10 @@ public class CellDaoImpl implements CellDao {
 	@Override
 	public List<Cell> getCellByCondition(Integer pageIndex, Integer pageSize,String cellNumber,String description) {
 		String hql = "from Cell where State = 1 or State = 0";
-		if (cellNumber!=null) {
+		if (!StringUtils.isEmpty(cellNumber)) {
 			hql += "and cellNumber like '%"+cellNumber+"%' ";
 		}
-		if (description!=null) {
+		if (!StringUtils.isEmpty(description)) {
 			hql += "and description like '%"+description+"%'";
 		}
 		Session session = hibernateTemplate.getSessionFactory().openSession();
@@ -69,10 +71,10 @@ public class CellDaoImpl implements CellDao {
 	@Override
 	public Integer getTotalCountFromCell(String cellNumber,String description) {
 		String hql = "select count(*) from Cell where State = 1 or State = 0";
-		if (cellNumber!=null) {
+		if (!StringUtils.isEmpty(cellNumber)) {
 			hql += "and cellNumber like '%"+cellNumber+"%' ";
 		}
-		if (description!=null) {
+		if (!StringUtils.isEmpty(description)) {
 			hql += "and description like '%"+description+"%'";
 		}
 		Session session = hibernateTemplate.getSessionFactory().openSession();
