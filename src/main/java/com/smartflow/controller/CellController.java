@@ -108,7 +108,7 @@ public class CellController extends BaseController{
 			}			
 			Map<String, Object> map = new HashMap<>();
 			map.put("AreaList", areaList);
-			map.put("TDto", TDto);			
+			map.put("TDto", TDto);
 			json = this.setJson(200, FIND_SUCCESS, map);
 		}catch(Exception e){
 			json = this.setJson(0, FIND_FALL+e.getMessage(), -1);
