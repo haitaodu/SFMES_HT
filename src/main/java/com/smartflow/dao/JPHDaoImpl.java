@@ -26,10 +26,10 @@ public class JPHDaoImpl implements JPHDao {
     public Integer getTotalCountJPHListByCondition(GetJPHListConditionInputDTO getJPHListConditionInputDTO) {
         String hql = "select count(*) from JPH where State != -1 ";
         if(!StringUtils.isEmpty(getJPHListConditionInputDTO.getMaterialNumber())){
-            hql += " and Material.MaterialNumber like '%"+getJPHListConditionInputDTO.getMaterialNumber()+"%'";
+            hql += " and Material.materialNumber like '%"+getJPHListConditionInputDTO.getMaterialNumber()+"%'";
         }
         if(!StringUtils.isEmpty(getJPHListConditionInputDTO.getLocationId())) {
-            hql += " and Location.Id = "+getJPHListConditionInputDTO.getLocationId();
+            hql += " and Location.id = "+getJPHListConditionInputDTO.getLocationId();
         }
         Session session = hibernateTemplate.getSessionFactory().openSession();
         try{
@@ -48,10 +48,10 @@ public class JPHDaoImpl implements JPHDao {
     public List<JPH> getJPHListByCondition(GetJPHListConditionInputDTO getJPHListConditionInputDTO) {
         String hql = "from JPH where State != -1 ";
         if(!StringUtils.isEmpty(getJPHListConditionInputDTO.getMaterialNumber())){
-            hql += " and Material.MaterialNumber like '%"+getJPHListConditionInputDTO.getMaterialNumber()+"%'";
+            hql += " and Material.materialNumber like '%"+getJPHListConditionInputDTO.getMaterialNumber()+"%'";
         }
         if(!StringUtils.isEmpty(getJPHListConditionInputDTO.getLocationId())) {
-            hql += " and Location.Id = "+getJPHListConditionInputDTO.getLocationId();
+            hql += " and Location.id = "+getJPHListConditionInputDTO.getLocationId();
         }
         Session session = hibernateTemplate.getSessionFactory().openSession();
         try{

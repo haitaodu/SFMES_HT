@@ -108,7 +108,7 @@ public class CellController extends BaseController{
 			}			
 			Map<String, Object> map = new HashMap<>();
 			map.put("AreaList", areaList);
-			map.put("TDto", TDto);			
+			map.put("TDto", TDto);
 			json = this.setJson(200, FIND_SUCCESS, map);
 		}catch(Exception e){
 			json = this.setJson(0, FIND_FALL+e.getMessage(), -1);
@@ -292,9 +292,9 @@ public class CellController extends BaseController{
 				cell.setDescription(editCellDTO.getDescription());
 				cell.setEditDateTime(new Date());
 				cell.setEditorId(editCellDTO.getEditorId());
-				cell.setState(editCellDTO.getState());	
-				cell.setCreatorId(editCellDTO.getEditorId());
-				cell.setCreationDateTime(new Date());
+				cell.setState(editCellDTO.getState());
+//				cell.setCreatorId(editCellDTO.getEditorId());
+//				cell.setCreationDateTime(new Date());
 				cell.setAreaId(editCellDTO.getAreaId());
 				cellService.updateCell(cell);
 				json = this.setJson(200, "修改成功！", 0);

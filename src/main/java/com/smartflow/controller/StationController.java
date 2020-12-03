@@ -212,7 +212,7 @@ public class StationController extends BaseController{
 	 */
 	@CrossOrigin(origins = "*",maxAge = 3600)
 	@PostMapping (value="/Post")
-	public @ResponseBody Map<String, Object> post(@Valid @RequestBody CreationStationDTO creationStationDTO,BindingResult result,HttpServletRequest request,HttpServletResponse response) throws Exception{
+	public @ResponseBody Map<String, Object> post(@Valid @RequestBody CreationStationDTO creationStationDTO, BindingResult result, HttpServletRequest request, HttpServletResponse response) throws Exception{
 	Map<String, Object> json ;
 		try {	
 			if (result.hasErrors()) {

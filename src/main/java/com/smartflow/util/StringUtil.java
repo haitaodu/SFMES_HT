@@ -58,7 +58,7 @@ public class StringUtil {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 获取B后面的字符串
 	 * @param str
