@@ -118,6 +118,10 @@ public class ExcelController extends BaseController {
             {
                 return json;
             }
+            if(!upfile.getOriginalFilename().startsWith("工艺导入Excel模板")){
+                json = this.setJson(0, "请下载模板，填写好数据后导入模板Excel文件！", 1);
+                return json;
+            }
             System.out.println(upfile.getOriginalFilename());
             String path = request.getSession().getServletContext().getRealPath("/upload");
             System.out.println(path);
@@ -238,6 +242,10 @@ public class ExcelController extends BaseController {
             String errorMessage = result.getFieldErrors().stream()
                     .map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining(", "));
             json = this.setJson(0, errorMessage, -1);
+            return json;
+        }
+        if(!upfile.getOriginalFilename().startsWith("工艺编辑Excel模板")){
+            json = this.setJson(0, "请下载模板，填写好数据后导入模板Excel文件！", 1);
             return json;
         }
         if ("".equals(editProcessDTO.getValidBegin())) {
