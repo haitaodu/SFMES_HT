@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "IdLayout", schema = "core", catalog = "MESDB_SXHTDL")
+@Table(name = "IdLayout", schema = "core")
 public class IdLayoutEntity implements Serializable {
     @Id
     @GeneratedValue

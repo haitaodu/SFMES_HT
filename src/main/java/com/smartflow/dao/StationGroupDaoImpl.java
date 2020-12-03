@@ -53,7 +53,11 @@ public class StationGroupDaoImpl implements StationGroupDao {
 	}
 	
 	@Override
-	public List<StationGroup> getStationGroupList(Integer pageIndex,Integer pageSize,String groupNumber,String description) {
+	public List<StationGroup> getStationGroupList
+			(Integer pageIndex,
+			 Integer pageSize,
+			 String groupNumber,
+			 String description) {
 		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		String hql = "from StationGroup where State !=- 1 ";
@@ -122,7 +126,9 @@ public class StationGroupDaoImpl implements StationGroupDao {
 		try{
 			Query query = session.createSQLQuery(sql);
 			query.setInteger("StationGroupId", stationGroupId);
-			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+			return query.
+					setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).
+					list();
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;

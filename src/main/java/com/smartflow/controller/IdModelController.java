@@ -96,7 +96,7 @@ public class IdModelController extends BaseController {
     public Map<String, Object> save(@RequestBody IdModelSaveView idModelSaveView) {
         try {
             if (!idModelSaveView.getVaildFrom().before(idModelSaveView.getVaildTo())) {
-                json = this.setJson(-1, "添加失败：请检查数据", 0);
+                json = this.setJson(-1, "添加失败：开始时间大于结束时间", 0);
                 return json;
             }
             idModelService.save(idModelSaveView);

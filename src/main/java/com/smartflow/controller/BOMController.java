@@ -406,7 +406,6 @@ public class BOMController  extends BaseController {
 		String eRPBOMVersion=jsonObject.getString("ERPBOMVersion");
 		
 		Date nowTime=new Date();
-		bomHeadModel.setCreationDateTime(nowTime);
 		bomHeadModel.setCreatorId(2);
 		bomHeadModel.setEditDateTime(nowTime);
 		bomHeadModel.setEditorId(2);

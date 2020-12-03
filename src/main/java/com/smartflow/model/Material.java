@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
+/**
+ * @author haita
+ */
 @Entity
 @Table(name="core.Material")
 public class Material {
@@ -46,6 +49,8 @@ public class Material {
 	private int MaxWashQuantity;
     private ContainerType ContainerType;
     private Station station;
+    private Station station2;
+
 
 
 
@@ -58,6 +63,18 @@ public class Material {
 	public void setId(Integer id) {
 		Id = id;
 	}
+
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "StationId")
+	public Station getStation2() {
+		return station2;
+	}
+
+	public void setStation2(Station station2) {
+		this.station2 = station2;
+	}
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "TrackStationId")
 	public Station getStation() {
@@ -304,6 +321,49 @@ public class Material {
 		MaxWashQuantity = maxWashQuantity;
 	}
 
-
-	
+	@Override
+	public String toString() {
+		return "Material{" +
+				"Id=" + Id +
+				", MaterialNumber='" + MaterialNumber + '\'' +
+				", Version=" + Version +
+				", Description='" + Description + '\'' +
+				", Specification='" + Specification + '\'' +
+				", CustomerMaterialNumber='" + CustomerMaterialNumber + '\'' +
+				", SupplierMaterialNumber='" + SupplierMaterialNumber + '\'' +
+				", MaterialGroupType=" + MaterialGroupType +
+				", IsProduct=" + IsProduct +
+				", IsMultiPanel=" + IsMultiPanel +
+				", RequireBackflush=" + RequireBackflush +
+				", NumberOfPanels=" + NumberOfPanels +
+				", Unit=" + Unit +
+				", SetupFlag=" + SetupFlag +
+				", MinimumPackageQuantity=" + MinimumPackageQuantity +
+				", ExpirationTime=" + ExpirationTime +
+				", DefaultStorageLocationId=" + DefaultStorageLocationId +
+				", DefaultTargetFeedingLocationId=" + DefaultTargetFeedingLocationId +
+				", ContainerSize=" + ContainerSize +
+				", MSL=" + MSL +
+				", State=" + State +
+				", DefaultStationGroupId=" + DefaultStationGroupId +
+				", CompanyId=" + CompanyId +
+				", FactoryId=" + FactoryId +
+				", CreationDateTime=" + CreationDateTime +
+				", CreatorId=" + CreatorId +
+				", ValidBegin=" + ValidBegin +
+				", ValidEnd=" + ValidEnd +
+				", EditorId=" + EditorId +
+				", EditDateTime=" + EditDateTime +
+				", ProjectName='" + ProjectName + '\'' +
+				", OriginalNumber='" + OriginalNumber + '\'' +
+				", CADDrawingPartNumber='" + CADDrawingPartNumber + '\'' +
+				", RequireFIFO=" + RequireFIFO +
+				", RequireCheckCustomerLabel=" + RequireCheckCustomerLabel +
+				", MaxDeliveryQuantity=" + MaxDeliveryQuantity +
+				", MaxWashQuantity=" + MaxWashQuantity +
+				", ContainerType=" + ContainerType +
+				", station=" + station +
+				", station2=" + station2 +
+				'}';
+	}
 }

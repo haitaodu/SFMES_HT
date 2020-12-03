@@ -87,6 +87,7 @@ public class MaterialController extends BaseController{
 			map.put("Factory", Factory);
 			map.put("Container",containerTypeService.getContainerType());
 			map.put("TraceStation",stationGroupService.getTraceStation());
+			map.put("Station",stationGroupService.getStation());
 			json = this.setJson(200, "初始化成功", map);
 		}catch(Exception e){
 			json = this.setJson(0, "初始化数据失败:"+e.getMessage(), -1);
@@ -166,6 +167,7 @@ public class MaterialController extends BaseController{
 				materialListDTO.setValidEnd(material.getValidEnd());
 				materialListDTO.setWashQuantity(material.getMaxDeliveryQuantity());
 				materialListDTO.setMaxWashQuantity(material.getMaxWashQuantity());
+				materialListDTO.setTraceStatiom(material.getStation2().getStationNumber());
 				String requireFIFO = null;
 				if (material.getRequireFIFO()!=null) {
 					if (material.getRequireFIFO()==true)
@@ -255,7 +257,7 @@ public class MaterialController extends BaseController{
 						requireFIFO = "False";
 				}				
 				materialListDTO.setRequireFIFO(requireFIFO);
-				
+				materialListDTO.setTraceStatiom(material.getStation2().getName());
 				String requireCheckCustomerLabel = null;
 				if (material.getRequireCheckCustomerLabel()!=null) {
 					if (material.getRequireCheckCustomerLabel()==true)
@@ -293,7 +295,7 @@ public class MaterialController extends BaseController{
 			map.put("Location", Location);
 			map.put("Factory", Factory);
 			map.put("TDto", TDto);
-			map.put("Station",stationService.getWashList());
+			map.put("Station",stationGroupService.getStation());
 			map.put("Container",containerTypeService.getContainerType());
 			map.put("TraceStation",stationGroupService.getTraceStation());
 			json = this.setJson(200, "查询成功！", map);
@@ -357,7 +359,7 @@ public class MaterialController extends BaseController{
 			map.put("TDto", TDto);
             map.put("TraceStation",stationGroupService.getTraceStation());
 			map.put("Container",containerTypeService.getContainerType());
-			map.put("Station",stationService.getWashList());
+			map.put("Station",stationGroupService.getStation());
 			json = this.setJson(200, "查询成功！", map);
 		}catch(Exception e){
 			json = this.setJson(0, "查询失败："+e.getMessage(), -1);
@@ -420,7 +422,7 @@ public class MaterialController extends BaseController{
 					if(!"".equals(creationMaterialDTO.getSetupFlag())){
 						material.setSetupFlag(creationMaterialDTO.getSetupFlag());
 					}
-
+					material.setStation2(hibernateTemplate.get(Station.class,creationMaterialDTO.getStationId()));
 					material.setMinimumPackageQuantity(creationMaterialDTO.getMinimumPackageQuantity());
 					material.setExpirationTime(creationMaterialDTO.getExpirationTime());
 
@@ -501,7 +503,8 @@ public class MaterialController extends BaseController{
 						material.setIsProduct(false);
 						material.setIsMultiPanel(false);
 						material.setNumberOfPanels(0);
-					    material.setMaxDeliveryQuantity(editMaterialDTO.getWashQuantity());
+					material.setStation2(hibernateTemplate.get(Station.class,editMaterialDTO.getStationId()));
+					material.setMaxDeliveryQuantity(editMaterialDTO.getWashQuantity());
 					    material.setMaxWashQuantity(editMaterialDTO.getMaxWashQuantity());
 					    material.setStation(hibernateTemplate.get(Station.class,editMaterialDTO.getTraceStationId()));
 					if (editMaterialDTO.getUnit()!=null) {

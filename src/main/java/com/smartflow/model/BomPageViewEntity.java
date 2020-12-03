@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "BomPageView", schema = "dbo", catalog = "MESDB_SXHTDL")
+@Table(name = "BomPageView", schema = "dbo")
 public class BomPageViewEntity implements Serializable {
     @Id
     @GeneratedValue

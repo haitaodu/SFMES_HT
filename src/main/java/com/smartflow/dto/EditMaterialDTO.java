@@ -34,7 +34,17 @@ public class EditMaterialDTO {
 	private int MaxWashQuantity;
 	private int ContainerTypeId;
 	private int TraceStationId;
+	private int StationId;
 
+
+	@JsonProperty("StationId")
+	public int getStationId() {
+		return StationId;
+	}
+
+	public void setStationId(int stationId) {
+		StationId = stationId;
+	}
 	@JsonProperty("TraceStationId")
 	public int getTraceStationId() {
 		return TraceStationId;

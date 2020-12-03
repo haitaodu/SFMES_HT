@@ -15,11 +15,20 @@ import com.smartflow.dto.GetDTOByConditionOfMaterialListDTO;
 import com.smartflow.model.Material;
 import com.smartflow.util.MaterialDataForSearch;
 
+/**
+ * @author haita
+ */
 @Repository
 public class MaterialDaoImpl implements MaterialDao{
 
-	@Autowired
+	final
 	HibernateTemplate hibernateTemplate;
+
+	@Autowired
+	public MaterialDaoImpl(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
+	}
+
 	@Override
 	public Integer getMaterialTotalCount(GetDTOByConditionOfMaterialListDTO getDTOByConditionOfMaterialListDTO) {
 		Session session = hibernateTemplate.getSessionFactory().openSession();
@@ -33,9 +42,6 @@ public class MaterialDaoImpl implements MaterialDao{
 		if (getDTOByConditionOfMaterialListDTO.getMaterialGroupType()!=null && !"".equals(getDTOByConditionOfMaterialListDTO.getMaterialGroupType())) {
 			hql += "and materialGroupType = "+getDTOByConditionOfMaterialListDTO.getMaterialGroupType();
 		}
-//		if (getDTOByConditionOfMaterialListDTO.getIsProduct()!=null && !"".equals(getDTOByConditionOfMaterialListDTO.getIsProduct())) {
-//			hql += "and isProduct = "+getDTOByConditionOfMaterialListDTO.getIsProduct();
-//		}
 		if (getDTOByConditionOfMaterialListDTO.getFactoryId()!=null && !"".equals(getDTOByConditionOfMaterialListDTO.getFactoryId())) {
 			hql += "and factoryId = "+getDTOByConditionOfMaterialListDTO.getFactoryId();
 		}

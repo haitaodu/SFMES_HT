@@ -175,7 +175,9 @@ AreaDao area;
 
 	@Override
 	public boolean isRegisterLocationNumber(String LocationNumber) {
-		List<LocationModel> locationModels=(List<LocationModel>)hibernate.findByNamedParam("From LocationModel Where LocationNumber=:locationNumber","locationNumber",LocationNumber);
+		List<LocationModel> locationModels=(List<LocationModel>)hibernate.findByNamedParam
+				("From LocationModel Where LocationNumber=:locationNumber and State!=0",
+						"locationNumber",LocationNumber);
 		if(locationModels.size()>1)
 		{
 			return  true;

@@ -6,6 +6,9 @@ import java.util.Map;
 import com.smartflow.model.StationGroup;
 import com.smartflow.model.Station_StationGroup;
 
+/**
+ * @author haita
+ */
 public interface StationGroupDao {
 	
 	/**

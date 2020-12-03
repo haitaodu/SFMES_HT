@@ -392,6 +392,8 @@ public class IdModelServiceImpl implements  IdModelService{
         idModelPageView.setModelCode(idModelEntity.getModelCode());
         idModelPageView.setModelName(idModelEntity.getModelName());
         List<IdLayoutEntity> idLayoutEntities=idModelDao.getByIdModelId(idModelEntity.getId());
+        System.out.println(idModelEntity.getId());
+        System.out.println(idLayoutEntities.toString());
         idModelPageView.setSupplierCode(idLayoutEntities.get(0).getValue());
         idModelPageView.setPartCode(idLayoutEntities.get(1).getValue());
         idModelPageView.setSupplierSequenceCode(idLayoutEntities.get(2).getValue());

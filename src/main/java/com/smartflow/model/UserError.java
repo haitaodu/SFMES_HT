@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "user_error", schema = "dbo", catalog = "MESDB_SXHTDL3")
+@Table(name = "user_error", schema = "dbo")
 public class UserError implements Serializable {
     private int id;
     private int userid;

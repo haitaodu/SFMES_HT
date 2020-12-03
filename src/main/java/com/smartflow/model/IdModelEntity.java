@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "IdModel", schema = "core", catalog = "MESDB_SXHTDL")
+@Table(name = "IdModel", schema = "core")
 public class IdModelEntity implements Serializable {
     @Id
     @GeneratedValue
@@ -36,6 +36,7 @@ public class IdModelEntity implements Serializable {
     private boolean isStationRelated;
     private int stationId;
     private int bomheadId;
+    @Column(name = "IsTimeStamp")
     private  boolean isTimeStamp;
     private  int  numberSuffix;
     private String productName;
@@ -63,8 +64,7 @@ public class IdModelEntity implements Serializable {
         this.bomheadId = bomheadId;
     }
 
-    @Basic
-    @Column(name = "IsTimeStamp")
+
     public boolean isTimeStamp() {
         return isTimeStamp;
     }

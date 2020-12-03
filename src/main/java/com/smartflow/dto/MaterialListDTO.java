@@ -38,6 +38,17 @@ public class MaterialListDTO {
 	private int MaxWashQuantity;
 	private String StationName;
     private String ContainerName;
+    private String TraceStatiom;
+
+
+	@JsonProperty("Station")
+	public String getTraceStatiom() {
+		return TraceStatiom;
+	}
+
+	public void setTraceStatiom(String traceStatiom) {
+		TraceStatiom = traceStatiom;
+	}
 
 	@JsonProperty("ContainerName")
 	public String getContainerName() {
