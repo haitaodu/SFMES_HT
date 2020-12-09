@@ -167,7 +167,7 @@ public class MaterialController extends BaseController{
 				materialListDTO.setValidEnd(material.getValidEnd());
 				materialListDTO.setWashQuantity(material.getMaxDeliveryQuantity());
 				materialListDTO.setMaxWashQuantity(material.getMaxWashQuantity());
-				materialListDTO.setTraceStatiom(material.getStation2().getStationNumber());
+				materialListDTO.setTraceStatiom(material.getStation2() == null ? null : material.getStation2().getStationNumber());
 				String requireFIFO = null;
 				if (material.getRequireFIFO()!=null) {
 					if (material.getRequireFIFO()==true)
@@ -257,7 +257,7 @@ public class MaterialController extends BaseController{
 						requireFIFO = "False";
 				}				
 				materialListDTO.setRequireFIFO(requireFIFO);
-				materialListDTO.setTraceStatiom(material.getStation2().getName());
+				materialListDTO.setTraceStatiom(material.getStation2() == null ? null : material.getStation2().getName());
 				String requireCheckCustomerLabel = null;
 				if (material.getRequireCheckCustomerLabel()!=null) {
 					if (material.getRequireCheckCustomerLabel()==true)
