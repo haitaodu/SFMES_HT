@@ -131,7 +131,7 @@ public class IdModelDaoImpl implements  IdModelDao{
         }
         if (productId!=null&&!"".equals(productId))
         {
-            hql+=" and bomHeadId="+productId;
+            hql+=" and productName ='"+productId+"'";
         }
         if (stationId!=null&&!"".equals(stationId))
         {

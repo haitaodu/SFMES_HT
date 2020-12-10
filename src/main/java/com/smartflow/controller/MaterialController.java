@@ -230,12 +230,12 @@ public class MaterialController extends BaseController{
 				materialListDTO.setMaterialNumber(material.getMaterialNumber());
 				materialListDTO.setMinimumPackageQuantity(material.getMinimumPackageQuantity());
 				materialListDTO.setWashQuantity(material.getMaxDeliveryQuantity());
-				materialListDTO.setMaxWashQuantity(materialListDTO.getMaxWashQuantity());
+				materialListDTO.setMaxWashQuantity(material.getMaxWashQuantity());
 				String setupFlag = null;
 				if(material.getSetupFlag()==true)
-					setupFlag = "True";
+					setupFlag = "是";
 				else if(material.getSetupFlag()==false)
-					setupFlag = "False";
+					setupFlag = "否";
 				materialListDTO.setSetupFlag(setupFlag);
 				String state = null;
 				if (material.getState()==1) {
@@ -251,19 +251,19 @@ public class MaterialController extends BaseController{
 				materialListDTO.setValidEnd(material.getValidEnd());
 				String requireFIFO = null;
 				if (material.getRequireFIFO()!=null) {
-					if (material.getRequireFIFO()==true) 
-						requireFIFO = "True";
-					else if (material.getRequireFIFO()==false) 
-						requireFIFO = "False";
-				}				
+					if (material.getRequireFIFO()==true)
+						requireFIFO = "是";
+					else if (material.getRequireFIFO()==false)
+						requireFIFO = "否";
+				}
 				materialListDTO.setRequireFIFO(requireFIFO);
 				materialListDTO.setTraceStatiom(material.getStation2() == null ? null : material.getStation2().getName());
 				String requireCheckCustomerLabel = null;
 				if (material.getRequireCheckCustomerLabel()!=null) {
 					if (material.getRequireCheckCustomerLabel()==true)
-						requireCheckCustomerLabel = "True";
-					else if(material.getRequireCheckCustomerLabel()==false)
-						requireCheckCustomerLabel = "False";
+						requireCheckCustomerLabel = "是";
+					else if (material.getRequireCheckCustomerLabel()==false)
+						requireCheckCustomerLabel = "否";
 				}
 				materialListDTO.setRequireCheckCustomerLabel(requireCheckCustomerLabel);
 			}
