@@ -47,12 +47,12 @@ public class CellDaoImpl implements CellDao {
 
 	@Override
 	public List<Cell> getCellByCondition(Integer pageIndex, Integer pageSize,String cellNumber,String description) {
-		String hql = "from Cell where State = 1 or State = 0";
+		String hql = "from Cell where (State = 1 or State = 0)";
 		if (!StringUtils.isEmpty(cellNumber)) {
-			hql += "and cellNumber like '%"+cellNumber+"%' ";
+			hql += " and cellNumber like '%"+cellNumber+"%' ";
 		}
 		if (!StringUtils.isEmpty(description)) {
-			hql += "and description like '%"+description+"%'";
+			hql += " and description like '%"+description+"%'";
 		}
 		Session session = hibernateTemplate.getSessionFactory().openSession();
 	    try{
@@ -70,12 +70,12 @@ public class CellDaoImpl implements CellDao {
 
 	@Override
 	public Integer getTotalCountFromCell(String cellNumber,String description) {
-		String hql = "select count(*) from Cell where State = 1 or State = 0";
+		String hql = "select count(*) from Cell where (State = 1 or State = 0)";
 		if (!StringUtils.isEmpty(cellNumber)) {
-			hql += "and cellNumber like '%"+cellNumber+"%' ";
+			hql += " and cellNumber like '%"+cellNumber+"%' ";
 		}
 		if (!StringUtils.isEmpty(description)) {
-			hql += "and description like '%"+description+"%'";
+			hql += " and description like '%"+description+"%'";
 		}
 		Session session = hibernateTemplate.getSessionFactory().openSession();
 		try{
