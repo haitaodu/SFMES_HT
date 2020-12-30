@@ -87,7 +87,8 @@ public class MaterialController extends BaseController{
 			map.put("Factory", Factory);
 			map.put("Container",containerTypeService.getContainerType());
 			map.put("TraceStation",stationGroupService.getTraceStation());
-			map.put("Station",stationGroupService.getStation());
+//			map.put("Station",stationGroupService.getStation());
+			map.put("Station",stationGroupService.getUseStation());
 			json = this.setJson(200, "初始化成功", map);
 		}catch(Exception e){
 			json = this.setJson(0, "初始化数据失败:"+e.getMessage(), -1);
@@ -295,7 +296,8 @@ public class MaterialController extends BaseController{
 			map.put("Location", Location);
 			map.put("Factory", Factory);
 			map.put("TDto", TDto);
-			map.put("Station",stationGroupService.getStation());
+//			map.put("Station",stationGroupService.getStation());
+			map.put("Station",stationGroupService.getUseStation());
 			map.put("Container",containerTypeService.getContainerType());
 			map.put("TraceStation",stationGroupService.getTraceStation());
 			json = this.setJson(200, "查询成功！", map);
@@ -349,6 +351,7 @@ public class MaterialController extends BaseController{
 				if (material.getRequireCheckCustomerLabel()!=null) {
 					TDto.setRequireCheckCustomerLabel(material.getRequireCheckCustomerLabel());//是否需要扫描客户标签
 				}
+				TDto.setStationId(material.getStation2() == null ? null : material.getStation2().getId());
 			}
 			
 			Map<String, Object> map = new HashMap<>();
@@ -359,7 +362,8 @@ public class MaterialController extends BaseController{
 			map.put("TDto", TDto);
             map.put("TraceStation",stationGroupService.getTraceStation());
 			map.put("Container",containerTypeService.getContainerType());
-			map.put("Station",stationGroupService.getStation());
+//			map.put("Station",stationGroupService.getStation());
+			map.put("Station",stationGroupService.getUseStation());
 			json = this.setJson(200, "查询成功！", map);
 		}catch(Exception e){
 			json = this.setJson(0, "查询失败："+e.getMessage(), -1);

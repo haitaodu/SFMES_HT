@@ -36,7 +36,7 @@ public class CreationMaterialDTO {
 	private int MaxWashQuantity;
 	private int ContainerTypeId;
 	private int TraceStationId;
-    private int StationId;
+    private Integer StationId;
 
 
 	@JsonProperty("StationId")

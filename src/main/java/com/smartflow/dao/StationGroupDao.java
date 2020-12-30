@@ -57,6 +57,12 @@ public interface StationGroupDao {
 	 * @return
 	 */
 	public List<Map<String, Object>> getStation();
+
+	/**
+	 * 获取物料使用工站下拉框（只显示工站类型是生产工站和打标工站的工站）
+	 * @return
+	 */
+	public List<Map<String,Object>> getUseStation();
 	
 	/**
 	 * 查询GroupNumber出现的次数，判读GroupNumber是否重复添加

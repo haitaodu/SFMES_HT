@@ -40,6 +40,7 @@ public class EditMaterialForEditRetrunInitialization {
 	private boolean RequireFIFO;//是否需要先进先出
 	private boolean RequireCheckCustomerLabel;//是否需要扫描客户标签
 	private int ContainerTypeId;
+	private Integer StationId;
 	private int TraceStationId;
 
 
@@ -248,7 +249,13 @@ public class EditMaterialForEditRetrunInitialization {
 	}
 	public void setRequireCheckCustomerLabel(boolean requireCheckCustomerLabel) {
 		RequireCheckCustomerLabel = requireCheckCustomerLabel;
-	}	
-	
-	
+	}
+	@JsonProperty("StationId")
+	public Integer getStationId() {
+		return StationId;
+	}
+
+	public void setStationId(Integer stationId) {
+		StationId = stationId;
+	}
 }

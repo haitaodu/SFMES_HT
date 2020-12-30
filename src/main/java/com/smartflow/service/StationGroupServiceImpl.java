@@ -48,6 +48,12 @@ public class StationGroupServiceImpl implements StationGroupService {
 	public List<Map<String, Object>> getStation() {
 		return stationGroupDao.getStation();
 	}
+
+	@Override
+	public List<Map<String, Object>> getUseStation() {
+		return stationGroupDao.getUseStation();
+	}
+
 	@Override
 	public Integer getCountByGroupNumber(String groupNumber) {
 		return stationGroupDao.getCountByGroupNumber(groupNumber);
