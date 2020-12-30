@@ -40,11 +40,11 @@ public class CreationMaterialDTO {
 
 
 	@JsonProperty("StationId")
-	public int getStationId() {
+	public Integer getStationId() {
 		return StationId;
 	}
 
-	public void setStationId(int stationId) {
+	public void setStationId(Integer stationId) {
 		StationId = stationId;
 	}
 
