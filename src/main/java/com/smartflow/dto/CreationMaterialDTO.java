@@ -35,25 +35,25 @@ public class CreationMaterialDTO {
 	private int WashQuantity;
 	private int MaxWashQuantity;
 	private int ContainerTypeId;
-	private int TraceStationId;
-    private int StationId;
+	private Integer TraceStationId;
+    private Integer StationId;
 
 
 	@JsonProperty("StationId")
-	public int getStationId() {
+	public Integer getStationId() {
 		return StationId;
 	}
 
-	public void setStationId(int stationId) {
+	public void setStationId(Integer stationId) {
 		StationId = stationId;
 	}
 
 	@JsonProperty("TraceStationId")
-	public int getTraceStationId() {
+	public Integer getTraceStationId() {
 		return TraceStationId;
 	}
 
-	public void setTraceStationId(int traceStationId) {
+	public void setTraceStationId(Integer traceStationId) {
 		TraceStationId = traceStationId;
 	}
 

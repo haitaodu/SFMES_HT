@@ -151,6 +151,23 @@ public class StationGroupDaoImpl implements StationGroupDao {
 			session.close();
 		}
 	}
+
+	@Override
+	public List<Map<String, Object>> getUseStation() {
+		SessionFactory sessionFactory = hibernateTemplate.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		String sql = "select Id [key],CONCAT(StationNumber,'('+Name+')') label from core.Station where State = 1 and (StationType = 1 or StationType = 12)";
+		try{
+			Query query = session.createSQLQuery(sql);
+			return query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			session.close();
+		}
+	}
+
 	@Override
 	public Integer getCountByGroupNumber(String groupNumber) {
 		Session session = hibernateTemplate.getSessionFactory().openSession();

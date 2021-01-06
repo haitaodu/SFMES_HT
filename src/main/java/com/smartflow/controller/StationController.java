@@ -112,7 +112,7 @@ public class StationController extends BaseController{
 					stationDTO.setCreationDateTime(station.getCreationDateTime());
 					stationDTO.setEditDateTime(station.getEditDateTime());
 					stationDTO.setEditor(editor);
-					stationDTO.setStationType(getStationLabel(station.getStationType()));
+					stationDTO.setStationType(station.getStationType() == null ? null : stationService.getStationTypeNameByStationTypeId(station.getStationType()));
 					stationDTO.setState(state);
 					stationDTO.setCreator(creator);
 					stationDTO.setStationIP(station.getIpAddress());
@@ -153,7 +153,6 @@ public class StationController extends BaseController{
 				String editor = stationService.getUserNameById(station.getEditorId());
 				StationDTO.setEditor(editor);
 				StationDTO.setStationType(station.getStationType() == null ? null : stationService.getStationTypeNameByStationTypeId(station.getStationType()));
-				//StationDTO.setStationType(getStationLabel(station.getStationType()));
 				String state = PageUtil.paseState(station.getState());
 				StationDTO.setState(state);
 				StationDTO.setCreator(creator);

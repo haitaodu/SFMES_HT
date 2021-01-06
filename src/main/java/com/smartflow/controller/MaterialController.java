@@ -15,10 +15,12 @@ import javax.validation.Valid;
 import com.smartflow.model.ContainerType;
 import com.smartflow.model.Station;
 import com.smartflow.service.ContainerTypeService;
+import com.smartflow.util.StringUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -87,7 +89,8 @@ public class MaterialController extends BaseController{
 			map.put("Factory", Factory);
 			map.put("Container",containerTypeService.getContainerType());
 			map.put("TraceStation",stationGroupService.getTraceStation());
-			map.put("Station",stationGroupService.getStation());
+//			map.put("Station",stationGroupService.getStation());
+			map.put("Station",stationGroupService.getUseStation());
 			json = this.setJson(200, "初始化成功", map);
 		}catch(Exception e){
 			json = this.setJson(0, "初始化数据失败:"+e.getMessage(), -1);
@@ -138,7 +141,7 @@ public class MaterialController extends BaseController{
 				if (material.getEditorId()!=null) {
 					materialListDTO.setEditor(stationService.getUserNameById(material.getEditorId()));
 				}
-				materialListDTO.setStationName(material.getStation().getName());
+				materialListDTO.setStationName(material.getStation2() == null ? null : material.getStation2().getStationNumber().concat("("+material.getStation2().getName()+")"));
                 materialListDTO.setContainerName(material.getContainerType().getName());
 				materialListDTO.setExpirationTime(material.getExpirationTime());
 				materialListDTO.setFactoryNumber(stationGroupService.getFactoryNameById(material.getFactoryId()));
@@ -167,7 +170,7 @@ public class MaterialController extends BaseController{
 				materialListDTO.setValidEnd(material.getValidEnd());
 				materialListDTO.setWashQuantity(material.getMaxDeliveryQuantity());
 				materialListDTO.setMaxWashQuantity(material.getMaxWashQuantity());
-				materialListDTO.setTraceStatiom(material.getStation2().getStationNumber());
+				materialListDTO.setTraceStatiom(material.getStation() == null ? null : material.getStation().getStationNumber());
 				String requireFIFO = null;
 				if (material.getRequireFIFO()!=null) {
 					if (material.getRequireFIFO()==true)
@@ -220,7 +223,7 @@ public class MaterialController extends BaseController{
 				if (material.getEditorId()!=null) {
 					materialListDTO.setEditor(stationService.getUserNameById(material.getEditorId()));
 				}
-                materialListDTO.setStationName(material.getStation().getName());
+				materialListDTO.setStationName(material.getStation2() == null ? null : material.getStation2().getStationNumber().concat("("+material.getStation2().getName()+")"));
 				materialListDTO.setExpirationTime(material.getExpirationTime());
 				materialListDTO.setFactoryNumber(stationGroupService.getFactoryNameById(material.getFactoryId()));
 				materialListDTO.setId(material.getId());
@@ -230,12 +233,12 @@ public class MaterialController extends BaseController{
 				materialListDTO.setMaterialNumber(material.getMaterialNumber());
 				materialListDTO.setMinimumPackageQuantity(material.getMinimumPackageQuantity());
 				materialListDTO.setWashQuantity(material.getMaxDeliveryQuantity());
-				materialListDTO.setMaxWashQuantity(materialListDTO.getMaxWashQuantity());
+				materialListDTO.setMaxWashQuantity(material.getMaxWashQuantity());
 				String setupFlag = null;
 				if(material.getSetupFlag()==true)
-					setupFlag = "True";
+					setupFlag = "是";
 				else if(material.getSetupFlag()==false)
-					setupFlag = "False";
+					setupFlag = "否";
 				materialListDTO.setSetupFlag(setupFlag);
 				String state = null;
 				if (material.getState()==1) {
@@ -251,19 +254,19 @@ public class MaterialController extends BaseController{
 				materialListDTO.setValidEnd(material.getValidEnd());
 				String requireFIFO = null;
 				if (material.getRequireFIFO()!=null) {
-					if (material.getRequireFIFO()==true) 
-						requireFIFO = "True";
-					else if (material.getRequireFIFO()==false) 
-						requireFIFO = "False";
-				}				
+					if (material.getRequireFIFO()==true)
+						requireFIFO = "是";
+					else if (material.getRequireFIFO()==false)
+						requireFIFO = "否";
+				}
 				materialListDTO.setRequireFIFO(requireFIFO);
-				materialListDTO.setTraceStatiom(material.getStation2().getName());
+				materialListDTO.setTraceStatiom(material.getStation() == null ? null : material.getStation().getName());
 				String requireCheckCustomerLabel = null;
 				if (material.getRequireCheckCustomerLabel()!=null) {
 					if (material.getRequireCheckCustomerLabel()==true)
-						requireCheckCustomerLabel = "True";
-					else if(material.getRequireCheckCustomerLabel()==false)
-						requireCheckCustomerLabel = "False";
+						requireCheckCustomerLabel = "是";
+					else if (material.getRequireCheckCustomerLabel()==false)
+						requireCheckCustomerLabel = "否";
 				}
 				materialListDTO.setRequireCheckCustomerLabel(requireCheckCustomerLabel);
 			}
@@ -295,7 +298,8 @@ public class MaterialController extends BaseController{
 			map.put("Location", Location);
 			map.put("Factory", Factory);
 			map.put("TDto", TDto);
-			map.put("Station",stationGroupService.getStation());
+//			map.put("Station",stationGroupService.getStation());
+			map.put("Station",stationGroupService.getUseStation());
 			map.put("Container",containerTypeService.getContainerType());
 			map.put("TraceStation",stationGroupService.getTraceStation());
 			json = this.setJson(200, "查询成功！", map);
@@ -342,13 +346,14 @@ public class MaterialController extends BaseController{
 				TDto.setMaxWashQuantity(material.getMaxWashQuantity());
 				TDto.setWashQuantity(material.getMaxDeliveryQuantity());
                 TDto.setContainerTypeId(material.getContainerType().getId());
-                TDto.setTraceStationId(material.getStation().getId());
+                TDto.setTraceStationId(material.getStation() == null ? null : material.getStation().getId());
 				if (material.getRequireFIFO()!=null) {
 					TDto.setRequireFIFO(material.getRequireFIFO());
 				}
 				if (material.getRequireCheckCustomerLabel()!=null) {
 					TDto.setRequireCheckCustomerLabel(material.getRequireCheckCustomerLabel());//是否需要扫描客户标签
 				}
+				TDto.setStationId(material.getStation2() == null ? null : material.getStation2().getId());
 			}
 			
 			Map<String, Object> map = new HashMap<>();
@@ -359,7 +364,8 @@ public class MaterialController extends BaseController{
 			map.put("TDto", TDto);
             map.put("TraceStation",stationGroupService.getTraceStation());
 			map.put("Container",containerTypeService.getContainerType());
-			map.put("Station",stationGroupService.getStation());
+//			map.put("Station",stationGroupService.getStation());
+			map.put("Station",stationGroupService.getUseStation());
 			json = this.setJson(200, "查询成功！", map);
 		}catch(Exception e){
 			json = this.setJson(0, "查询失败："+e.getMessage(), -1);
@@ -402,6 +408,19 @@ public class MaterialController extends BaseController{
 						return json;
 					}
 				}
+				if(!"".equals(creationMaterialDTO.getSetupFlag())){
+					material.setSetupFlag(creationMaterialDTO.getSetupFlag());
+					if(creationMaterialDTO.getSetupFlag()){
+						if(creationMaterialDTO.getStationId() == null){
+							json = this.setJson(0, "添加失败：使用工站不能为空！", -1);
+							return json;
+						}else{
+							material.setStation2(hibernateTemplate.get(Station.class,creationMaterialDTO.getStationId()));
+						}
+					}else{
+						material.setStation2(null);
+					}
+				}
 				if (count==0) {
 					Date validBegin = null;
 					String validBeginStr = creationMaterialDTO.getValidBegin();
@@ -418,9 +437,11 @@ public class MaterialController extends BaseController{
 						validEnd = format.parse(validEndStr);
 						material.setValidEnd(validEnd);
 					}
-					if(validEnd.before(validBegin)){
-						json = this.setJson(0, "添加失败：失效时间要大于生效时间！", -1);
-						return json;
+					if(!StringUtils.isEmpty(validBegin) && !StringUtils.isEmpty(validEnd)) {
+						if (validEnd.before(validBegin)) {
+							json = this.setJson(0, "添加失败：失效时间要大于生效时间！", -1);
+							return json;
+						}
 					}
 					material.setMaterialNumber(creationMaterialDTO.getMaterialNumber());
 						material.setVersion(1);
@@ -433,15 +454,12 @@ public class MaterialController extends BaseController{
 						material.setIsProduct(false);
 						material.setIsMultiPanel(false);
 						material.setNumberOfPanels(0);
-						material.setStation(hibernateTemplate.get(Station.class,creationMaterialDTO.getTraceStationId()));
+						material.setStation(creationMaterialDTO.getTraceStationId() == null ? null : hibernateTemplate.get(Station.class,creationMaterialDTO.getTraceStationId()));
 						material.setContainerType(hibernateTemplate.get(ContainerType.class,creationMaterialDTO.getContainerTypeId()));
 					if (creationMaterialDTO.getUnit()!=null) {
 						material.setUnit(creationMaterialDTO.getUnit());
 					}					
-					if(!"".equals(creationMaterialDTO.getSetupFlag())){
-						material.setSetupFlag(creationMaterialDTO.getSetupFlag());
-					}
-					material.setStation2(hibernateTemplate.get(Station.class,creationMaterialDTO.getStationId()));
+
 					material.setMinimumPackageQuantity(creationMaterialDTO.getMinimumPackageQuantity());
 					material.setExpirationTime(creationMaterialDTO.getExpirationTime());
 
@@ -515,33 +533,46 @@ public class MaterialController extends BaseController{
 						validEnd = format.parse(validEndStr);
 						material.setValidEnd(validEnd);
 					}
-					if(validEnd.before(validBegin)){
-						json = this.setJson(0, "添加失败：失效时间要大于生效时间！", -1);
-						return json;
+					if(!StringUtils.isEmpty(validBegin) && !StringUtils.isEmpty(validEnd)) {
+						if (validEnd.before(validBegin)) {
+							json = this.setJson(0, "修改失败：失效时间要大于生效时间！", -1);
+							return json;
+						}
+					}
+					if(!"".equals(editMaterialDTO.getSetupFlag())){
+						material.setSetupFlag(editMaterialDTO.getSetupFlag());
+						if(editMaterialDTO.getSetupFlag()){
+							if(editMaterialDTO.getStationId() == null){
+								json = this.setJson(0, "修改失败：使用工站不能为空！", -1);
+								return json;
+							}else{
+								material.setStation2(hibernateTemplate.get(Station.class,editMaterialDTO.getStationId()));
+							}
+						}else{
+							material.setStation2(null);
+						}
 					}
 					material.setMaterialNumber(editMaterialDTO.getMaterialNumber());
-						material.setVersion(1);
+					material.setVersion(1);
 					if (editMaterialDTO.getDescription()!=null && !"".equals(editMaterialDTO.getDescription())) {
 						material.setDescription(editMaterialDTO.getDescription());
 					}
-						material.setCustomerMaterialNumber(editMaterialDTO.getCustomerMaterialNumber());
-						material.setSupplierMaterialNumber(editMaterialDTO.getSupplierMaterialNumber());
-						material.setMaterialGroupType(editMaterialDTO.getMaterialGroupType());
-						material.setIsProduct(false);
-						material.setIsMultiPanel(false);
-						material.setNumberOfPanels(0);
-					material.setStation2(hibernateTemplate.get(Station.class,editMaterialDTO.getStationId()));
+					material.setCustomerMaterialNumber(editMaterialDTO.getCustomerMaterialNumber());
+					material.setSupplierMaterialNumber(editMaterialDTO.getSupplierMaterialNumber());
+					material.setMaterialGroupType(editMaterialDTO.getMaterialGroupType());
+					material.setIsProduct(false);
+					material.setIsMultiPanel(false);
+					material.setNumberOfPanels(0);
 					material.setMaxDeliveryQuantity(editMaterialDTO.getWashQuantity());
-					    material.setMaxWashQuantity(editMaterialDTO.getMaxWashQuantity());
-					    material.setStation(hibernateTemplate.get(Station.class,editMaterialDTO.getTraceStationId()));
+					material.setMaxWashQuantity(editMaterialDTO.getMaxWashQuantity());
+					material.setStation(hibernateTemplate.get(Station.class,editMaterialDTO.getTraceStationId()));
 					if (editMaterialDTO.getUnit()!=null) {
 						material.setUnit(editMaterialDTO.getUnit());
 					}
 					material.setContainerType(hibernateTemplate.get(ContainerType.class,editMaterialDTO.getContainerTypeId()));
 
-					material.setSetupFlag(editMaterialDTO.getSetupFlag());
-						material.setMinimumPackageQuantity(editMaterialDTO.getMinimumPackageQuantity());
-						material.setExpirationTime(editMaterialDTO.getExpirationTime());
+					material.setMinimumPackageQuantity(editMaterialDTO.getMinimumPackageQuantity());
+					material.setExpirationTime(editMaterialDTO.getExpirationTime());
 					if (editMaterialDTO.getState()!=null) {
 						material.setState(editMaterialDTO.getState());
 					}
@@ -592,7 +623,7 @@ public class MaterialController extends BaseController{
 					material.setMaterialNumber("Del@"+material.getMaterialNumber());
 					material.setState(-1);
 					materialService.updateMaterial(material);
-				}	
+				}
 				json = this.setJson(200, "删除成功!", 0);
 			}else{
 				json = this.setJson(0, "删除失败：请选择要删除的数据!", -1);

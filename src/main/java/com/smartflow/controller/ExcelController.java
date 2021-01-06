@@ -87,10 +87,7 @@ public class ExcelController extends BaseController {
         String webappPath = request.getSession().getServletContext().getRealPath("/upload");
         String filePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/upload/";
         try {
-            //windows部署
-            String path = webappPath+"\\"+fileName;
-            //linux部署
-//            String path = webappPath+"/"+fileName;
+            String path = webappPath+File.separator+fileName;
             //"C:\\Users\\smartflow\\Desktop\\"+fileName+".xls"
             ExcelUtil.createExcelTemplate(path, headers, downData, downRows, null);//, request, response
             json = this.setJson(200, "获取工艺导入模板成功", filePath+fileName);
@@ -216,10 +213,8 @@ public class ExcelController extends BaseController {
             String[] downRows = {"0","2"}; //下拉的列序号数组(序号从0开始)
             String webappPath = request.getSession().getServletContext().getRealPath("/upload");
             String filePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/upload/";
-            //windows部署
-            String path = webappPath+"\\"+fileName;
-            //linux部署
-//            String path = webappPath+"/"+fileName;
+
+            String path = webappPath+File.separator+fileName;
             ExcelUtil.createExcelTemplate(path, headers, downData, downRows, processStepList);
             map.put("FilePath", filePath+fileName);
             json = this.setJson(200, "查询成功", map);

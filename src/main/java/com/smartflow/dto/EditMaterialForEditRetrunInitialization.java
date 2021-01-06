@@ -40,15 +40,16 @@ public class EditMaterialForEditRetrunInitialization {
 	private boolean RequireFIFO;//是否需要先进先出
 	private boolean RequireCheckCustomerLabel;//是否需要扫描客户标签
 	private int ContainerTypeId;
-	private int TraceStationId;
+	private Integer StationId;
+	private Integer TraceStationId;
 
 
 	@JsonProperty("TraceStationId")
-	public int getTraceStationId() {
+	public Integer getTraceStationId() {
 		return TraceStationId;
 	}
 
-	public void setTraceStationId(int traceStationId) {
+	public void setTraceStationId(Integer traceStationId) {
 		TraceStationId = traceStationId;
 	}
 
@@ -248,7 +249,13 @@ public class EditMaterialForEditRetrunInitialization {
 	}
 	public void setRequireCheckCustomerLabel(boolean requireCheckCustomerLabel) {
 		RequireCheckCustomerLabel = requireCheckCustomerLabel;
-	}	
-	
-	
+	}
+	@JsonProperty("StationId")
+	public Integer getStationId() {
+		return StationId;
+	}
+
+	public void setStationId(Integer stationId) {
+		StationId = stationId;
+	}
 }
