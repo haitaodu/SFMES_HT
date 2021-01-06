@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @author ：tao
@@ -55,6 +56,7 @@ public class IdModelController extends BaseController {
     @PostMapping(value = "/GetTByCondition")
     public Map<String, Object> getIdModelPageList
             (@RequestBody ModelIdConditionInputDTO modelIdConditionInputDTO) {
+
         Map<String, Object> map = new HashMap<>(16);
         CountDownLatch latch = new CountDownLatch(2);
         try {

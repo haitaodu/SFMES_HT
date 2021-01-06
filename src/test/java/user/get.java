@@ -42,7 +42,7 @@ public class get {
     @Test
     public void getUserError()
     {
-        log.info(userErrorDao.getById(12).toString());
+        log.info(userErrorDao.getById(112));
     }
 
     @Test

@@ -55,6 +55,8 @@
 
     <dubbo:application name="dubbo-demo"/>
 
+    <dubbo:provider timeout="5000"/>
+
 
     <dubbo:registry address="${zookeeper.address}" check="false" subscribe="false">
     </dubbo:registry>
