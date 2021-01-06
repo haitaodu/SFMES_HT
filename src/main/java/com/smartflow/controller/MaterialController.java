@@ -565,7 +565,7 @@ public class MaterialController extends BaseController{
 					material.setNumberOfPanels(0);
 					material.setMaxDeliveryQuantity(editMaterialDTO.getWashQuantity());
 					material.setMaxWashQuantity(editMaterialDTO.getMaxWashQuantity());
-					material.setStation(hibernateTemplate.get(Station.class,editMaterialDTO.getTraceStationId()));
+					material.setStation(editMaterialDTO.getTraceStationId() == null ? null : hibernateTemplate.get(Station.class,editMaterialDTO.getTraceStationId()));
 					if (editMaterialDTO.getUnit()!=null) {
 						material.setUnit(editMaterialDTO.getUnit());
 					}

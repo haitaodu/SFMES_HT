@@ -33,7 +33,7 @@ public class EditMaterialDTO {
 	private int WashQuantity;
 	private int MaxWashQuantity;
 	private int ContainerTypeId;
-	private int TraceStationId;
+	private Integer TraceStationId;
 	private Integer StationId;
 
 
@@ -46,11 +46,11 @@ public class EditMaterialDTO {
 		StationId = stationId;
 	}
 	@JsonProperty("TraceStationId")
-	public int getTraceStationId() {
+	public Integer getTraceStationId() {
 		return TraceStationId;
 	}
 
-	public void setTraceStationId(int traceStationId) {
+	public void setTraceStationId(Integer traceStationId) {
 		TraceStationId = traceStationId;
 	}
 
