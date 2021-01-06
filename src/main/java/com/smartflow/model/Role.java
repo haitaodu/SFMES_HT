@@ -108,4 +108,12 @@ public class Role implements Serializable {
 //	public void setType(Integer type) {
 //		Type = type;
 //	}
+
+	public Role() {
+	}
+
+	public Role(Integer id, String roleName) {
+		Id = id;
+		RoleName = roleName;
+	}
 }

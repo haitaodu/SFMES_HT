@@ -370,7 +370,7 @@ public class BOMController  extends BaseController {
 	}
 
 	private BOMHeadModel parseToBomAdd(JSONObject jsonObject) throws ParseException {
-		BOMHeadModel bomHeadModel=new BOMHeadModel();
+		BOMHeadModel bomHeadModel=bomHeadService.get_BOMHead_Data_ById(jsonObject.getInteger("Id"));
 		String  materialNumber=jsonObject.getString("MaterialNumber");
 		if (materialNumber==null) {
 			json= this.setJson(STATUS_ERROR, "物料号不允许为空", -1);

@@ -36,12 +36,21 @@ public class UserErrorDaoImpl implements  UserErrorDao {
         hibernateTemplate.update(userError);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public UserError getById(int id) {
-        return (UserError) hibernateTemplate.findByNamedParam
+        List<UserError> userErrors=
+        (List<UserError>) hibernateTemplate.findByNamedParam
                 ("from UserError where errorid=:errorid",
-                        "errorid",id).get(0);
-    }
+                        "errorid",id);
+        if (userErrors.isEmpty())
+        {
+            return null;
+        }
+        else {
+            return userErrors.get(0);
+        }
+       }
 
     @Override
     @SuppressWarnings("unchecked")

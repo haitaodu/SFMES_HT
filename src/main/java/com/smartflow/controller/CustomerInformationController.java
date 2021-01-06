@@ -309,23 +309,6 @@ public class CustomerInformationController extends BaseController{
 			return json;
 
 		}
-		if(customerService.isRegisterCustomerNumber(customercode))
-		{
-
-
-			json= this.setJson(103, "该客户编号已被注册", -1);
-			return json;
-
-		}
-
-		if(customerService.isregisterdnus(duns))
-		{
-
-
-			json= this.setJson(103, "该邓氏码已被注册", -1);
-			return json;
-
-		}
 		Integer idInteger=Integer.parseInt(id);
 		
 		CustomerModel  customer=customerService.getDataById(idInteger);
@@ -349,10 +332,7 @@ public class CustomerInformationController extends BaseController{
 		customer.setCustomerProvince(province);
 		customer.setCustomerTelphone(telphone);
 		customer.setDUNS(duns);
-	
-		//customer.setCustomerCreationDateTime(customerService.getDataById(idInteger).getCustomerCreationDateTime());
-		//customer.setCustomerCreatorId(customerService.getDataById(idInteger).getCustomerCreatorId());
-		
+
 			customerService.upDateData(customer);
 	
 		try {
