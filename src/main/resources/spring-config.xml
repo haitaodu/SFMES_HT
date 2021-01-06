@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo" xmlns:util="http://www.springframework.org/schema/p"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
@@ -23,12 +23,8 @@
           class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
         </property>
-          <!--<property name="jdbcUrl" value="jdbc:sqlserver://smartflow.diskstation.me\SQL2017DEV:8021;databaseName=MESDB_SXHTDL">-->
-          <!--</property>-->
         <property name="jdbcUrl" value="${jdbc.jdbcUrl}">
         </property>
-      <!--<property name="jdbcUrl" value="jdbc:sqlserver://192.168.1.6;database=MESDB_SXHTDL">-->
-      <!--</property>-->
             <property name="user" value="sa">
             </property>
             <property name="password" value="1qaz@wsx">
@@ -59,8 +55,6 @@
     <dubbo:registry address="${zookeeper.address}" check="false" subscribe="false">
     </dubbo:registry>
 
-    <dubbo:protocol name="dubbo" port="20880">
-    </dubbo:protocol>
 
     <dubbo:service interface="com.smartflow.service.CellService" ref="cellServiceImpl" timeout="3000">
     </dubbo:service>
@@ -128,13 +122,13 @@
         <property name="maxPoolSize" value="10" />
         <property name="queueCapacity" value="25" />
     </bean>
-
     <beans profile="development">
         <context:property-placeholder location="classpath:app-development.properties"/>
     </beans>
-
     <beans profile="production">
         <context:property-placeholder location="classpath:app-production.properties"/>
-
     </beans>
+
+
+
 </beans>

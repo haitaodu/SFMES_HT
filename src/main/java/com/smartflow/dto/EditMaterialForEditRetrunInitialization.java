@@ -41,15 +41,15 @@ public class EditMaterialForEditRetrunInitialization {
 	private boolean RequireCheckCustomerLabel;//是否需要扫描客户标签
 	private int ContainerTypeId;
 	private Integer StationId;
-	private int TraceStationId;
+	private Integer TraceStationId;
 
 
 	@JsonProperty("TraceStationId")
-	public int getTraceStationId() {
+	public Integer getTraceStationId() {
 		return TraceStationId;
 	}
 
-	public void setTraceStationId(int traceStationId) {
+	public void setTraceStationId(Integer traceStationId) {
 		TraceStationId = traceStationId;
 	}
 

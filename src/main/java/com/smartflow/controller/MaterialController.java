@@ -15,10 +15,12 @@ import javax.validation.Valid;
 import com.smartflow.model.ContainerType;
 import com.smartflow.model.Station;
 import com.smartflow.service.ContainerTypeService;
+import com.smartflow.util.StringUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -344,7 +346,7 @@ public class MaterialController extends BaseController{
 				TDto.setMaxWashQuantity(material.getMaxWashQuantity());
 				TDto.setWashQuantity(material.getMaxDeliveryQuantity());
                 TDto.setContainerTypeId(material.getContainerType().getId());
-                TDto.setTraceStationId(material.getStation().getId());
+                TDto.setTraceStationId(material.getStation() == null ? null : material.getStation().getId());
 				if (material.getRequireFIFO()!=null) {
 					TDto.setRequireFIFO(material.getRequireFIFO());
 				}
@@ -435,9 +437,11 @@ public class MaterialController extends BaseController{
 						validEnd = format.parse(validEndStr);
 						material.setValidEnd(validEnd);
 					}
-					if(validEnd.before(validBegin)){
-						json = this.setJson(0, "添加失败：失效时间要大于生效时间！", -1);
-						return json;
+					if(!StringUtils.isEmpty(validBegin) && !StringUtils.isEmpty(validEnd)) {
+						if (validEnd.before(validBegin)) {
+							json = this.setJson(0, "添加失败：失效时间要大于生效时间！", -1);
+							return json;
+						}
 					}
 					material.setMaterialNumber(creationMaterialDTO.getMaterialNumber());
 						material.setVersion(1);
@@ -450,7 +454,7 @@ public class MaterialController extends BaseController{
 						material.setIsProduct(false);
 						material.setIsMultiPanel(false);
 						material.setNumberOfPanels(0);
-						material.setStation(hibernateTemplate.get(Station.class,creationMaterialDTO.getTraceStationId()));
+						material.setStation(creationMaterialDTO.getTraceStationId() == null ? null : hibernateTemplate.get(Station.class,creationMaterialDTO.getTraceStationId()));
 						material.setContainerType(hibernateTemplate.get(ContainerType.class,creationMaterialDTO.getContainerTypeId()));
 					if (creationMaterialDTO.getUnit()!=null) {
 						material.setUnit(creationMaterialDTO.getUnit());
@@ -529,9 +533,11 @@ public class MaterialController extends BaseController{
 						validEnd = format.parse(validEndStr);
 						material.setValidEnd(validEnd);
 					}
-					if(validEnd.before(validBegin)){
-						json = this.setJson(0, "修改失败：失效时间要大于生效时间！", -1);
-						return json;
+					if(!StringUtils.isEmpty(validBegin) && !StringUtils.isEmpty(validEnd)) {
+						if (validEnd.before(validBegin)) {
+							json = this.setJson(0, "修改失败：失效时间要大于生效时间！", -1);
+							return json;
+						}
 					}
 					if(!"".equals(editMaterialDTO.getSetupFlag())){
 						material.setSetupFlag(editMaterialDTO.getSetupFlag());
@@ -617,7 +623,7 @@ public class MaterialController extends BaseController{
 					material.setMaterialNumber("Del@"+material.getMaterialNumber());
 					material.setState(-1);
 					materialService.updateMaterial(material);
-				}	
+				}
 				json = this.setJson(200, "删除成功!", 0);
 			}else{
 				json = this.setJson(0, "删除失败：请选择要删除的数据!", -1);
